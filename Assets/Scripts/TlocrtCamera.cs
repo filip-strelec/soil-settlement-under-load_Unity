@@ -45,8 +45,10 @@ public class TlocrtCamera : MonoBehaviour
 
 
 else{
+        RectTransform    canvasGraphContainer = GameObject.Find("CanvasGraph").GetComponent<RectTransform>();
 
-        glavnaKamera.transform.localPosition = new Vector3 (20,-30,(float)-programState.dubinaZ*1.5f  );
+         glavnaKamera.transform.position = canvasGraphContainer.transform.position + new Vector3((float)(-programState.dubinaZ*0.2),0,(float)-(1.4*programState.dubinaZ));
+
         glavnaKamera.transform.rotation = Quaternion.Euler(0, 0, 0);
         programState.kameraOnTlocrt = false;
         

@@ -1940,7 +1940,8 @@ MonoBehaviour:
   sirinaB: 0
   duzinaL: 0
   dubinaZ: 0
-  preciznostIzracuna: 0.1
+  brojMjerenja: 0
+  preciznostIzracuna: 0.5
   graphSize: {x: 0, y: 0}
   CanvasSize: {x: 0, y: 0}
   kameraOnTlocrt: 0
@@ -2340,17 +2341,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1977583887}
         m_MethodName: ChangeCamera
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 432017520}
-        m_MethodName: InitializeSteinbrennerGraph
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

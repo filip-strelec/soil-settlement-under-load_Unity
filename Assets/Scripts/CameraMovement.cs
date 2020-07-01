@@ -9,6 +9,14 @@ public class CameraMovement : MonoBehaviour
     
 
     // Update is called once per frame
+
+      void Start() {
+           GameObject programManager = GameObject.Find("ProgramManager");
+        ProgramState programState = programManager.GetComponent<ProgramState>();
+
+
+
+    }
     void Update()
     {
         

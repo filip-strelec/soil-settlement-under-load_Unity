@@ -45,7 +45,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Graph\Scripts\Window_Graph.cs" />
+     <Compile Include="Assets\CodeMonkey\Utils\UtilsClass.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\InitalizeProgram.cs" />
      <Compile Include="Assets\Scripts\ProgramState.cs" />

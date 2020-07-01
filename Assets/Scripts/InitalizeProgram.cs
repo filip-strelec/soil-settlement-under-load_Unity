@@ -5,14 +5,12 @@ using UnityEngine.UI;
 
 public class InitalizeProgram : MonoBehaviour
 {
-
     public Material dryGroundMaterial;
     public Material foundationMaterial;
 
     public Button gumbZaRotacijuKamere;
 
     public Camera glavnaKamera;
-
 
     //komponente za graf
 
@@ -80,7 +78,6 @@ public class InitalizeProgram : MonoBehaviour
             GameObject canvasParametri = GameObject.Find("CanvasParametri");
             canvasParametri.SetActive(false);
 
-           glavnaKamera.transform.localPosition = new Vector3 (20,-30,(float)-programState.dubinaZ*1.5f  );
 
 
 
@@ -101,7 +98,7 @@ graphContainer.anchorMin = new Vector2(0.5f, 0.5f);
 graphContainer.anchorMax = new Vector2(0.5f, 0.5f);
 
 
-float xOffset = (float) ((programState.CanvasSize[0]/2+programState.sirinaB/2)+2);
+float xOffset = (float) ((programState.CanvasSize[0]/2+programState.sirinaB/2)+programState.dubinaZ*0.2);
 float yOffset = (float) (-programState.graphSize[1]/2) ;
 float zOffset = (float)(-programState.duzinaL/2);
 
@@ -109,8 +106,12 @@ float zOffset = (float)(-programState.duzinaL/2);
 
 
 
+           glavnaKamera.transform.position = canvasGraphContainer.transform.position + new Vector3((float)(-programState.dubinaZ*0.2),0,(float)-(1.4*programState.dubinaZ));
 
-
+ GameObject mainCamera = GameObject.Find("Main Camera");
+        CameraMovement mainCameraState = mainCamera.GetComponent<CameraMovement>();
+        mainCameraState.panSpeed = (float)programState.dubinaZ*2;
+        
 
 
 

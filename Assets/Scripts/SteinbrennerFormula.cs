@@ -18,7 +18,7 @@ public class SteinbrennerFormula : MonoBehaviour
 
  
    
-Debug.Log(programState.dubinaZ+"zadana dubina");
+// Debug.Log(programState.dubinaZ+"zadana dubina");
 
 
 
