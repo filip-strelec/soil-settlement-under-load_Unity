@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; 
 
 public class CameraMovement : MonoBehaviour
 {
@@ -58,6 +59,12 @@ if(Input.GetKey("e")){
 cameraPosition.z += panSpeed * Time.deltaTime;
 
 }
+
+//reset Scene
+
+     if (Input.GetKeyDown("r")) { 
+         SceneManager.LoadScene("SceneFirst"); 
+     }
 
 
 

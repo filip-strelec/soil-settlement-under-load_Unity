@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using CodeMonkey.Utils;
 
 public class SteinbrennerGraf : MonoBehaviour
 {
@@ -135,7 +134,7 @@ ProgramState programState = programManager.GetComponent<ProgramState>();
         rectTransform.anchorMax = new Vector2(0, 0);
         rectTransform.sizeDelta = new Vector2(distance, (float)(SirinaLinije));
         rectTransform.anchoredPosition = dotPositionA + dir * distance * .5f;
-        rectTransform.localEulerAngles = new Vector3(0, 0, UtilsClass.GetAngleFromVectorFloat(dir));
+        rectTransform.localEulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(dir));
         
 
         // Debug.Log(dotPositionA+ "positiondotA");
