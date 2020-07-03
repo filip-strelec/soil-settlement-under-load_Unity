@@ -15,6 +15,8 @@ public class SteinbrennerGraf : MonoBehaviour
 
     private RectTransform labelTemplateY;
 
+    private RectTransform templateGridObject;
+
     public RectTransform PanelTemplateValue;
 
  private bool valueShown = false;
@@ -110,12 +112,11 @@ lastCircleGameObjectLocation = circleGameObjectLocation;
 // Debug.Log("---******----**-");
 
 
- ShowAxis();
+ ShowAxisNumbersNGrid();
 
 Debug.Log(programState.graphSize[1] + "graphSize VAZNO");
 // Debug.Log(programState.CanvasSize + "CanvasSize");
        GameObject.Find("BackgroundGraph").GetComponent<RectTransform>().SetAsFirstSibling();
-
 
     }
 
@@ -195,10 +196,14 @@ dubinaText.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
 }
 
 
-   private void ShowAxis (){
-      Debug.Log("SHOWAXIS INITIALIZED");
+
+   private void ShowAxisNumbersNGrid (){
+      Debug.Log("SHOWAXISNumbersNGrid INITIALIZED");
 GameObject programManager = GameObject.Find("ProgramManager");
 ProgramState programState = programManager.GetComponent<ProgramState>();
+
+templateGridObject = GameObject.Find("GridTemplate").GetComponent<RectTransform>();
+templateGridObject.gameObject.SetActive(false);
 
         labelTemplateX = graphContainer.Find("TextLabelTemplateX").GetComponent<RectTransform>();
         labelTemplateY = graphContainer.Find("TextLabelTemplateY").GetComponent<RectTransform>();
@@ -210,10 +215,13 @@ double labelsScale =0.02643327*programState.graphSize[1] - 0.04642976;
 for (int i = 0; i<=5; i++){
 
    RectTransform labelX = Instantiate(labelTemplateX);
+   RectTransform gridX = Instantiate(templateGridObject);
+   gridX.SetParent(graphContainer, false);
+   gridX.gameObject.SetActive(true);
         labelX.SetParent(graphContainer, false);
         labelX.gameObject.SetActive(true);
         double labelXText = i*0.05;
-        //Dobiveno curve fit metodom
+      
         
   
         if (i==0){
@@ -223,14 +231,19 @@ for (int i = 0; i<=5; i++){
         }
 
         else{        labelX.GetComponent<Text>().text=labelXText.ToString("0.00");
+        
 }
         float labelXXposition = (i/5f*programState.graphSize[0]);
+        
         // Debug.Log(programState.graphSize[1] + "graphSize ______________YYY VAZNO");
         // Debug.Log(programState.graphSize[0] + "graphSize ______XXXXVAZNO");
 
  labelX.anchoredPosition= new Vector2(labelXXposition,(float)(programState.graphSize[1]+(2.3*labelsScale)));
 labelX.localScale=new Vector2 ((float)labelsScale,(float) labelsScale);
 
+gridX.anchoredPosition = new Vector2(labelXXposition,(programState.graphSize[1]/2));
+gridX.localScale =new Vector2((float)(labelsScale/8), programState.graphSize[1]);
+gridX.SetAsFirstSibling();
 }
 
 
@@ -241,9 +254,12 @@ for (int i = 0; i<=10; i++){
         labelY.gameObject.SetActive(true);
         float dubina = programState.graphSize[1];
         double labelYText = i*(dubina/10);
-        //Dobiveno curve fit metodom
+
+ RectTransform gridY = Instantiate(templateGridObject);
+   gridY.SetParent(graphContainer, false);
+   gridY.gameObject.SetActive(true);
+
        
-  
         float labelYYposition = dubina - (i/10f*dubina);
         // Debug.Log(programState.graphSize[1] + "graphSize ______________YYY VAZNO");
         // Debug.Log(programState.graphSize[0] + "graphSize ______XXXXVAZNO");
@@ -267,6 +283,11 @@ for (int i = 0; i<=10; i++){
  
 //  (float)(programState.graphSize[1]+programState.graphSize[1]*0.1));
 labelY.localScale=new Vector2 ((float)labelsScale,(float) labelsScale);
+
+
+gridY.anchoredPosition = new Vector2((programState.graphSize[0]/2),labelYYposition);
+gridY.localScale =new Vector2(programState.graphSize[0],(float)labelsScale/8);
+gridY.SetAsFirstSibling();
 
 }
 

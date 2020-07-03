@@ -26,6 +26,8 @@ public class InitalizeProgram : MonoBehaviour
         double sirinaTemelja = 0;
         double duzinaTemelja = 0;
         double dubinaMjerenjaParametar = 0;
+        double inkrementMjerenja =0;
+        double brojMjerenja = 0;
         //referenca na program manager u kojem su sačuvani parametri
         GameObject programManager = GameObject.Find("ProgramManager");
         ProgramState programState = programManager.GetComponent<ProgramState>();
@@ -38,6 +40,8 @@ public class InitalizeProgram : MonoBehaviour
         InputField sirinaInputB = GameObject.Find("InputFieldSirinaB").GetComponent<InputField>();
         InputField duzinaInputL = GameObject.Find("InputFieldDuzinaL").GetComponent<InputField>();
         InputField dubinaInputParametar = GameObject.Find("InputFieldDubinaZ").GetComponent<InputField>();
+        InputField brojMjerenjaInputField = GameObject.Find("InputFieldBrojMjerenja").GetComponent<InputField>();
+
       
 
 
@@ -52,6 +56,10 @@ public class InitalizeProgram : MonoBehaviour
 
         bool canConvertDubina = double.TryParse(dubinaInputParametar.text, out dubinaMjerenjaParametar);
         programState.dubinaZ = dubinaMjerenjaParametar * sirinaTemelja;
+
+
+         bool canConvertBrojMjerenja = double.TryParse(brojMjerenjaInputField.text, out brojMjerenja);
+        programState.InkrementMjerenjaZ = 1/brojMjerenja;
 
 
 

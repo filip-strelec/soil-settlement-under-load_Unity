@@ -25,7 +25,7 @@ public class SteinbrennerFormula : MonoBehaviour
 List<double> depthList = new List <double>();
 List<double> valueList = new List<double> ();
 
-            for (double i = 0.0; i < programState.dubinaZ; i += programState.preciznostIzracuna)
+            for (double i = 0.0; i < programState.dubinaZ; i += programState.InkrementMjerenjaZ)
 {
 
 
@@ -43,7 +43,7 @@ double trenutnaDubinaZ = i;
 
     double razlikaDubine = programState.dubinaZ- trenutnaDubinaZ;
 
-    if (razlikaDubine<= programState.preciznostIzracuna){
+    if (razlikaDubine<= programState.InkrementMjerenjaZ){
 
         trenutnaDubinaZ = programState.dubinaZ;
 
