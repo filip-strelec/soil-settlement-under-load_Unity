@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class SteinbrennerGraf : MonoBehaviour
 {
@@ -9,13 +10,32 @@ public class SteinbrennerGraf : MonoBehaviour
     private RectTransform graphContainer;
 
     private float SirinaLinije;
-    public void InitializeSteinbrennerGraph(){
+
+    private RectTransform labelTemplateX;
+
+    private RectTransform labelTemplateY;
+
+    public RectTransform PanelTemplateValue;
+
+ private bool valueShown = false;
+    
+   private double konacnaDubina = 0;
+   
+
+
+  private  double najvecaVrijednost = 0;
+    private double najmanjaVrijednost = 50000;
+
+
  
-    double konacnaDubina = 0;
+
+   public void InitializeSteinbrennerGraph(){
+ 
+    konacnaDubina = 0;
 
 
-    double najvecaVrijednost = 0;
-    double najmanjaVrijednost = 50000;
+    najvecaVrijednost = 0;
+    najmanjaVrijednost = 50000;
 
 graphContainer = GameObject.Find("GraphContainer").GetComponent<RectTransform>();
 GameObject programManager = GameObject.Find("ProgramManager");
@@ -72,11 +92,15 @@ float yCoordinate = (float) (programState.graphSize[1] - (SteinBrennerRezultat.d
 
 
    CreateDotConnection(lastCircleGameObjectLocation, circleGameObjectLocation);
-Debug.Log("JAKO VAZNO:"+lastCircleGameObjectLocation);
+// Debug.Log("JAKO VAZNO:"+lastCircleGameObjectLocation);
   }
 lastCircleGameObjectLocation = circleGameObjectLocation;
     
     }
+
+ 
+
+
 // Debug.Log("---******----**-");
 
 
@@ -86,13 +110,21 @@ lastCircleGameObjectLocation = circleGameObjectLocation;
 // Debug.Log("---******----**-");
 
 
-
+ ShowAxis();
 
 Debug.Log(programState.graphSize[1] + "graphSize VAZNO");
-Debug.Log(programState.CanvasSize + "CanvasSize");
+// Debug.Log(programState.CanvasSize + "CanvasSize");
+       GameObject.Find("BackgroundGraph").GetComponent<RectTransform>().SetAsFirstSibling();
 
 
     }
+
+private void ShowValueListener (Vector2 anchoredPosition){
+    
+    if (!valueShown ){ showValue( anchoredPosition);
+}
+    Debug.Log("gwew");}
+
 
     private GameObject CreateCircle(Vector2 anchoredPosition){
 
@@ -100,16 +132,149 @@ Debug.Log(programState.CanvasSize + "CanvasSize");
         circleObject.transform.SetParent(graphContainer, false);
         circleObject.GetComponent<Image>().sprite = krugSprite;
         RectTransform rectTransform = circleObject.GetComponent<RectTransform>();
+        circleObject.GetComponent<Image>().color = new Color(255,0,0, 1f);
+
+        rectTransform.SetAsLastSibling();
         rectTransform.anchoredPosition = anchoredPosition;
         rectTransform.anchorMin = new Vector2 (0,0);
         rectTransform.sizeDelta = new Vector2 ((float)(SirinaLinije+0.5*SirinaLinije),(float)(SirinaLinije+0.5*SirinaLinije));
      rectTransform.anchorMax = new Vector2(0, 0);
+
+
+    circleObject.AddComponent<Button>();
+           circleObject.GetComponent<Button>().onClick.AddListener(()=>ShowValueListener(anchoredPosition));
+
         return gameObject;
         
     }
 
+private void hidePanel (){
 
-public static float GetAngleFromVectorFloat(Vector3 dir) {
+
+    GameObject panelTemplateClone = GameObject.Find("PanelTemplateValue(Clone)");
+
+    Destroy (panelTemplateClone);
+    valueShown= false;
+
+
+}
+private void showValue(Vector2 anchoredPosition){
+
+// PanelTemplateValue = GameObject.Find("PanelTemplateValue").GetComponent<RectTransform>();
+valueShown = true;
+GameObject programManager = GameObject.Find("ProgramManager");
+ProgramState programState = programManager.GetComponent<ProgramState>();
+RectTransform ValuePanelRectTransform =Instantiate( PanelTemplateValue);
+
+ValuePanelRectTransform.SetParent(graphContainer, false);
+ValuePanelRectTransform.gameObject.SetActive(true);
+ValuePanelRectTransform.anchoredPosition = anchoredPosition - new Vector2((float)(konacnaDubina*0.1),0);
+// ValuePanelRectTransform.localScale = new Vector2(programState.graphSize[0]*0.1f, programState.graphSize[1]*0.1f);
+ValuePanelRectTransform.sizeDelta = new Vector2(programState.graphSize[1]*.2f,programState.graphSize[1]*.2f);
+
+GameObject panelTemplateClone = GameObject.Find("PanelTemplateValue(Clone)");
+Transform dubinaText =  panelTemplateClone.transform.Find("TextValueDubina");
+Transform naprezanjeText =  panelTemplateClone.transform.Find("TextValueI");
+
+
+dubinaText.GetComponent<Text>().text = "z:"+(programState.graphSize[1]- anchoredPosition[1]).ToString("0.0");
+naprezanjeText.GetComponent<Text>().text = "i:"+((anchoredPosition[0]/programState.graphSize[0])*najvecaVrijednost).ToString("0.0000");
+
+double labelsScale =0.02643327*programState.graphSize[1] - 0.04642976;
+  if (labelsScale < 0.05){
+    labelsScale =0.05;
+}
+dubinaText.GetComponent<RectTransform>().localScale=(new Vector2((float)labelsScale, (float)labelsScale));
+naprezanjeText.GetComponent<RectTransform>().localScale=(new Vector2((float)labelsScale, (float)labelsScale));
+
+dubinaText.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
+dubinaText.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
+
+ Invoke("hidePanel", 2);
+
+}
+
+
+   private void ShowAxis (){
+      Debug.Log("SHOWAXIS INITIALIZED");
+GameObject programManager = GameObject.Find("ProgramManager");
+ProgramState programState = programManager.GetComponent<ProgramState>();
+
+        labelTemplateX = graphContainer.Find("TextLabelTemplateX").GetComponent<RectTransform>();
+        labelTemplateY = graphContainer.Find("TextLabelTemplateY").GetComponent<RectTransform>();
+double labelsScale =0.02643327*programState.graphSize[1] - 0.04642976;
+  if (labelsScale < 0.05){
+    labelsScale =0.05;
+}
+   
+for (int i = 0; i<=5; i++){
+
+   RectTransform labelX = Instantiate(labelTemplateX);
+        labelX.SetParent(graphContainer, false);
+        labelX.gameObject.SetActive(true);
+        double labelXText = i*0.05;
+        //Dobiveno curve fit metodom
+        
+  
+        if (i==0){
+        labelX.GetComponent<Text>().text=labelXText.ToString(" ");
+
+
+        }
+
+        else{        labelX.GetComponent<Text>().text=labelXText.ToString("0.00");
+}
+        float labelXXposition = (i/5f*programState.graphSize[0]);
+        // Debug.Log(programState.graphSize[1] + "graphSize ______________YYY VAZNO");
+        // Debug.Log(programState.graphSize[0] + "graphSize ______XXXXVAZNO");
+
+ labelX.anchoredPosition= new Vector2(labelXXposition,(float)(programState.graphSize[1]+(2.3*labelsScale)));
+labelX.localScale=new Vector2 ((float)labelsScale,(float) labelsScale);
+
+}
+
+
+for (int i = 0; i<=10; i++){
+
+   RectTransform labelY = Instantiate(labelTemplateY);
+        labelY.SetParent(graphContainer, false);
+        labelY.gameObject.SetActive(true);
+        float dubina = programState.graphSize[1];
+        double labelYText = i*(dubina/10);
+        //Dobiveno curve fit metodom
+       
+  
+        float labelYYposition = dubina - (i/10f*dubina);
+        // Debug.Log(programState.graphSize[1] + "graphSize ______________YYY VAZNO");
+        // Debug.Log(programState.graphSize[0] + "graphSize ______XXXXVAZNO");
+
+ labelY.anchoredPosition= new Vector2(0,labelYYposition);
+
+
+ if (i==0){
+        labelY.GetComponent<Text>().text="0";
+               labelY.anchoredPosition= new Vector2((float)(-0.01*dubina),(float)(programState.graphSize[1]+(0.85*labelsScale)));
+
+
+  }
+  else {
+
+              labelY.GetComponent<Text>().text=labelYText.ToString("0.00");
+               labelY.anchoredPosition= new Vector2((float)(-0.01*dubina),labelYYposition);
+
+
+  }
+ 
+//  (float)(programState.graphSize[1]+programState.graphSize[1]*0.1));
+labelY.localScale=new Vector2 ((float)labelsScale,(float) labelsScale);
+
+}
+
+    }
+
+
+
+private static float GetAngleFromVectorFloat(Vector3 dir) {
 
 
 
@@ -121,6 +286,8 @@ public static float GetAngleFromVectorFloat(Vector3 dir) {
         }
 
 
+
+
         private void CreateDotConnection(Vector2 dotPositionA, Vector2 dotPositionB) {
             GameObject programManager = GameObject.Find("ProgramManager");
 ProgramState programState = programManager.GetComponent<ProgramState>();
@@ -129,12 +296,16 @@ ProgramState programState = programManager.GetComponent<ProgramState>();
         gameObject.GetComponent<Image>().color = new Color(1,1,1, 0.8f);
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
         Vector2 dir = (dotPositionB - dotPositionA).normalized;
-        float distance = Vector2.Distance(dotPositionA, dotPositionB);
+        float distance = Vector2.Distance(dotPositionA, dotPositionB)*1f;
         rectTransform.anchorMin = new Vector2(0, 0);
         rectTransform.anchorMax = new Vector2(0, 0);
+         rectTransform.SetAsFirstSibling();
         rectTransform.sizeDelta = new Vector2(distance, (float)(SirinaLinije));
-        rectTransform.anchoredPosition = dotPositionA + dir * distance * .5f;
+        rectTransform.anchoredPosition = dotPositionA + dir * distance * 0.5f;
         rectTransform.localEulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(dir));
+
+        //   gameObject.AddComponent<Button>();
+        //    gameObject.GetComponent<Button>().onClick.AddListener(()=>TestScript());
         
 
         // Debug.Log(dotPositionA+ "positiondotA");

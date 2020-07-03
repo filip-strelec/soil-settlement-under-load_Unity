@@ -61,7 +61,7 @@ public class InitalizeProgram : MonoBehaviour
             //inicijalizacija definiranja temelja
             
              programState.graphSize = new Vector2 ((float) (0.65*programState.dubinaZ), (float)programState.dubinaZ);
-             programState.CanvasSize = programState.graphSize + 0.2f*programState.graphSize;
+             programState.CanvasSize = programState.graphSize + 0.6f*programState.graphSize;
 
             GameObject temelj = GameObject.CreatePrimitive(PrimitiveType.Cube);
             temelj.transform.localPosition = new Vector3(0, 0, 0);
@@ -90,15 +90,15 @@ public class InitalizeProgram : MonoBehaviour
 
          
 
-   canvasGraphContainer.sizeDelta =programState.CanvasSize;
-   windowGraph.sizeDelta = programState.CanvasSize;
+   canvasGraphContainer.sizeDelta =programState.CanvasSize + new Vector2 (1, 0);;
+   windowGraph.sizeDelta = programState.CanvasSize + new Vector2 (1, 0);
    graphContainer.sizeDelta = programState.graphSize;
 //    graphContainer.anchoredPosition()
 graphContainer.anchorMin = new Vector2(0.5f, 0.5f);
 graphContainer.anchorMax = new Vector2(0.5f, 0.5f);
 
 
-float xOffset = (float) ((programState.CanvasSize[0]/2+programState.sirinaB/2)+programState.dubinaZ*0.2);
+float xOffset = (float) ((programState.CanvasSize[0]/2+programState.sirinaB/2)+programState.dubinaZ*0.35);
 float yOffset = (float) (-programState.graphSize[1]/2) ;
 float zOffset = (float)(-programState.duzinaL/2);
 
@@ -110,7 +110,7 @@ float zOffset = (float)(-programState.duzinaL/2);
 
  GameObject mainCamera = GameObject.Find("Main Camera");
         CameraMovement mainCameraState = mainCamera.GetComponent<CameraMovement>();
-        mainCameraState.panSpeed = (float)programState.dubinaZ*2;
+        mainCameraState.panSpeed = (float)programState.dubinaZ*1.4f;
         
 
 

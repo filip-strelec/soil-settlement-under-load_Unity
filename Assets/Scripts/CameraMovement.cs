@@ -8,12 +8,14 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     public float panSpeed = 420f;
     
+        ProgramState programState ;
 
     // Update is called once per frame
 
       void Start() {
            GameObject programManager = GameObject.Find("ProgramManager");
-        ProgramState programState = programManager.GetComponent<ProgramState>();
+
+           programState = programManager.GetComponent<ProgramState>();
 
 
 
@@ -24,17 +26,6 @@ public class CameraMovement : MonoBehaviour
 
 Vector3 cameraPosition = transform.position;
 
-if(Input.GetKey("w")){
-
-cameraPosition.y += panSpeed * Time.deltaTime;
-
-}
-
-if(Input.GetKey("s")){
-
-cameraPosition.y -= panSpeed * Time.deltaTime;
-
-}
 
 
 if(Input.GetKey("a")){
@@ -45,6 +36,53 @@ cameraPosition.x -= panSpeed * Time.deltaTime;
 if(Input.GetKey("d")){
 
 cameraPosition.x += panSpeed * Time.deltaTime;
+
+}
+
+if (programState.kameraOnTlocrt){
+
+if(Input.GetKey("w")){
+
+cameraPosition.z += panSpeed * Time.deltaTime;
+
+}
+
+if(Input.GetKey("s")){
+
+cameraPosition.z -= panSpeed * Time.deltaTime;
+
+}
+
+if(Input.GetKey("q")){
+
+cameraPosition.y -= panSpeed * Time.deltaTime;
+
+}
+
+if(Input.GetKey("e")){
+
+cameraPosition.y += panSpeed * Time.deltaTime;
+
+}
+
+
+
+
+}
+
+else{
+
+
+
+if(Input.GetKey("w")){
+
+cameraPosition.y += panSpeed * Time.deltaTime;
+
+}
+
+if(Input.GetKey("s")){
+
+cameraPosition.y -= panSpeed * Time.deltaTime;
 
 }
 
@@ -59,6 +97,10 @@ if(Input.GetKey("e")){
 cameraPosition.z += panSpeed * Time.deltaTime;
 
 }
+
+
+}
+
 
 //reset Scene
 

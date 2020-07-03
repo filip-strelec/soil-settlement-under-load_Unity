@@ -10,6 +10,7 @@ public class TlocrtCamera : MonoBehaviour
    
     public float kameraYOffset;
     public Camera glavnaKamera;
+public RectTransform    canvasGraphContainer ;
 
     public void ChangeCamera()
     {
@@ -17,7 +18,13 @@ public class TlocrtCamera : MonoBehaviour
         ProgramState programState = programManager.GetComponent<ProgramState>();
 
 
+
+
+
     if (!programState.kameraOnTlocrt){
+
+
+    
 
 
         if (programState.sirinaB > programState.duzinaL)
@@ -40,18 +47,21 @@ public class TlocrtCamera : MonoBehaviour
         glavnaKamera.transform.localPosition = new Vector3(0, kameraYOffset, 0);
         glavnaKamera.transform.rotation = Quaternion.Euler(90, 0, 0);
         programState.kameraOnTlocrt = true;
+                canvasGraphContainer.gameObject.SetActive(false);
+
 
 }
 
 
 else{
-        RectTransform    canvasGraphContainer = GameObject.Find("CanvasGraph").GetComponent<RectTransform>();
+       
 
          glavnaKamera.transform.position = canvasGraphContainer.transform.position + new Vector3((float)(-programState.dubinaZ*0.2),0,(float)-(1.4*programState.dubinaZ));
 
         glavnaKamera.transform.rotation = Quaternion.Euler(0, 0, 0);
         programState.kameraOnTlocrt = false;
-        
+        canvasGraphContainer.gameObject.SetActive(true);
+
 
 
 
