@@ -55,13 +55,13 @@ cameraPosition.z -= panSpeed * Time.deltaTime;
 
 if(Input.GetKey("q")){
 
-cameraPosition.y -= panSpeed * Time.deltaTime;
+cameraPosition.y += panSpeed * Time.deltaTime;
 
 }
 
 if(Input.GetKey("e")){
 
-cameraPosition.y += panSpeed * Time.deltaTime;
+cameraPosition.y -= panSpeed * Time.deltaTime;
 
 }
 

@@ -46,6 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
+     <Compile Include="Assets\Scripts\ExportToCsv.cs" />
      <Compile Include="Assets\Scripts\InitalizeProgram.cs" />
      <Compile Include="Assets\Scripts\OnHoverValues.cs" />
      <Compile Include="Assets\Scripts\ProgramState.cs" />

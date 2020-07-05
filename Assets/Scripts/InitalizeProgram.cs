@@ -12,6 +12,8 @@ public class InitalizeProgram : MonoBehaviour
 
     public Camera glavnaKamera;
 
+     public GameObject exportToCsvButton;
+
     //komponente za graf
 
       private RectTransform canvasGraphContainer;
@@ -26,7 +28,7 @@ public class InitalizeProgram : MonoBehaviour
         double sirinaTemelja = 0;
         double duzinaTemelja = 0;
         double dubinaMjerenjaParametar = 0;
-        double inkrementMjerenja =0;
+    
         double brojMjerenja = 0;
         //referenca na program manager u kojem su sačuvani parametri
         GameObject programManager = GameObject.Find("ProgramManager");
@@ -96,7 +98,9 @@ public class InitalizeProgram : MonoBehaviour
             windowGraph = GameObject.Find("WindowGraph").GetComponent<RectTransform>();
             graphContainer = GameObject.Find("GraphContainer").GetComponent<RectTransform>();
 
-         
+        
+            exportToCsvButton.SetActive(true);
+          
 
    canvasGraphContainer.sizeDelta =programState.CanvasSize + new Vector2 (1, 0);;
    windowGraph.sizeDelta = programState.CanvasSize + new Vector2 (1, 0);
