@@ -11,7 +11,7 @@ public class SteinbrennerFormula : MonoBehaviour
 
 
 
-    public (List<double>list1, List<double> list2) CalculateSteinbrenner(){
+    public (List<double>list1, List<double> list2) CalculateSteinbrenner(double widthB, double lengthL){
 
  GameObject programManager = GameObject.Find("ProgramManager");
  ProgramState programState = programManager.GetComponent<ProgramState>();
@@ -31,9 +31,9 @@ List<double> valueList = new List<double> ();
 
 double trenutnaDubinaZ = i;
 
-    double firstFraction = (double)Math.Atan((programState.duzinaL * programState.sirinaB) / (trenutnaDubinaZ*Math.Sqrt(Math.Pow(programState.duzinaL,2) + Math.Pow(programState.sirinaB,2)+ Math.Pow(trenutnaDubinaZ,2))));
-    double secondFraction = (double)(programState.duzinaL * programState.sirinaB * trenutnaDubinaZ) / (Math.Sqrt(Math.Pow(programState.duzinaL, 2) + Math.Pow(programState.sirinaB, 2) + Math.Pow(trenutnaDubinaZ, 2)));
-    double thirdFraction = (double)(((1) / (Math.Pow(programState.duzinaL,2) + Math.Pow(trenutnaDubinaZ,2))) + ((1) / (Math.Pow(programState.sirinaB,2) + Math.Pow(trenutnaDubinaZ,2))));
+    double firstFraction = (double)Math.Atan((lengthL * widthB) / (trenutnaDubinaZ*Math.Sqrt(Math.Pow(lengthL,2) + Math.Pow(widthB,2)+ Math.Pow(trenutnaDubinaZ ,2))));
+    double secondFraction = (double)(lengthL * widthB * trenutnaDubinaZ) / (Math.Sqrt(Math.Pow(lengthL , 2) + Math.Pow(widthB, 2) + Math.Pow(trenutnaDubinaZ, 2)));
+    double thirdFraction = (double)(((1) / (Math.Pow(lengthL ,2) + Math.Pow(trenutnaDubinaZ,2))) + ((1) / (Math.Pow(widthB,2) + Math.Pow(trenutnaDubinaZ,2))));
     double steinbrennerIzracun = (double)((1) / (2 * Math.PI)) * (firstFraction + secondFraction * thirdFraction);
 
     // Debug.Log("IDEEEMOOOOOOO___________IDEMOOO: "+trenutnaDubinaZ);

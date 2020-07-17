@@ -131,11 +131,12 @@ float zOffset = (float)(-programState.duzinaL/2);
 
         Debug.Log("___________");
 
-        Debug.Log(programState.duzinaL);
-        Debug.Log(programState.sirinaB);
-        Debug.Log(programState.dubinaZ);
+        Debug.Log("Definirana duzina L "+programState.duzinaL);
+        Debug.Log("Definirana sirina B "+programState.sirinaB);
+        Debug.Log("Definirana dubina Z "+programState.dubinaZ);
 
 
+        Debug.Log("___________");
 
 
 

@@ -3,6 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Linq;
+public class IndividualFictionalSquare
+{
+
+    public double Width { get; set; }
+    public double Length { get; set; }
+
+    public (List<double>depthList, List<double> valueList) SteinbrennerResult {get; set;} 
+    
+    public IndividualFictionalSquare(double width, double length, (List<double>depthList, List<double> valueList) steinbrennerResult )
+    {
+        Width = width;
+        Length = length;
+        SteinbrennerResult = steinbrennerResult;
+    }
+   
+}
+
+
 
 public class SteinbrennerGraf : MonoBehaviour
 {
@@ -32,7 +51,9 @@ public class SteinbrennerGraf : MonoBehaviour
  
 
    public void InitializeSteinbrennerGraph(){
- 
+
+
+
     konacnaDubina = 0;
 
 
@@ -45,7 +66,41 @@ ProgramState programState = programManager.GetComponent<ProgramState>();
 
 SirinaLinije = (float) (programState.dubinaZ*0.005);
 SteinbrennerFormula initializeSteinbrennerCalculation = programManager.GetComponent<SteinbrennerFormula>();
-(List<double>depthList, List<double> valueList) SteinBrennerRezultat= initializeSteinbrennerCalculation.CalculateSteinbrenner();
+(List<double>depthList, List<double> valueList) SteinBrennerRezultat= initializeSteinbrennerCalculation.CalculateSteinbrenner(programState.sirinaB, programState.duzinaL); //widthB, lengthL
+
+
+double[] odabranaTocka = {2,5};
+
+      
+double[] FiktivniTemeljPrvi = {((programState.sirinaB/2)+odabranaTocka[0]),((programState.duzinaL/2)-odabranaTocka[1])};
+IndividualFictionalSquare TemeljPrviObjekt = new IndividualFictionalSquare (FiktivniTemeljPrvi.Min(),FiktivniTemeljPrvi.Max(), initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljPrvi.Min(),FiktivniTemeljPrvi.Max()));
+
+Debug.Log("sirina 1. fiktivnog temelja: " + TemeljPrviObjekt.Width + "  |||||||      duzina 1. fiktivnog temelja: " + TemeljPrviObjekt.Length);
+
+
+//Prikazi listu vrijednosti primjer: (za 1. izracun pri dubini 0)
+Debug.Log(TemeljPrviObjekt.SteinbrennerResult.valueList[0]);
+
+
+Debug.Log(TemeljPrviObjekt.SteinbrennerResult);
+
+double[] FiktivniTemeljDrugi ={((programState.sirinaB/2)-odabranaTocka[0]),((programState.duzinaL/2)-odabranaTocka[1])};
+IndividualFictionalSquare TemeljDrugiObjekt = new IndividualFictionalSquare (FiktivniTemeljDrugi.Min(), FiktivniTemeljDrugi.Max(), initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljDrugi.Min(),FiktivniTemeljDrugi.Max()));
+
+Debug.Log("sirina 2. fiktivnog temelja: " + TemeljDrugiObjekt.Width + "  |||||||      duzina 2. fiktivnog temelja: " + TemeljDrugiObjekt.Length);
+
+
+
+double[] FiktivniTemeljTreci ={((programState.sirinaB/2)+odabranaTocka[0]),((programState.duzinaL/2)+odabranaTocka[1])};
+IndividualFictionalSquare TemeljTreciObjekt = new IndividualFictionalSquare (FiktivniTemeljTreci.Min(), FiktivniTemeljTreci.Max(),initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljTreci.Min(),FiktivniTemeljTreci.Max()));
+
+Debug.Log("sirina 3. fiktivnog temelja: " + TemeljTreciObjekt.Width + "  |||||||      duzina 3. fiktivnog temelja: " + TemeljTreciObjekt.Length);
+
+
+double[] FiktivniTemeljCetvrti ={((programState.sirinaB/2)-odabranaTocka[0]),((programState.duzinaL/2)+odabranaTocka[1])};
+IndividualFictionalSquare TemeljCetvrtiObjekt = new IndividualFictionalSquare (FiktivniTemeljCetvrti.Min(), FiktivniTemeljCetvrti.Max(),initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljCetvrti.Min(),FiktivniTemeljCetvrti.Max()));
+Debug.Log("sirina 4. fiktivnog temelja: " + TemeljCetvrtiObjekt.Width + "  |||||||      duzina 4. fiktivnog temelja: " + TemeljCetvrtiObjekt.Length);
+
 
 
 
@@ -207,6 +262,8 @@ templateGridObject.gameObject.SetActive(false);
 
         labelTemplateX = graphContainer.Find("TextLabelTemplateX").GetComponent<RectTransform>();
         labelTemplateY = graphContainer.Find("TextLabelTemplateY").GetComponent<RectTransform>();
+
+        //Dobiveno curve fit metodom
 double labelsScale =0.02643327*programState.graphSize[1] - 0.04642976;
   if (labelsScale < 0.05){
     labelsScale =0.05;
