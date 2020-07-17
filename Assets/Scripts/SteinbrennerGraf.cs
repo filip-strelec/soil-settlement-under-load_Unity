@@ -68,7 +68,7 @@ SirinaLinije = (float) (programState.dubinaZ*0.005);
 SteinbrennerFormula initializeSteinbrennerCalculation = programManager.GetComponent<SteinbrennerFormula>();
 (List<double>depthList, List<double> valueList) SteinBrennerRezultat= initializeSteinbrennerCalculation.CalculateSteinbrenner(programState.sirinaB, programState.duzinaL); //widthB, lengthL
 
-
+//koordinate odabrane tocke
 double[] odabranaTocka = {2,5};
 
       
