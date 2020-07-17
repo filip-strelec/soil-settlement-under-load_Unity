@@ -82,7 +82,7 @@ Debug.Log("sirina 1. fiktivnog temelja: " + TemeljPrviObjekt.Width + "  ||||||| 
 Debug.Log(TemeljPrviObjekt.SteinbrennerResult.valueList[0]);
 
 
-Debug.Log(TemeljPrviObjekt.SteinbrennerResult);
+
 
 double[] FiktivniTemeljDrugi ={((programState.sirinaB/2)-odabranaTocka[0]),((programState.duzinaL/2)-odabranaTocka[1])};
 IndividualFictionalSquare TemeljDrugiObjekt = new IndividualFictionalSquare (FiktivniTemeljDrugi.Min(), FiktivniTemeljDrugi.Max(), initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljDrugi.Min(),FiktivniTemeljDrugi.Max()));
