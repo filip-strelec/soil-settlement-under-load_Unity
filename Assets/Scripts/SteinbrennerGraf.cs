@@ -177,6 +177,8 @@ for(var i = 0; i < SteinBrennerRezultat.depthList.Count; i ++){
 float xCoordinate = (float) (SteinBrennerRezultat.valueList[i]/najvecaVrijednost)*programState.graphSize[0];
 float yCoordinate = (float) (programState.graphSize[1] - (SteinBrennerRezultat.depthList[i]/konacnaDubina)*programState.graphSize[1]);
 
+// Debug.Log("xKOORDINATA:"+xCoordinate);
+// Debug.Log("yKOORDINATA:"+yCoordinate);
 
 
   GameObject circleGameObject =  CreateCircle(new Vector2 (xCoordinate, yCoordinate));
