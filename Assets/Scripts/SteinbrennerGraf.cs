@@ -66,10 +66,19 @@ ProgramState programState = programManager.GetComponent<ProgramState>();
 
 SirinaLinije = (float) (programState.dubinaZ*0.005);
 SteinbrennerFormula initializeSteinbrennerCalculation = programManager.GetComponent<SteinbrennerFormula>();
-(List<double>depthList, List<double> valueList) SteinBrennerRezultat= initializeSteinbrennerCalculation.CalculateSteinbrenner(programState.sirinaB, programState.duzinaL); //widthB, lengthL
+// (List<double>depthList, List<double> valueList) SteinBrennerRezultat= initializeSteinbrennerCalculation.CalculateSteinbrenner(programState.sirinaB, programState.duzinaL); //widthB, lengthL
+
+
+(List<double>depthList, List<double> valueList) SteinBrennerRezultat;
+
+SteinBrennerRezultat.depthList = new List <double>();
+
+SteinBrennerRezultat.valueList = new List <double>();
+
+
 
 //koordinate odabrane tocke
-double[] odabranaTocka = {2,5};
+double[] odabranaTocka = {5,5};
 
       
 double[] FiktivniTemeljPrvi = {((programState.sirinaB/2)+odabranaTocka[0]),((programState.duzinaL/2)-odabranaTocka[1])};
@@ -102,8 +111,36 @@ IndividualFictionalSquare TemeljCetvrtiObjekt = new IndividualFictionalSquare (F
 Debug.Log("sirina 4. fiktivnog temelja: " + TemeljCetvrtiObjekt.Width + "  |||||||      duzina 4. fiktivnog temelja: " + TemeljCetvrtiObjekt.Length);
 
 
+    for(var i = 0; i < TemeljPrviObjekt.SteinbrennerResult.depthList.Count; i ++){
+SteinBrennerRezultat.depthList.Add(TemeljPrviObjekt.SteinbrennerResult.depthList[i]);
+
+if (Double.IsNaN(TemeljPrviObjekt.SteinbrennerResult.valueList[i]) ){
+TemeljPrviObjekt.SteinbrennerResult.valueList[i] = 0 ;
+}
+if (Double.IsNaN(TemeljDrugiObjekt.SteinbrennerResult.valueList[i]) ){
+TemeljDrugiObjekt.SteinbrennerResult.valueList[i] = 0 ;
+}
+if (Double.IsNaN(TemeljTreciObjekt.SteinbrennerResult.valueList[i]) ){
+TemeljTreciObjekt.SteinbrennerResult.valueList[i] = 0 ;
+}
+if (Double.IsNaN(TemeljCetvrtiObjekt.SteinbrennerResult.valueList[i]) ){
+TemeljCetvrtiObjekt.SteinbrennerResult.valueList[i] = 0 ;
+}
 
 
+
+
+
+double ValueSum = TemeljPrviObjekt.SteinbrennerResult.valueList[i]+TemeljDrugiObjekt.SteinbrennerResult.valueList[i]+TemeljTreciObjekt.SteinbrennerResult.valueList[i]+TemeljCetvrtiObjekt.SteinbrennerResult.valueList[i];
+SteinBrennerRezultat.valueList.Add(ValueSum);
+
+Debug.Log(SteinBrennerRezultat.depthList[i]);
+Debug.Log(SteinBrennerRezultat.valueList[i]);
+
+    }
+
+
+programState.maxIValue = SteinBrennerRezultat.valueList[0];
 SteinBrennerRezultat.depthList.ForEach(i => 
     {
 if (i>konacnaDubina){
@@ -277,7 +314,7 @@ for (int i = 0; i<=5; i++){
    gridX.gameObject.SetActive(true);
         labelX.SetParent(graphContainer, false);
         labelX.gameObject.SetActive(true);
-        double labelXText = i*0.05;
+        double labelXText = i*(programState.maxIValue/5);
       
         
   

@@ -61,7 +61,7 @@ public class InitalizeProgram : MonoBehaviour
 
 
          bool canConvertBrojMjerenja = double.TryParse(brojMjerenjaInputField.text, out brojMjerenja);
-        programState.InkrementMjerenjaZ = 1/brojMjerenja;
+        programState.inkrementMjerenjaZ = 1/brojMjerenja;
 
 
 
