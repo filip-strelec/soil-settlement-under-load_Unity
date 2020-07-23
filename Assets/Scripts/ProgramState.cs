@@ -21,6 +21,8 @@ public class ProgramState : MonoBehaviour
    public Vector2 CanvasSize;
     public bool kameraOnTlocrt = false;
 
+    public GameObject temeljCollider;
+
        
 
     // Start is called before the first frame update
