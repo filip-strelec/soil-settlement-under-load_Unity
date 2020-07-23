@@ -53,7 +53,7 @@ double labelsScale =0.016*programState.sirinaKoordSustavaB;
   if (labelsScale < 0.05){
     labelsScale =0.05;
 }
-    double inkrementLabelXText = programState.duzinaKoordSustavaL/10;
+    double inkrementLabelXText = programState.sirinaKoordSustavaB/10;
     double pocetnaLabelXVrijednost = -inkrementLabelXText*5;
 for (int i = 0; i<11; i++){
 
@@ -101,7 +101,7 @@ gridX.SetAsFirstSibling();
 }
 
 
- double inkrementLabelYText = programState.sirinaKoordSustavaB/10;
+ double inkrementLabelYText = programState.duzinaKoordSustavaL/10;
     double pocetnaLabelYVrijednost = -inkrementLabelYText*5;
 
 for (int i = 0; i<11; i++){
@@ -219,6 +219,13 @@ gridY.SetAsFirstSibling();
             temelj.transform.localScale = new Vector3((float)programState.sirinaB, 0.1f, (float)programState.duzinaL);
             temelj.GetComponent<MeshRenderer>().material = foundationMaterial;
 
+             GameObject temeljCollider = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            temeljCollider.transform.localPosition = new Vector3(0, 0, 0);
+            temeljCollider.transform.localScale = new Vector3((float)programState.sirinaKoordSustavaB, 0.15f, (float)programState.duzinaKoordSustavaL);
+           Renderer meshRendererTemeljCollider =  temeljCollider.GetComponent<Renderer>();
+           meshRendererTemeljCollider.enabled = false;
+
+
             GameObject tlo = GameObject.CreatePrimitive(PrimitiveType.Cube);
             tlo.transform.localPosition = new Vector3(0, -(float)programState.dubinaZ / 2, 0);
             tlo.transform.localScale = new Vector3((float)programState.sirinaB, (float)programState.dubinaZ, (float)programState.duzinaL);
@@ -251,12 +258,12 @@ axisContainerTlocrt.anchorMin = new Vector2(0.5f, 0.5f);
 axisContainerTlocrt.anchorMax = new Vector2(0.5f, 0.5f);
 
 
-GameObject AxisContainerObject = GameObject.Find("AxisContainerTlocrt");
+// GameObject AxisContainerObject = GameObject.Find("AxisContainerTlocrt");
 
 
-Button AxisClickObject=  AxisContainerObject.AddComponent<Button>();
+// Button AxisClickObject=  AxisContainerObject.AddComponent<Button>();
 
-AxisClickObject.onClick.AddListener(()=>Debug.Log("testiram"));
+// AxisClickObject.onClick.AddListener(()=>Debug.Log("testiram"));
 // axisContainerTlocrt.AddComponent<Button>();
 //            circleObject.GetComponent<Button>().onClick.AddListener(()=>ShowValueListener(anchoredPosition));
 
