@@ -12,6 +12,8 @@ public class TlocrtCamera : MonoBehaviour
     public Camera glavnaKamera;
 public RectTransform    canvasGraphContainer ;
 
+public RectTransform canvasAxisContainerTlocrt;
+
     public void ChangeCamera()
     {
         GameObject programManager = GameObject.Find("ProgramManager");
@@ -37,7 +39,7 @@ public RectTransform    canvasGraphContainer ;
         else
         {
 
-            kameraYOffset = (float)programState.duzinaL + 10;
+            kameraYOffset = (float)(2.8*programState.duzinaL) ;
         }
 
 
@@ -48,6 +50,7 @@ public RectTransform    canvasGraphContainer ;
         glavnaKamera.transform.rotation = Quaternion.Euler(90, 0, 0);
         programState.kameraOnTlocrt = true;
                 canvasGraphContainer.gameObject.SetActive(false);
+                canvasAxisContainerTlocrt.gameObject.SetActive(true);
 
 
 }
@@ -61,6 +64,8 @@ else{
         glavnaKamera.transform.rotation = Quaternion.Euler(0, 0, 0);
         programState.kameraOnTlocrt = false;
         canvasGraphContainer.gameObject.SetActive(true);
+        canvasAxisContainerTlocrt.gameObject.SetActive(false);
+
 
 
 

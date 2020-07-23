@@ -134,8 +134,8 @@ TemeljCetvrtiObjekt.SteinbrennerResult.valueList[i] = 0 ;
 double ValueSum = TemeljPrviObjekt.SteinbrennerResult.valueList[i]+TemeljDrugiObjekt.SteinbrennerResult.valueList[i]+TemeljTreciObjekt.SteinbrennerResult.valueList[i]+TemeljCetvrtiObjekt.SteinbrennerResult.valueList[i];
 SteinBrennerRezultat.valueList.Add(ValueSum);
 
-Debug.Log(SteinBrennerRezultat.depthList[i]);
-Debug.Log(SteinBrennerRezultat.valueList[i]);
+// Debug.Log(SteinBrennerRezultat.depthList[i]);
+// Debug.Log(SteinBrennerRezultat.valueList[i]);
 
     }
 

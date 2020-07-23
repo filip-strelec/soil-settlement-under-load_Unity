@@ -41,8 +41,8 @@ double razlikaDubine = programState.dubinaZ- trenutnaDubinaZ;
     double thirdFraction = (double)(((1) / (Math.Pow(lengthL ,2) + Math.Pow(trenutnaDubinaZ,2))) + ((1) / (Math.Pow(widthB,2) + Math.Pow(trenutnaDubinaZ,2))));
     double steinbrennerIzracun = (double)((1) / (2 * Math.PI)) * (firstFraction + secondFraction * thirdFraction);
 
-    Debug.Log("IDEEEMOOOOOOO___________IDEMOOO: "+trenutnaDubinaZ);
-    Debug.Log("+++++++_______++++++++: "+steinbrennerIzracun);
+    // Debug.Log("IDEEEMOOOOOOO___________IDEMOOO: "+trenutnaDubinaZ);
+    // Debug.Log("+++++++_______++++++++: "+steinbrennerIzracun);
     depthList.Add(trenutnaDubinaZ);
     valueList.Add(steinbrennerIzracun);
 
@@ -57,8 +57,8 @@ double razlikaDubine = programState.dubinaZ- trenutnaDubinaZ;
      thirdFraction = (double)(((1) / (Math.Pow(lengthL,2) + Math.Pow(trenutnaDubinaZ,2))) + ((1) / (Math.Pow(widthB,2) + Math.Pow(trenutnaDubinaZ,2))));
     steinbrennerIzracun = (double)((1) / (2 * Math.PI)) * (firstFraction + secondFraction * thirdFraction);
 
-    Debug.Log("Zadnje: "+trenutnaDubinaZ);
-    Debug.Log("+++++++_______++++++++: "+steinbrennerIzracun);
+    // Debug.Log("Zadnje: "+trenutnaDubinaZ);
+    // Debug.Log("+++++++_______++++++++: "+steinbrennerIzracun);
 
      depthList.Add(trenutnaDubinaZ);
     valueList.Add(steinbrennerIzracun);

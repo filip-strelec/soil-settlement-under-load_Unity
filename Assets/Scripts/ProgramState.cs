@@ -10,6 +10,10 @@ public class ProgramState : MonoBehaviour
    public double duzinaL;
    public double dubinaZ;
 
+   public double sirinaKoordSustavaB;
+
+   public double duzinaKoordSustavaL;
+
    public double maxIValue;
 
    public double inkrementMjerenjaZ =0.5f;
