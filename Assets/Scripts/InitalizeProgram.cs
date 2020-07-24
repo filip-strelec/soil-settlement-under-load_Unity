@@ -264,9 +264,9 @@ public class InitalizeProgram : MonoBehaviour
 
             canvasAxisTlocrt.position = new Vector3(0, (float)0.08, 0);
             canvasAxisTlocrt.rotation = Quaternion.Euler(90, 0, 0);
-            canvasAxisTlocrt.sizeDelta = new Vector2((float)(1.16 * programState.sirinaKoordSustavaB), (float)(1.16 * programState.duzinaKoordSustavaL));
+            canvasAxisTlocrt.sizeDelta = new Vector2((float)(1.2 * programState.sirinaKoordSustavaB), (float)(1.2 * programState.duzinaKoordSustavaL));
 
-            windowAxisTlocrt.sizeDelta = new Vector2((float)(1.16 * programState.sirinaKoordSustavaB), (float)(1.16 * programState.duzinaKoordSustavaL));
+            windowAxisTlocrt.sizeDelta = new Vector2((float)(1.2 * programState.sirinaKoordSustavaB), (float)(1.2 * programState.duzinaKoordSustavaL));
 
 
             axisContainerTlocrt.sizeDelta = new Vector2((float)programState.sirinaKoordSustavaB, (float)programState.duzinaKoordSustavaL);

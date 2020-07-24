@@ -195,8 +195,6 @@ lastCircleGameObjectLocation = circleGameObjectLocation;
     }
 
  
-
-
 // Debug.Log("---******----**-");
 
 

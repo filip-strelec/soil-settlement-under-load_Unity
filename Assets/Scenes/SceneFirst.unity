@@ -2701,6 +2701,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   koordinataXInputField: {fileID: 1993201555}
   koordinataYInputField: {fileID: 1884064126}
+  krugSprite: {fileID: 21300000, guid: b52df5c89e96c4d488e56af673d4f447, type: 3}
+  axisContainer: {fileID: 2089402051}
+  definedDotByClick: 0
 --- !u!114 &1057630546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4095,6 +4098,12 @@ MonoBehaviour:
   graphSize: {x: 0, y: 0}
   CanvasSize: {x: 0, y: 0}
   kameraOnTlocrt: 0
+  temeljCollider: {fileID: 0}
+  krugSprite: {fileID: 21300000, guid: b52df5c89e96c4d488e56af673d4f447, type: 3}
+  axisContainer: {fileID: 2089402051}
+  koordinateIzracuna:
+  - 0
+  - 0
 --- !u!114 &1700306352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4541,20 +4550,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1884064127}
   m_TextComponent: {fileID: 1953820949}
   m_Placeholder: {fileID: 34357982}
-  m_ContentType: 0
+  m_ContentType: 3
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 2
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 2
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1057630545}
+        m_MethodName: changeYCoordinate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
@@ -5079,20 +5099,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1993201556}
   m_TextComponent: {fileID: 2144044351}
   m_Placeholder: {fileID: 1244609280}
-  m_ContentType: 0
+  m_ContentType: 3
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 2
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 2
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1057630545}
+        m_MethodName: changeXCoordinate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
