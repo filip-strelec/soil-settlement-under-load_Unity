@@ -15,6 +15,7 @@ public class TlocrtCamera : MonoBehaviour
     public RectTransform canvasAxisContainerTlocrt;
 
     public RectTransform koordinatePanel;
+    
 
     public void ChangeCamera()
     {

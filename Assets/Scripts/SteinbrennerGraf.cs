@@ -26,7 +26,7 @@ public class IndividualFictionalSquare
 public class SteinbrennerGraf : MonoBehaviour
 {
      public Sprite krugSprite;
-    private RectTransform graphContainer;
+    public RectTransform graphContainer;
 
     private float SirinaLinije;
 
@@ -34,9 +34,11 @@ public class SteinbrennerGraf : MonoBehaviour
 
     private RectTransform labelTemplateY;
 
-    private RectTransform templateGridObject;
+    public RectTransform templateGridObject;
 
     public RectTransform PanelTemplateValue;
+
+    public RectTransform backgroundGraph;
 
  private bool valueShown = false;
     
@@ -60,7 +62,7 @@ public class SteinbrennerGraf : MonoBehaviour
     najvecaVrijednost = 0;
     najmanjaVrijednost = 50000;
 
-graphContainer = GameObject.Find("GraphContainer").GetComponent<RectTransform>();
+// graphContainer = GameObject.Find("GraphContainer").GetComponent<RectTransform>();
 GameObject programManager = GameObject.Find("ProgramManager");
 ProgramState programState = programManager.GetComponent<ProgramState>();
 
@@ -78,7 +80,7 @@ SteinBrennerRezultat.valueList = new List <double>();
 
 
 //koordinate odabrane tocke
-double[] odabranaTocka = {5,5};
+double[] odabranaTocka = programState.koordinateIzracuna;
 
       
 double[] FiktivniTemeljPrvi = {((programState.sirinaB/2)+odabranaTocka[0]),((programState.duzinaL/2)-odabranaTocka[1])};
@@ -208,7 +210,7 @@ lastCircleGameObjectLocation = circleGameObjectLocation;
 
 Debug.Log(programState.graphSize[1] + "graphSize VAZNO");
 // Debug.Log(programState.CanvasSize + "CanvasSize");
-       GameObject.Find("BackgroundGraph").GetComponent<RectTransform>().SetAsFirstSibling();
+      backgroundGraph.SetAsFirstSibling();
 
     }
 
@@ -294,7 +296,7 @@ dubinaText.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
 GameObject programManager = GameObject.Find("ProgramManager");
 ProgramState programState = programManager.GetComponent<ProgramState>();
 
-templateGridObject = GameObject.Find("GridTemplate").GetComponent<RectTransform>();
+// templateGridObject = GameObject.Find("GridTemplate").GetComponent<RectTransform>();
 templateGridObject.gameObject.SetActive(false);
 
         labelTemplateX = graphContainer.Find("TextLabelTemplateX").GetComponent<RectTransform>();

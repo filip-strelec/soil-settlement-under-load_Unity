@@ -1149,7 +1149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   krugSprite: {fileID: 21300000, guid: b52df5c89e96c4d488e56af673d4f447, type: 3}
+  graphContainer: {fileID: 449692198}
+  templateGridObject: {fileID: 400848710}
   PanelTemplateValue: {fileID: 703362026}
+  backgroundGraph: {fileID: 1717439975}
 --- !u!1 &449692197
 GameObject:
   m_ObjectHideFlags: 0
@@ -2570,7 +2573,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1008615296}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1791419419}
+        m_MethodName: InitializeSteinbrennerGraph
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1977583887}
+        m_MethodName: ChangeCamera
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1008615296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2960,8 +2985,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 432017520}
-        m_MethodName: InitializeSteinbrennerGraph
+      - m_Target: {fileID: 1977583887}
+        m_MethodName: ChangeCamera
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4313,7 +4338,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   krugSprite: {fileID: 21300000, guid: b52df5c89e96c4d488e56af673d4f447, type: 3}
-  PanelTemplateValue: {fileID: 0}
+  graphContainer: {fileID: 449692198}
+  templateGridObject: {fileID: 400848710}
+  PanelTemplateValue: {fileID: 703362026}
+  backgroundGraph: {fileID: 1717439975}
 --- !u!1 &1813983231
 GameObject:
   m_ObjectHideFlags: 0
