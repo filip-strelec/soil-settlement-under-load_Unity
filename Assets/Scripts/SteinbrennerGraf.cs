@@ -82,17 +82,15 @@ SteinBrennerRezultat.valueList = new List <double>();
 //koordinate odabrane tocke
 double[] odabranaTocka = programState.koordinateIzracuna;
 
-      
+//Logika za točku koja je unutar temelja:    
+Debug.Log(odabranaTocka[0]+":"+odabranaTocka[1]);
+Debug.Log(programState.sirinaB);
+Debug.Log(programState.duzinaL);
+
 double[] FiktivniTemeljPrvi = {((programState.sirinaB/2)+odabranaTocka[0]),((programState.duzinaL/2)-odabranaTocka[1])};
 IndividualFictionalSquare TemeljPrviObjekt = new IndividualFictionalSquare (FiktivniTemeljPrvi.Min(),FiktivniTemeljPrvi.Max(), initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljPrvi.Min(),FiktivniTemeljPrvi.Max()));
 
 Debug.Log("sirina 1. fiktivnog temelja: " + TemeljPrviObjekt.Width + "  |||||||      duzina 1. fiktivnog temelja: " + TemeljPrviObjekt.Length);
-
-
-//Prikazi listu vrijednosti primjer: (za 1. izracun pri dubini 0)
-Debug.Log(TemeljPrviObjekt.SteinbrennerResult.valueList[0]);
-
-
 
 
 double[] FiktivniTemeljDrugi ={((programState.sirinaB/2)-odabranaTocka[0]),((programState.duzinaL/2)-odabranaTocka[1])};
@@ -130,14 +128,8 @@ TemeljCetvrtiObjekt.SteinbrennerResult.valueList[i] = 0 ;
 }
 
 
-
-
-
 double ValueSum = TemeljPrviObjekt.SteinbrennerResult.valueList[i]+TemeljDrugiObjekt.SteinbrennerResult.valueList[i]+TemeljTreciObjekt.SteinbrennerResult.valueList[i]+TemeljCetvrtiObjekt.SteinbrennerResult.valueList[i];
 SteinBrennerRezultat.valueList.Add(ValueSum);
-
-// Debug.Log(SteinBrennerRezultat.depthList[i]);
-// Debug.Log(SteinBrennerRezultat.valueList[i]);
 
     }
 

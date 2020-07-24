@@ -36,6 +36,9 @@ public class InitalizeProgram : MonoBehaviour
 
     private RectTransform koordinatePanel;
 
+    public Text duzinaLText;
+    public Text sirinaBText;
+
 
     void Start()
     {
@@ -47,7 +50,7 @@ public class InitalizeProgram : MonoBehaviour
 
     private void ShowAxisNumbersNGrid()
     {
-        Debug.Log("SHOWAXISNumbersNGrid INITIALIZED");
+
         GameObject programManager = GameObject.Find("ProgramManager");
         ProgramState programState = programManager.GetComponent<ProgramState>();
 
@@ -225,6 +228,9 @@ public class InitalizeProgram : MonoBehaviour
 
             //inicijalizacija definiranja temelja
 
+duzinaLText.text ="L: "+programState.duzinaL.ToString("0.00");
+sirinaBText.text ="B: "+ programState.sirinaB.ToString("0.00");
+
             programState.graphSize = new Vector2((float)(0.65 * programState.dubinaZ), (float)programState.dubinaZ);
             programState.CanvasSize = programState.graphSize + 0.6f * programState.graphSize;
 
@@ -274,15 +280,6 @@ public class InitalizeProgram : MonoBehaviour
             axisContainerTlocrt.anchorMax = new Vector2(0.5f, 0.5f);
 
 
-            // GameObject AxisContainerObject = GameObject.Find("AxisContainerTlocrt");
-
-
-            // Button AxisClickObject=  AxisContainerObject.AddComponent<Button>();
-
-            // AxisClickObject.onClick.AddListener(()=>Debug.Log("testiram"));
-            // axisContainerTlocrt.AddComponent<Button>();
-            //            circleObject.GetComponent<Button>().onClick.AddListener(()=>ShowValueListener(anchoredPosition));
-
             //definiranje dimenzija komponenata canvasa za Steinbrenner-a
 
 
@@ -292,9 +289,6 @@ public class InitalizeProgram : MonoBehaviour
 
 
             exportToCsvButton.SetActive(true);
-
-
-
 
 
             canvasGraphContainer.sizeDelta = programState.CanvasSize + new Vector2(1, 0); ;
