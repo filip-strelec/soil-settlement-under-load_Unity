@@ -27,7 +27,7 @@ GameObject programManager = GameObject.Find("ProgramManager");
 ProgramState programState = programManager.GetComponent<ProgramState>();
 
  SteinbrennerFormula initializeSteinbrennerCalculation = programManager.GetComponent<SteinbrennerFormula>();
- (List<double>depthList, List<double> valueList) SteinBrennerRezultat= initializeSteinbrennerCalculation.CalculateSteinbrenner();
+ (List<double>depthList, List<double> valueList) SteinBrennerRezultat= initializeSteinbrennerCalculation.CalculateSteinbrenner(programState.sirinaB, programState.duzinaL);
 
             
                        sw.WriteLine("Z,i,Duzina temelja, Sirina temelja, Dubina mjerenja, Vrijeme");
