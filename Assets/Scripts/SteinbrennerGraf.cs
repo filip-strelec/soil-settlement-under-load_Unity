@@ -244,7 +244,12 @@ Debug.Log(TemeljCetvrtiObjekt.SteinbrennerResult.valueList[i] + "VAZNO VAN TEMEL
 
 }
 
+
+
             exportToCsvButton.SetActive(true);
+
+programState.SteinBrennerRezultatOdabraneTocke.depthList = SteinBrennerRezultat.depthList;
+programState.SteinBrennerRezultatOdabraneTocke.valueList = SteinBrennerRezultat.valueList;
 
 SteinBrennerRezultat.depthList.ForEach(i => 
     {

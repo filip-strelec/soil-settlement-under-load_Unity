@@ -29,7 +29,7 @@ ProgramState programState = programManager.GetComponent<ProgramState>();
  SteinbrennerFormula initializeSteinbrennerCalculation = programManager.GetComponent<SteinbrennerFormula>();
  (List<double>depthList, List<double> valueList) SteinBrennerRezultat= initializeSteinbrennerCalculation.CalculateSteinbrenner(programState.sirinaB, programState.duzinaL);
 
-            
+                         sw.WriteLine("Vrijednosti Rubne tocke zadanog temelja");
                        sw.WriteLine("Z,i,Duzina temelja, Sirina temelja, Dubina mjerenja, Vrijeme");
                        sw.WriteLine( " , ,  "+programState.duzinaL+","+programState.sirinaB+","+programState.dubinaZ+ "," + GetTimeStamp());
                         sw.WriteLine("__________________");
@@ -45,7 +45,17 @@ ProgramState programState = programManager.GetComponent<ProgramState>();
                                     sw.WriteLine("");
 
 
-
+           sw.WriteLine("Vrijednosti Odabrane tocke zadanog temelja");
+                       sw.WriteLine("Z,i,Duzina temelja, Sirina temelja, Dubina mjerenja, Koordinata tocke, Vrijeme");
+                       sw.WriteLine( " , ,  "+programState.duzinaL+","+programState.sirinaB+","+programState.dubinaZ+","+ programState.koordinateIzracuna[0].ToString("0.00")+":"+programState.koordinateIzracuna[1].ToString("0.00")+ " ," + GetTimeStamp());
+                        sw.WriteLine("__________________");
+          for(var i = 0; i < SteinBrennerRezultat.depthList.Count; i ++){
+                
+               sw.WriteLine(programState.SteinBrennerRezultatOdabraneTocke.depthList[i]+","+programState.SteinBrennerRezultatOdabraneTocke.valueList[i]);
+               
+              
+             
+            };
 
             // finalString += reportSeparator + GetTimeStamp();
             // sw.WriteLine(finalString);

@@ -4162,6 +4162,7 @@ GameObject:
   - component: {fileID: 1700306350}
   - component: {fileID: 1700306351}
   - component: {fileID: 1700306352}
+  - component: {fileID: 1700306353}
   m_Layer: 0
   m_Name: ProgramManager
   m_TagString: Untagged
@@ -4224,6 +4225,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80115d772cfb384419d830db7218be99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1700306353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700306349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378af6d477596d54bb5f796c16b3509f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  krugSprite: {fileID: 0}
+  graphContainer: {fileID: 0}
+  templateGridObject: {fileID: 0}
+  PanelTemplateValue: {fileID: 0}
+  backgroundGraph: {fileID: 0}
+  exportToCsvButton: {fileID: 0}
 --- !u!1 &1717439974
 GameObject:
   m_ObjectHideFlags: 0

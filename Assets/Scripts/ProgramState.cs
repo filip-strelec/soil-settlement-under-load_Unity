@@ -31,6 +31,7 @@ public class ProgramState : MonoBehaviour
     public RectTransform axisContainer;
 
 
+public (List<double>depthList, List<double> valueList) SteinBrennerRezultatOdabraneTocke;
 
     public double[] koordinateIzracuna =  new double[2];
 
