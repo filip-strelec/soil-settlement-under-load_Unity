@@ -24,6 +24,8 @@ public class ProgramState : MonoBehaviour
 
     public GameObject temeljCollider;
 
+    public bool parametersDefined = false;
+
     
       public Sprite krugSprite;
     public RectTransform axisContainer;

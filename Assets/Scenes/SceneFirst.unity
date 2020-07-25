@@ -1153,6 +1153,7 @@ MonoBehaviour:
   templateGridObject: {fileID: 400848710}
   PanelTemplateValue: {fileID: 703362026}
   backgroundGraph: {fileID: 1717439975}
+  exportToCsvButton: {fileID: 468700948}
 --- !u!1 &449692197
 GameObject:
   m_ObjectHideFlags: 0
@@ -2933,7 +2934,6 @@ MonoBehaviour:
   foundationMaterial: {fileID: 2100000, guid: 17feae06ecdea2c4aa20cdb139da2569, type: 2}
   gumbZaRotacijuKamere: {fileID: 1977583884}
   glavnaKamera: {fileID: 963194227}
-  exportToCsvButton: {fileID: 468700948}
   duzinaLText: {fileID: 1855225897}
   sirinaBText: {fileID: 1437931271}
 --- !u!114 &1149048451
@@ -4206,6 +4206,7 @@ MonoBehaviour:
   CanvasSize: {x: 0, y: 0}
   kameraOnTlocrt: 0
   temeljCollider: {fileID: 0}
+  parametersDefined: 0
   krugSprite: {fileID: 21300000, guid: b52df5c89e96c4d488e56af673d4f447, type: 3}
   axisContainer: {fileID: 2089402051}
   koordinateIzracuna:
@@ -4424,6 +4425,7 @@ MonoBehaviour:
   templateGridObject: {fileID: 400848710}
   PanelTemplateValue: {fileID: 703362026}
   backgroundGraph: {fileID: 1717439975}
+  exportToCsvButton: {fileID: 468700948}
 --- !u!1 &1813983231
 GameObject:
   m_ObjectHideFlags: 0

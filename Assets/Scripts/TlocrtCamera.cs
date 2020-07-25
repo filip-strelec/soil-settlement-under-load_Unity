@@ -19,10 +19,10 @@ public class TlocrtCamera : MonoBehaviour
 
     public void ChangeCamera()
     {
-
-
-        GameObject programManager = GameObject.Find("ProgramManager");
+ GameObject programManager = GameObject.Find("ProgramManager");
         ProgramState programState = programManager.GetComponent<ProgramState>();
+ if ( programState.parametersDefined == true){
+       
 
 
         if (!programState.kameraOnTlocrt)
@@ -74,6 +74,6 @@ public class TlocrtCamera : MonoBehaviour
 
 
         }
-
+}
     }
 }

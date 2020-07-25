@@ -13,7 +13,7 @@ public class InitalizeProgram : MonoBehaviour
 
     public Camera glavnaKamera;
 
-    public GameObject exportToCsvButton;
+    
 
     //komponente za graf
 
@@ -223,9 +223,10 @@ public class InitalizeProgram : MonoBehaviour
 
 
 
-        if (programState.sirinaB != 0 && programState.duzinaL != 0 && programState.dubinaZ != 0)
+        if (programState.sirinaB != 0 && programState.duzinaL != 0 && programState.dubinaZ != 0 && programState.inkrementMjerenjaZ != 0 )
         {
 
+programState.parametersDefined = true;
             //inicijalizacija definiranja temelja
 
 duzinaLText.text ="L: "+programState.duzinaL.ToString("0.00");
@@ -288,7 +289,6 @@ sirinaBText.text ="B: "+ programState.sirinaB.ToString("0.00");
             graphContainer = GameObject.Find("GraphContainer").GetComponent<RectTransform>();
 
 
-            exportToCsvButton.SetActive(true);
 
 
             canvasGraphContainer.sizeDelta = programState.CanvasSize + new Vector2(1, 0); ;
