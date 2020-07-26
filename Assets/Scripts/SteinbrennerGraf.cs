@@ -264,7 +264,7 @@ Debug.Log("sirina 4. fiktivnog temelja IZVANy: " + TemeljCetvrtiObjekt.Width + "
 
  void AddValue(int type){
 
-     Debug.Log(type+ "JKFGHEJIKGLWNEHGLIJE");
+ 
     for(var i = 0; i < TemeljPrviObjekt.SteinbrennerResult.depthList.Count; i ++){
         double ValueSum = new double () ;
 SteinBrennerRezultat.depthList.Add(TemeljPrviObjekt.SteinbrennerResult.depthList[i]);
