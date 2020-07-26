@@ -59,6 +59,8 @@ public class SteinbrennerGraf : MonoBehaviour
 
 
 
+
+
     konacnaDubina = 0;
 
 
@@ -68,6 +70,10 @@ public class SteinbrennerGraf : MonoBehaviour
 // graphContainer = GameObject.Find("GraphContainer").GetComponent<RectTransform>();
 GameObject programManager = GameObject.Find("ProgramManager");
 ProgramState programState = programManager.GetComponent<ProgramState>();
+programState.clearGraph();
+
+
+
 
 SirinaLinije = (float) (programState.dubinaZ*0.005);
 SteinbrennerFormula initializeSteinbrennerCalculation = programManager.GetComponent<SteinbrennerFormula>();
@@ -92,11 +98,11 @@ programState.maxIValue = 0;
 //Logika za točku koja je unutar temelja:
 
 
-Debug.Log("_*-*-*-*-**-*-*-");
-Debug.Log(odabranaTocka[0]+":"+odabranaTocka[1]);
-Debug.Log(programState.sirinaB);
-Debug.Log(programState.duzinaL);
-Debug.Log("_*-*-*-*-**-*-*-");
+// Debug.Log("_*-*-*-*-**-*-*-");
+// Debug.Log(odabranaTocka[0]+":"+odabranaTocka[1]);
+// Debug.Log(programState.sirinaB);
+// Debug.Log(programState.duzinaL);
+// Debug.Log("_*-*-*-*-**-*-*-");
 //Slučaj za točku unutar temelja
 
 if ( odabranaTocka[0]<=programState.sirinaB/2 && odabranaTocka[1]<=programState.duzinaL/2){
@@ -145,7 +151,7 @@ TemeljCetvrtiObjekt.SteinbrennerResult.valueList[i] = 0 ;
 
 double ValueSum = TemeljPrviObjekt.SteinbrennerResult.valueList[i]+TemeljDrugiObjekt.SteinbrennerResult.valueList[i]+TemeljTreciObjekt.SteinbrennerResult.valueList[i]+TemeljCetvrtiObjekt.SteinbrennerResult.valueList[i];
 SteinBrennerRezultat.valueList.Add(ValueSum);
-Debug.Log(SteinBrennerRezultat.valueList[i] + "VAZNO unutar temelja");
+// Debug.Log(SteinBrennerRezultat.valueList[i] + "VAZNO unutar temelja");
 
     }
 
@@ -160,54 +166,107 @@ Debug.Log(SteinBrennerRezultat.valueList[i] + "VAZNO unutar temelja");
 else{
     
     Debug.Log("Točka je van TEMELJA!!");
-
+int dotTypeLocation = 0;
 
     double[] FiktivniTemeljPrvi = {((programState.sirinaB/2)+odabranaTocka[0]),((programState.duzinaL/2)+odabranaTocka[1])};
 IndividualFictionalSquare TemeljPrviObjekt = new IndividualFictionalSquare (FiktivniTemeljPrvi.Min(),FiktivniTemeljPrvi.Max(), initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljPrvi.Min(),FiktivniTemeljPrvi.Max()));
 
-Debug.Log("sirina 1. fiktivnog temelja IZVAN: " + TemeljPrviObjekt.Width + "  |||||||      duzina 1. fiktivnog temelja: " + TemeljPrviObjekt.Length);
+// Debug.Log("sirina 1. fiktivnog temelja IZVAN: " + TemeljPrviObjekt.Width + "  |||||||      duzina 1. fiktivnog temelja: " + TemeljPrviObjekt.Length);
 
 
 double[] FiktivniTemeljDrugi ={((programState.sirinaB/2)+odabranaTocka[0]),((odabranaTocka[1]-(programState.duzinaL/2)))};
 IndividualFictionalSquare TemeljDrugiObjekt = new IndividualFictionalSquare (FiktivniTemeljDrugi.Min(), FiktivniTemeljDrugi.Max(), initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljDrugi.Min(),FiktivniTemeljDrugi.Max()));
 
-Debug.Log("sirina 2. fiktivnog temelja IZVAN: " + TemeljDrugiObjekt.Width + "  |||||||      duzina 2. fiktivnog temelja: " + TemeljDrugiObjekt.Length);
+// Debug.Log("sirina 2. fiktivnog temelja IZVAN: " + TemeljDrugiObjekt.Width + "  |||||||      duzina 2. fiktivnog temelja: " + TemeljDrugiObjekt.Length);
 
 
 double[] FiktivniTemeljTreci ={((odabranaTocka[0]-(programState.sirinaB/2))),((programState.duzinaL/2)+odabranaTocka[1])};
 IndividualFictionalSquare TemeljTreciObjekt = new IndividualFictionalSquare (FiktivniTemeljTreci.Min(), FiktivniTemeljTreci.Max(),initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljTreci.Min(),FiktivniTemeljTreci.Max()));
 
-Debug.Log("sirina 3. fiktivnog temelja IZVAN: " + TemeljTreciObjekt.Width + "  |||||||      duzina 3. fiktivnog temelja: " + TemeljTreciObjekt.Length);
+// Debug.Log("sirina 3. fiktivnog temelja IZVAN: " + TemeljTreciObjekt.Width + "  |||||||      duzina 3. fiktivnog temelja: " + TemeljTreciObjekt.Length);
 
 
 double[] FiktivniTemeljCetvrti ={((odabranaTocka[0]-(programState.sirinaB/2))),(odabranaTocka[1]-(programState.duzinaL/2))};
 IndividualFictionalSquare TemeljCetvrtiObjekt = new IndividualFictionalSquare (FiktivniTemeljCetvrti.Min(), FiktivniTemeljCetvrti.Max(),initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljCetvrti.Min(),FiktivniTemeljCetvrti.Max()));
-Debug.Log("sirina 4. fiktivnog temelja IZVAN: " + TemeljCetvrtiObjekt.Width + "  |||||||      duzina 4. fiktivnog temelja: " + TemeljCetvrtiObjekt.Length);
+// Debug.Log("sirina 4. fiktivnog temelja IZVAN: " + TemeljCetvrtiObjekt.Width + "  |||||||      duzina 4. fiktivnog temelja: " + TemeljCetvrtiObjekt.Length);
 
 
 
 
 
-//  if (odabranaTocka[0]>programState.sirinaB/2 && odabranaTocka[1]<=programState.duzinaL/2){
+ if (odabranaTocka[0]>programState.sirinaB/2 && odabranaTocka[1]<=(programState.duzinaL/2)){
+dotTypeLocation = 1;
+Debug.Log("TOCKA VAN TEMELJA, po X SAMO VANI!!!");
+
+    FiktivniTemeljPrvi = new double[] {((programState.sirinaB/2)+odabranaTocka[0]),( (programState.duzinaL/2)- odabranaTocka[1])};
+TemeljPrviObjekt = new IndividualFictionalSquare (FiktivniTemeljPrvi.Min(),FiktivniTemeljPrvi.Max(), initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljPrvi.Min(),FiktivniTemeljPrvi.Max()));
+
+// Debug.Log("sirina 1. fiktivnog temelja IZVANx: " + TemeljPrviObjekt.Width + "  |||||||      duzina 1. fiktivnog temelja: " + TemeljPrviObjekt.Length);
+
+
+ FiktivniTemeljDrugi =new double[] {((programState.sirinaB/2)+odabranaTocka[0]),(programState.duzinaL-((programState.duzinaL/2)- odabranaTocka[1]))};
+ TemeljDrugiObjekt = new IndividualFictionalSquare (FiktivniTemeljDrugi.Min(), FiktivniTemeljDrugi.Max(), initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljDrugi.Min(),FiktivniTemeljDrugi.Max()));
+
+// Debug.Log("sirina 2. fiktivnog temelja IZVANx: " + TemeljDrugiObjekt.Width + "  |||||||      duzina 2. fiktivnog temelja: " + TemeljDrugiObjekt.Length);
+
+
+FiktivniTemeljTreci =new double[] {(odabranaTocka[0]-(programState.sirinaB/2)),( (programState.duzinaL/2)- odabranaTocka[1])};
+ TemeljTreciObjekt = new IndividualFictionalSquare (FiktivniTemeljTreci.Min(), FiktivniTemeljTreci.Max(),initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljTreci.Min(),FiktivniTemeljTreci.Max()));
+
+// Debug.Log("sirina 3. fiktivnog temelja IZVANx: " + TemeljTreciObjekt.Width + "  |||||||      duzina 3. fiktivnog temelja: " + TemeljTreciObjekt.Length);
+
+
+ FiktivniTemeljCetvrti = new double[]  {(odabranaTocka[0]-(programState.sirinaB/2)),(programState.duzinaL-((programState.duzinaL/2)- odabranaTocka[1]))};
+ TemeljCetvrtiObjekt = new IndividualFictionalSquare (FiktivniTemeljCetvrti.Min(), FiktivniTemeljCetvrti.Max(),initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljCetvrti.Min(),FiktivniTemeljCetvrti.Max()));
+// Debug.Log("sirina 4. fiktivnog temelja IZVANx: " + TemeljCetvrtiObjekt.Width + "  |||||||      duzina 4. fiktivnog temelja: " + TemeljCetvrtiObjekt.Length);
 
 
 
 
 
 
+}
 
-// }
+else if(odabranaTocka[0]<=(programState.sirinaB/2) && odabranaTocka[1]>(programState.duzinaL/2)){
+dotTypeLocation = 2;
 
-// else if(odabranaTocka[0]<=programState.sirinaB/2 && odabranaTocka[1]>programState.duzinaL/2){
-
-
-// }
-
+Debug.Log("TOCKA VAN TEMELJA, po Y SAMO VANI!!!");
 
 
+    FiktivniTemeljPrvi = new double[] {((programState.sirinaB/2)+odabranaTocka[0]),( (programState.duzinaL)+ (odabranaTocka[1]- (programState.duzinaL/2)))};
+TemeljPrviObjekt = new IndividualFictionalSquare (FiktivniTemeljPrvi.Min(),FiktivniTemeljPrvi.Max(), initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljPrvi.Min(),FiktivniTemeljPrvi.Max()));
+
+Debug.Log("sirina 1. fiktivnog temelja IZVANy: " + TemeljPrviObjekt.Width + "  |||||||      duzina 1. fiktivnog temelja: " + TemeljPrviObjekt.Length);
 
 
+ FiktivniTemeljDrugi =new double[] {(programState.sirinaB-((programState.sirinaB/2)+odabranaTocka[0])),((programState.duzinaL)+ (odabranaTocka[1]- (programState.duzinaL/2)))};
+ TemeljDrugiObjekt = new IndividualFictionalSquare (FiktivniTemeljDrugi.Min(), FiktivniTemeljDrugi.Max(), initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljDrugi.Min(),FiktivniTemeljDrugi.Max()));
+
+Debug.Log("sirina 2. fiktivnog temelja IZVANy: " + TemeljDrugiObjekt.Width + "  |||||||      duzina 2. fiktivnog temelja: " + TemeljDrugiObjekt.Length);
+
+
+FiktivniTemeljTreci =new double[] {((programState.sirinaB/2)+odabranaTocka[0]),( odabranaTocka[1]- (programState.duzinaL/2))};
+ TemeljTreciObjekt = new IndividualFictionalSquare (FiktivniTemeljTreci.Min(), FiktivniTemeljTreci.Max(),initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljTreci.Min(),FiktivniTemeljTreci.Max()));
+
+Debug.Log("sirina 3. fiktivnog temelja IZVANy: " + TemeljTreciObjekt.Width + "  |||||||      duzina 3. fiktivnog temelja: " + TemeljTreciObjekt.Length);
+
+
+ FiktivniTemeljCetvrti = new double[] {(programState.sirinaB-((programState.sirinaB/2)+odabranaTocka[0])),((odabranaTocka[1]- (programState.duzinaL/2)))};
+ TemeljCetvrtiObjekt = new IndividualFictionalSquare (FiktivniTemeljCetvrti.Min(), FiktivniTemeljCetvrti.Max(),initializeSteinbrennerCalculation.CalculateSteinbrenner(FiktivniTemeljCetvrti.Min(),FiktivniTemeljCetvrti.Max()));
+Debug.Log("sirina 4. fiktivnog temelja IZVANy: " + TemeljCetvrtiObjekt.Width + "  |||||||      duzina 4. fiktivnog temelja: " + TemeljCetvrtiObjekt.Length);
+
+
+
+
+}
+
+
+
+ void AddValue(int type){
+
+     Debug.Log(type+ "JKFGHEJIKGLWNEHGLIJE");
     for(var i = 0; i < TemeljPrviObjekt.SteinbrennerResult.depthList.Count; i ++){
+        double ValueSum = new double () ;
 SteinBrennerRezultat.depthList.Add(TemeljPrviObjekt.SteinbrennerResult.depthList[i]);
 
 if (Double.IsNaN(TemeljPrviObjekt.SteinbrennerResult.valueList[i]) ){
@@ -224,20 +283,38 @@ TemeljCetvrtiObjekt.SteinbrennerResult.valueList[i] = 0 ;
 }
 
 
-double ValueSum = TemeljPrviObjekt.SteinbrennerResult.valueList[i]-TemeljDrugiObjekt.SteinbrennerResult.valueList[i]-TemeljTreciObjekt.SteinbrennerResult.valueList[i]+TemeljCetvrtiObjekt.SteinbrennerResult.valueList[i];
-SteinBrennerRezultat.valueList.Add(ValueSum);
-Debug.Log(SteinBrennerRezultat.valueList[i] + "VAZNO VAN TEMELJA SUMA");
+if (type==0){
+    
+     ValueSum = TemeljPrviObjekt.SteinbrennerResult.valueList[i]-TemeljDrugiObjekt.SteinbrennerResult.valueList[i]-TemeljTreciObjekt.SteinbrennerResult.valueList[i]+TemeljCetvrtiObjekt.SteinbrennerResult.valueList[i];
+}
 
-Debug.Log(TemeljPrviObjekt.SteinbrennerResult.valueList[i]+ "VAZNO VAN TEMELJ 1");
-Debug.Log(TemeljDrugiObjekt.SteinbrennerResult.valueList[i] + "VAZNO VAN TEMELJ 2");
-Debug.Log(TemeljTreciObjekt.SteinbrennerResult.valueList[i] + "VAZNO VAN TEMELJ 3");
-Debug.Log(TemeljCetvrtiObjekt.SteinbrennerResult.valueList[i] + "VAZNO VAN TEMELJ 4");
+
+else if (type == 1) {
+
+     ValueSum = TemeljPrviObjekt.SteinbrennerResult.valueList[i]+TemeljDrugiObjekt.SteinbrennerResult.valueList[i]-TemeljTreciObjekt.SteinbrennerResult.valueList[i]-TemeljCetvrtiObjekt.SteinbrennerResult.valueList[i];
+
+}
+
+else if (type == 2)
+{
+     ValueSum = TemeljPrviObjekt.SteinbrennerResult.valueList[i]+TemeljDrugiObjekt.SteinbrennerResult.valueList[i]-TemeljTreciObjekt.SteinbrennerResult.valueList[i]-TemeljCetvrtiObjekt.SteinbrennerResult.valueList[i];
+
+}
+
+SteinBrennerRezultat.valueList.Add(ValueSum);
+// Debug.Log(SteinBrennerRezultat.valueList[i] + "VAZNO VAN TEMELJA SUMA");
+
+// Debug.Log(TemeljPrviObjekt.SteinbrennerResult.valueList[i]+ "VAZNO VAN TEMELJ 1");
+// Debug.Log(TemeljDrugiObjekt.SteinbrennerResult.valueList[i] + "VAZNO VAN TEMELJ 2");
+// Debug.Log(TemeljTreciObjekt.SteinbrennerResult.valueList[i] + "VAZNO VAN TEMELJ 3");
+// Debug.Log(TemeljCetvrtiObjekt.SteinbrennerResult.valueList[i] + "VAZNO VAN TEMELJ 4");
 
     }
+}
 
 
 
-
+AddValue(dotTypeLocation);
 
 
 
@@ -305,21 +382,15 @@ lastCircleGameObjectLocation = circleGameObjectLocation;
     
     }
 
- 
-// Debug.Log("---******----**-");
-
-
-// Debug.Log(SteinBrennerRezultat.depthList.Count);
-// Debug.Log(SteinBrennerRezultat.valueList.Count);
-
-// Debug.Log("---******----**-");
 
 
  ShowAxisNumbersNGrid();
 
-Debug.Log(programState.graphSize[1] + "graphSize VAZNO");
+// Debug.Log(programState.graphSize[1] + "graphSize VAZNO");
 // Debug.Log(programState.CanvasSize + "CanvasSize");
       backgroundGraph.SetAsFirstSibling();
+
+
 
     }
 
@@ -333,6 +404,7 @@ private void ShowValueListener (Vector2 anchoredPosition){
     private GameObject CreateCircle(Vector2 anchoredPosition){
 
         GameObject circleObject = new GameObject ("circle",typeof(Image));
+        circleObject.gameObject.tag = "deleteGraphStuff";
         circleObject.transform.SetParent(graphContainer, false);
         circleObject.GetComponent<Image>().sprite = krugSprite;
         RectTransform rectTransform = circleObject.GetComponent<RectTransform>();
@@ -401,6 +473,9 @@ dubinaText.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
 
 
    private void ShowAxisNumbersNGrid (){
+
+
+
       Debug.Log("SHOWAXISNumbersNGrid INITIALIZED");
 GameObject programManager = GameObject.Find("ProgramManager");
 ProgramState programState = programManager.GetComponent<ProgramState>();
@@ -420,6 +495,7 @@ double labelsScale =0.02643327*programState.graphSize[1] - 0.04642976;
 for (int i = 0; i<=5; i++){
 
    RectTransform labelX = Instantiate(labelTemplateX);
+   
    RectTransform gridX = Instantiate(templateGridObject);
    gridX.SetParent(graphContainer, false);
    gridX.gameObject.SetActive(true);
@@ -518,6 +594,7 @@ private static float GetAngleFromVectorFloat(Vector3 dir) {
             GameObject programManager = GameObject.Find("ProgramManager");
 ProgramState programState = programManager.GetComponent<ProgramState>();
         GameObject gameObject = new GameObject("dotConnection", typeof(Image));
+        gameObject.gameObject.tag="deleteGraphStuff";
         gameObject.transform.SetParent(graphContainer, false);
         gameObject.GetComponent<Image>().color = new Color(1,1,1, 0.8f);
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();

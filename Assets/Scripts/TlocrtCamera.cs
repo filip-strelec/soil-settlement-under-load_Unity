@@ -43,7 +43,8 @@ public class TlocrtCamera : MonoBehaviour
 
 
 
-
+  BoxCollider meshRendererTemeljCollider = programState.temeljCollider.GetComponent<BoxCollider>();
+        meshRendererTemeljCollider.enabled = true;
 
             glavnaKamera.transform.localPosition = new Vector3(0, kameraYOffset, 0);
             glavnaKamera.transform.rotation = Quaternion.Euler(90, 0, 0);

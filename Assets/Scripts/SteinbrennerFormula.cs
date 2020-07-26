@@ -63,8 +63,8 @@ double razlikaDubine = programState.dubinaZ- trenutnaDubinaZ;
      depthList.Add(trenutnaDubinaZ);
     valueList.Add(steinbrennerIzracun);
 
-    Debug.Log(trenutnaDubinaZ);
-    Debug.Log(steinbrennerIzracun);
+    // Debug.Log(trenutnaDubinaZ);
+    // Debug.Log(steinbrennerIzracun);
 
 
     }

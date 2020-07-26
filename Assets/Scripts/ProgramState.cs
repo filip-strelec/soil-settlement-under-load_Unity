@@ -38,11 +38,24 @@ public (List<double>depthList, List<double> valueList) SteinBrennerRezultatOdabr
       public void deleteCircles (){
 
  GameObject[] oldCircles = GameObject.FindGameObjectsWithTag("tlocrtTocka");
-   foreach(GameObject circle in oldCircles)
+   foreach(GameObject circle in oldCircles){
    GameObject.Destroy(circle);
+    Debug.Log("CLEAR"+ circle);}
 
        }
 
+public  void clearGraph (){
+
+ GameObject[] oldGraph = GameObject.FindGameObjectsWithTag("deleteGraphStuff");
+
+ foreach(GameObject content in oldGraph){
+   GameObject.Destroy(content);
+      Debug.Log("graph cleared");
+}
+
+
+
+}
 
 
 public void createCircles (){

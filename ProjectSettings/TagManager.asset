@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Text
   - tlocrtTocka
+  - deleteGraphStuff
   layers:
   - Default
   - TransparentFX

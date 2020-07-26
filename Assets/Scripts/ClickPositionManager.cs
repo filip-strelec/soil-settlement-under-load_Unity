@@ -37,7 +37,7 @@ definedDotByClick=false;
         meshRendererTemeljCollider.enabled = true;
         definedDotByClick=true;
 
-        Debug.Log(programState.koordinateIzracuna[0]+"___:___"+programState.koordinateIzracuna[1]);
+        // Debug.Log(programState.koordinateIzracuna[0]+"___:___"+programState.koordinateIzracuna[1]);
 
     }
 
@@ -106,7 +106,7 @@ if(definedDotByClick==false){
                     clickPosition = hit.point;
                 }
 
-                Debug.Log(clickPosition);
+                // Debug.Log(clickPosition);
                 if (clickPosition != -Vector3.one)
                 {
                     koordinataXInputField.text = clickPosition[0].ToString("0.000");
