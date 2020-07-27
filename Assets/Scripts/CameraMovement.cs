@@ -105,7 +105,7 @@ cameraPosition.z += panSpeed * Time.deltaTime;
 //reset Scene
 
      if (Input.GetKeyDown("r")) { 
-         SceneManager.LoadScene("SceneFirst"); 
+         SceneManager.LoadScene("ProgramInitialization"); 
      }
 
 

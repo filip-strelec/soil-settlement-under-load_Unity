@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\ExportToCsv.cs" />
      <Compile Include="Assets\Scripts\InitalizeProgram.cs" />
      <Compile Include="Assets\Scripts\ProgramState.cs" />
+     <Compile Include="Assets\Scripts\ScenePicker.cs" />
      <Compile Include="Assets\Scripts\SteinbrennerFormula.cs" />
      <Compile Include="Assets\Scripts\SteinbrennerGraf.cs" />
      <Compile Include="Assets\Scripts\TlocrtCamera.cs" />
