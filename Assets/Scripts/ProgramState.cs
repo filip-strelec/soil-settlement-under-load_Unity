@@ -17,7 +17,7 @@ public class ProgramState : MonoBehaviour
 
    public double maxIValue;
 
-   public double inkrementMjerenjaZ =0.5f;
+   public double inkrementMjerenjaZ;
    public Vector2 graphSize ;
    public Vector2 CanvasSize;
     public bool kameraOnTlocrt = false;
