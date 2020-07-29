@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/ProgramInitialization.unity
+    guid: e541fcda2bf4b2449acd7401c4152fb8
+  - enabled: 1
     path: Assets/Scenes/OneRectangularLoad.unity
     guid: a2a0cc781808d0648bac22389dbacb2d
+  - enabled: 1
+    path: Assets/Scenes/MultipleRectangularLoads.unity
+    guid: 23076ac145968f940ab97d8a5a3d312f
   m_configObjects: {}

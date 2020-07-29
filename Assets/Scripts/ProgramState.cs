@@ -35,6 +35,10 @@ public (List<double>depthList, List<double> valueList) SteinBrennerRezultatOdabr
 
     public double[] koordinateIzracuna =  new double[2];
 
+
+    //varijable za vise temelja
+
+ 
       public void deleteCircles (){
 
  GameObject[] oldCircles = GameObject.FindGameObjectsWithTag("tlocrtTocka");

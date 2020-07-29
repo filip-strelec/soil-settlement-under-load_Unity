@@ -11,4 +11,10 @@ public class ScenePicker : MonoBehaviour
 
 
    }
+
+   public void ApplicationQuit (){
+
+       Application.Quit();
+       Debug.Log("test");
+   }
 }
