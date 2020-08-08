@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class InitalizeProgram : MonoBehaviour
 {
@@ -222,13 +223,13 @@ programState.dubinaZ = 20f;
 
         bool canConvertBrojMjerenja = double.TryParse(brojMjerenjaInputField.text, out brojMjerenja);
         if (canConvertBrojMjerenja){
-        programState.inkrementMjerenjaZ =  brojMjerenja;
+        programState.inkrementMjerenjaZ =  brojMjerenja*0.01;
         }
 
-        programState.sirinaKoordSustavaB = programState.sirinaB * 3;
-        programState.duzinaKoordSustavaL = programState.duzinaL * 3;
+        programState.sirinaKoordSustavaB =  Math.Ceiling(programState.sirinaB * 3)+(6-(programState.sirinaB%5));
+        programState.duzinaKoordSustavaL = Math.Ceiling(programState.duzinaL * 3)+(6-(programState.duzinaL%5));
 
-
+Debug.Log(programState.sirinaKoordSustavaB + "KOORDINATNI SUSTAV b");
 
         if (programState.sirinaB != 0 && programState.duzinaL != 0 && programState.dubinaZ != 0 && programState.inkrementMjerenjaZ != 0 )
         {
