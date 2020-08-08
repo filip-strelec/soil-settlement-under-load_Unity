@@ -529,19 +529,54 @@ gridX.SetAsFirstSibling();
 
 
 for (int i = 0; i<=10; i++){
+       float dubina = programState.graphSize[1];
+double dubinaDjeljivaSPet = (Math.Ceiling( dubina)+(5-Math.Ceiling(dubina)%5));
+RectTransform labelY = Instantiate(labelTemplateY);
+   RectTransform gridY = Instantiate(templateGridObject);
 
-   RectTransform labelY = Instantiate(labelTemplateY);
+ 
         labelY.SetParent(graphContainer, false);
         labelY.gameObject.SetActive(true);
-        float dubina = programState.graphSize[1];
-        double labelYText = i*(dubina/10);
-
- RectTransform gridY = Instantiate(templateGridObject);
+      
    gridY.SetParent(graphContainer, false);
    gridY.gameObject.SetActive(true);
 
+
+
+
+    //   float dubina= (float) Math.Ceiling(programState.graphSize[1]+(6-(programState.graphSize[1]%5)));
+      double labelYText;
+  float labelYYposition ;
+  
+Debug.Log(dubinaDjeljivaSPet);
+if (i!=10){ 
+    
+if (i*(dubinaDjeljivaSPet/10)<dubina){
+
+    labelYText = i*(dubinaDjeljivaSPet/10);
+        labelYYposition = dubina - (float) (i/10f*(dubinaDjeljivaSPet));
+      
+}
+
+
+else{
+  labelYText = 0;
+        labelYYposition = 44* dubina ;
+        
+
+}
+        }
+
+        else{
+      labelYText =  dubina;
+        labelYYposition = 1/10 * dubina ;
+        }
+
+
+  
+
        
-        float labelYYposition = dubina - (i/10f*dubina);
+        
         // Debug.Log(programState.graphSize[1] + "graphSize ______________YYY VAZNO");
         // Debug.Log(programState.graphSize[0] + "graphSize ______XXXXVAZNO");
 
