@@ -11,6 +11,8 @@ public class TlocrtCamera : MonoBehaviour
     public float kameraYOffset;
     public Camera glavnaKamera;
     public RectTransform canvasGraphContainer;
+        public RectTransform canvasGraphContainerSoil;
+
 
     public RectTransform canvasAxisContainerTlocrt;
 
@@ -50,6 +52,7 @@ public class TlocrtCamera : MonoBehaviour
             glavnaKamera.transform.rotation = Quaternion.Euler(90, 0, 0);
             programState.kameraOnTlocrt = true;
             canvasGraphContainer.gameObject.SetActive(false);
+            canvasGraphContainerSoil.gameObject.SetActive(false);
             canvasAxisContainerTlocrt.gameObject.SetActive(true);
 
             koordinatePanel.gameObject.SetActive(true);
@@ -67,6 +70,7 @@ public class TlocrtCamera : MonoBehaviour
             glavnaKamera.transform.rotation = Quaternion.Euler(0, 0, 0);
             programState.kameraOnTlocrt = false;
             canvasGraphContainer.gameObject.SetActive(true);
+            canvasGraphContainerSoil.gameObject.SetActive(true);
             canvasAxisContainerTlocrt.gameObject.SetActive(false);
             koordinatePanel.gameObject.SetActive(false);
 
