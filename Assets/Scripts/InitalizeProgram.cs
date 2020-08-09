@@ -16,11 +16,19 @@ public class InitalizeProgram : MonoBehaviour
 
     
 
-    //komponente za graf
+    //komponente za graf naprezanja
 
     private RectTransform canvasGraphContainer;
+
     private RectTransform windowGraph;
     private RectTransform graphContainer;
+
+
+    //komponente za graf slijeganja
+
+    private RectTransform canvasGraphContainerSoil;
+private RectTransform windowGraphSoil;
+private RectTransform graphContainerSoil;
 
     // Komponente za koordinatni sustav tlocrta
 
@@ -289,12 +297,18 @@ sirinaBText.text ="B: "+ programState.sirinaB.ToString("0.00");
             axisContainerTlocrt.anchorMax = new Vector2(0.5f, 0.5f);
 
 
-            //definiranje dimenzija komponenata canvasa za Steinbrenner-a
+            //definiranje dimenzija komponenata canvasa za Steinbrenner-a  i slijeganje (needs refactoring)
 
 
             canvasGraphContainer = GameObject.Find("CanvasGraph").GetComponent<RectTransform>();
+            canvasGraphContainerSoil = GameObject.Find("CanvasGraphSoil").GetComponent<RectTransform>();
+
             windowGraph = GameObject.Find("WindowGraph").GetComponent<RectTransform>();
+            windowGraphSoil = GameObject.Find("WindowGraphSoil").GetComponent<RectTransform>();
+
             graphContainer = GameObject.Find("GraphContainer").GetComponent<RectTransform>();
+            graphContainerSoil = GameObject.Find("GraphContainerSoil").GetComponent<RectTransform>();
+
 
 
 
@@ -302,9 +316,19 @@ sirinaBText.text ="B: "+ programState.sirinaB.ToString("0.00");
             canvasGraphContainer.sizeDelta = programState.CanvasSize + new Vector2(1, 0); ;
             windowGraph.sizeDelta = programState.CanvasSize + new Vector2(1, 0);
             graphContainer.sizeDelta = programState.graphSize;
+
+
+            canvasGraphContainerSoil.sizeDelta = programState.CanvasSize + new Vector2(1, 0); ;
+            windowGraphSoil.sizeDelta = programState.CanvasSize + new Vector2(1, 0);
+            graphContainerSoil.sizeDelta = programState.graphSize;
+
+
             //    graphContainer.anchoredPosition()
             graphContainer.anchorMin = new Vector2(0.5f, 0.5f);
             graphContainer.anchorMax = new Vector2(0.5f, 0.5f);
+
+            graphContainerSoil.anchorMin = new Vector2(0.5f, 0.5f);
+            graphContainerSoil.anchorMax = new Vector2(0.5f, 0.5f);
 
 
             float xOffset = (float)((programState.CanvasSize[0] / 2 + programState.sirinaB / 2) + programState.dubinaZ * 0.35);
@@ -312,6 +336,7 @@ sirinaBText.text ="B: "+ programState.sirinaB.ToString("0.00");
             float zOffset = (float)(-programState.duzinaL / 2);
 
             canvasGraphContainer.position = new Vector3(xOffset, yOffset, zOffset);
+            canvasGraphContainerSoil.position = new Vector3(xOffset+programState.graphSize[1], yOffset, zOffset);
 
 
 

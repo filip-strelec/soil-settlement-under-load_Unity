@@ -21,3 +21,5 @@ Temp/*
 obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
 
 Assets/Scripts/*.meta
+obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+Assembly-CSharp.csproj
