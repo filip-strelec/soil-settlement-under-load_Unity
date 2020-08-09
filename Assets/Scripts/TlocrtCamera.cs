@@ -17,6 +17,8 @@ public class TlocrtCamera : MonoBehaviour
     public RectTransform canvasAxisContainerTlocrt;
 
     public RectTransform koordinatePanel;
+
+    public RectTransform koordinatePanelMjerenje;
     
 
     public void ChangeCamera()
@@ -56,6 +58,8 @@ public class TlocrtCamera : MonoBehaviour
             canvasAxisContainerTlocrt.gameObject.SetActive(true);
 
             koordinatePanel.gameObject.SetActive(true);
+            koordinatePanelMjerenje.gameObject.SetActive(false);
+
 
 
         }
@@ -73,6 +77,7 @@ public class TlocrtCamera : MonoBehaviour
             canvasGraphContainerSoil.gameObject.SetActive(true);
             canvasAxisContainerTlocrt.gameObject.SetActive(false);
             koordinatePanel.gameObject.SetActive(false);
+         koordinatePanelMjerenje.gameObject.SetActive(true);
 
 
 

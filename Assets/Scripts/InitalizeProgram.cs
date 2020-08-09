@@ -48,6 +48,21 @@ private RectTransform graphContainerSoil;
     public Text duzinaLText;
     public Text sirinaBText;
 
+//parametri mjerenja
+
+public Text duzinaLTextMjerenje;
+
+public Text sirinaBTextTextMjerenje;
+
+public Text dubinaZTextTextMjerenje;
+
+public Text  InkrementMjerenjaTextTextMjerenje;
+
+public Text  PovrNaprezanjeTextTextMjerenje;
+
+
+
+
 
     void Start()
     {
@@ -194,6 +209,7 @@ private RectTransform graphContainerSoil;
         double dubinaMjerenjaParametar = 20;
 
         double brojMjerenja = 0.1f;
+        double povrNapr = 100f;
         //referenca na program manager u kojem su sačuvani parametri
         GameObject programManager = GameObject.Find("ProgramManager");
         ProgramState programState = programManager.GetComponent<ProgramState>();
@@ -207,6 +223,7 @@ private RectTransform graphContainerSoil;
         InputField duzinaInputL = GameObject.Find("InputFieldDuzinaL").GetComponent<InputField>();
         InputField dubinaInputParametar = GameObject.Find("InputFieldDubinaZ").GetComponent<InputField>();
         InputField brojMjerenjaInputField = GameObject.Find("InputFieldBrojMjerenja").GetComponent<InputField>();
+        InputField povrsinskoNaprezanje = GameObject.Find("InputFieldPovrsinskoNaprezanje").GetComponent<InputField>();
 
 
 
@@ -216,6 +233,8 @@ private RectTransform graphContainerSoil;
       
 programState.inkrementMjerenjaZ = 0.1f;
 programState.dubinaZ = 20f;
+programState.povrsinskoNaprezanje = povrNapr;
+
 
         bool canConvertSirina = double.TryParse(sirinaInputB.text, out sirinaTemelja);
         programState.sirinaB = sirinaTemelja;
@@ -234,6 +253,16 @@ programState.dubinaZ = 20f;
         programState.inkrementMjerenjaZ =  brojMjerenja*0.01;
         }
 
+        
+        bool canConvertPovNapr = double.TryParse(povrsinskoNaprezanje.text, out povrNapr);
+        if (canConvertPovNapr){
+        programState.povrsinskoNaprezanje =  povrNapr;
+        }
+
+
+
+
+
         programState.sirinaKoordSustavaB =  Math.Ceiling(programState.sirinaB * 3)+(6-(programState.sirinaB%5));
         programState.duzinaKoordSustavaL = Math.Ceiling(programState.duzinaL * 3)+(6-(programState.duzinaL%5));
 
@@ -245,11 +274,23 @@ Debug.Log(programState.sirinaKoordSustavaB + "KOORDINATNI SUSTAV b");
 programState.parametersDefined = true;
             //inicijalizacija definiranja temelja
 
-duzinaLText.text ="L: "+programState.duzinaL.ToString("0.00");
-sirinaBText.text ="B: "+ programState.sirinaB.ToString("0.00");
+duzinaLText.text ="L(m): "+programState.duzinaL.ToString("0.00");
+sirinaBText.text ="B(m): "+ programState.sirinaB.ToString("0.00");
+
+
+
+duzinaLTextMjerenje.text ="L(m): "+programState.duzinaL.ToString("0.00");
+sirinaBTextTextMjerenje.text ="B(m): "+ programState.sirinaB.ToString("0.00");
+dubinaZTextTextMjerenje.text="Dubina z(m):"+programState.dubinaZ.ToString("0.00") ;
+InkrementMjerenjaTextTextMjerenje.text="Deblj. lamele(m):"+programState.inkrementMjerenjaZ.ToString("0.00");
+PovrNaprezanjeTextTextMjerenje.text="Povr. napr.(kPa):"+programState.povrsinskoNaprezanje.ToString("0.00");
+
+
+
+
 
             programState.graphSize = new Vector2((float)(0.65 * programState.dubinaZ), (float)programState.dubinaZ);
-            programState.CanvasSize = programState.graphSize + 0.6f * programState.graphSize;
+            programState.CanvasSize = programState.graphSize + 0.8f * programState.graphSize;
 
             GameObject temelj = GameObject.CreatePrimitive(PrimitiveType.Cube);
             temelj.transform.localPosition = new Vector3(0, 0, 0);
@@ -336,7 +377,7 @@ sirinaBText.text ="B: "+ programState.sirinaB.ToString("0.00");
             float zOffset = (float)(-programState.duzinaL / 2);
 
             canvasGraphContainer.position = new Vector3(xOffset, yOffset, zOffset);
-            canvasGraphContainerSoil.position = new Vector3(xOffset+programState.graphSize[1], yOffset, zOffset);
+            canvasGraphContainerSoil.position = new Vector3(xOffset+programState.CanvasSize[0], yOffset, zOffset);
 
 
 

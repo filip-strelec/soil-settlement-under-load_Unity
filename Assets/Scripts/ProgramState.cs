@@ -11,6 +11,7 @@ public class ProgramState : MonoBehaviour
    public double duzinaL;
    public double dubinaZ;
 
+public double povrsinskoNaprezanje;
    public double sirinaKoordSustavaB;
 
    public double duzinaKoordSustavaL;
@@ -32,6 +33,8 @@ public class ProgramState : MonoBehaviour
 
 
 public (List<double>depthList, List<double> valueList) SteinBrennerRezultatOdabraneTocke;
+
+   public  List<double> dodatnaNaprezanja;
 
     public double[] koordinateIzracuna =  new double[2];
 

@@ -328,6 +328,16 @@ AddValue(dotTypeLocation);
 programState.SteinBrennerRezultatOdabraneTocke.depthList = SteinBrennerRezultat.depthList;
 programState.SteinBrennerRezultatOdabraneTocke.valueList = SteinBrennerRezultat.valueList;
 
+programState.dodatnaNaprezanja = new List<double>();
+
+for (int i = 0; i <SteinBrennerRezultat.valueList.Count; i++){
+
+
+programState.dodatnaNaprezanja.Add(SteinBrennerRezultat.valueList[i] * programState.povrsinskoNaprezanje) ;
+
+}
+
+
 SteinBrennerRezultat.depthList.ForEach(i => 
     {
 if (i>konacnaDubina){
@@ -337,7 +347,7 @@ if (i>konacnaDubina){
     }
 );
 
-SteinBrennerRezultat.valueList.ForEach(i => 
+programState.dodatnaNaprezanja.ForEach(i => 
     {
 
 // Debug.Log(i + "skoro gotovo");
@@ -362,7 +372,7 @@ Vector2 lastCircleGameObjectLocation= new Vector2(-10,-10);
 for(var i = 0; i < SteinBrennerRezultat.depthList.Count; i ++){
     
  
-float xCoordinate = (float) (SteinBrennerRezultat.valueList[i]/najvecaVrijednost)*programState.graphSize[0];
+float xCoordinate = (float) (programState.dodatnaNaprezanja[i]/najvecaVrijednost)*programState.graphSize[0];
 float yCoordinate = (float) (programState.graphSize[1] - (SteinBrennerRezultat.depthList[i]/konacnaDubina)*programState.graphSize[1]);
 
 // Debug.Log("xKOORDINATA:"+xCoordinate);
@@ -446,7 +456,7 @@ ValuePanelRectTransform.SetParent(graphContainer, false);
 ValuePanelRectTransform.gameObject.SetActive(true);
 ValuePanelRectTransform.anchoredPosition = anchoredPosition - new Vector2((float)(konacnaDubina*0.1),0);
 // ValuePanelRectTransform.localScale = new Vector2(programState.graphSize[0]*0.1f, programState.graphSize[1]*0.1f);
-ValuePanelRectTransform.sizeDelta = new Vector2(programState.graphSize[1]*.2f,programState.graphSize[1]*.2f);
+ValuePanelRectTransform.sizeDelta = new Vector2(programState.graphSize[1]*.25f,programState.graphSize[1]*.25f);
 
 GameObject panelTemplateClone = GameObject.Find("PanelTemplateValue(Clone)");
 Transform dubinaText =  panelTemplateClone.transform.Find("TextValueDubina");
@@ -454,7 +464,7 @@ Transform naprezanjeText =  panelTemplateClone.transform.Find("TextValueI");
 
 
 dubinaText.GetComponent<Text>().text = "z:"+(programState.graphSize[1]- anchoredPosition[1]).ToString("0.0");
-naprezanjeText.GetComponent<Text>().text = "i:"+((anchoredPosition[0]/programState.graphSize[0])*najvecaVrijednost).ToString("0.0000");
+naprezanjeText.GetComponent<Text>().text = "Δσ:"+((anchoredPosition[0]/programState.graphSize[0])*najvecaVrijednost).ToString("0.00");
 
 double labelsScale =0.02643327*programState.graphSize[1] - 0.04642976;
   if (labelsScale < 0.05){
@@ -511,7 +521,22 @@ for (int i = 0; i<=5; i++){
 
         }
 
-        else{        labelX.GetComponent<Text>().text=labelXText.ToString("0.00");
+        else{     
+            if ( labelXText>100){
+
+labelX.GetComponent<Text>().text=labelXText.ToString("0");
+            }
+               else if (labelXText> 10){
+labelX.GetComponent<Text>().text=labelXText.ToString("0.0");
+
+
+               }
+
+               else{
+labelX.GetComponent<Text>().text=labelXText.ToString("0.00");
+
+
+               }
         
 }
         float labelXXposition = (i/5f*programState.graphSize[0]);
@@ -527,8 +552,11 @@ gridX.localScale =new Vector2((float)(labelsScale/8), programState.graphSize[1])
 gridX.SetAsFirstSibling();
 }
 
+float najbliziZadnjem = 5000;
 
 for (int i = 0; i<=10; i++){
+
+
        float dubina = programState.graphSize[1];
 double dubinaDjeljivaSPet = (Math.Ceiling( dubina)+(5-Math.Ceiling(dubina)%5));
 RectTransform labelY = Instantiate(labelTemplateY);
@@ -547,6 +575,7 @@ RectTransform labelY = Instantiate(labelTemplateY);
     //   float dubina= (float) Math.Ceiling(programState.graphSize[1]+(6-(programState.graphSize[1]%5)));
       double labelYText;
   float labelYYposition ;
+
   
 Debug.Log(dubinaDjeljivaSPet);
 if (i!=10){ 
@@ -555,6 +584,7 @@ if (i*(dubinaDjeljivaSPet/10)<dubina){
 
     labelYText = i*(dubinaDjeljivaSPet/10);
         labelYYposition = dubina - (float) (i/10f*(dubinaDjeljivaSPet));
+najbliziZadnjem = labelYYposition;
       
 }
 
@@ -569,7 +599,18 @@ else{
 
         else{
       labelYText =  dubina;
+
+      if ( najbliziZadnjem<1){
+
+  labelYYposition =dubina*44 ;
+
+      }
+      else{
         labelYYposition = 1/10 * dubina ;
+}
+        Debug.Log("BLIZINA:"+labelYYposition);
+        Debug.Log("BLIZINA:"+najbliziZadnjem);
+
         }
 
 
