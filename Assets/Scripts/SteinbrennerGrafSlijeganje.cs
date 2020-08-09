@@ -48,7 +48,7 @@ public class SteinbrennerGrafSlijeganje : MonoBehaviour
 
 
     najvecaVrijednost = 0;
-    najmanjaVrijednost = 50000;
+    najmanjaVrijednost = 500000000;
 
 
 GameObject programManager = GameObject.Find("ProgramManager");
@@ -161,7 +161,7 @@ private void ShowValueListener (Vector2 anchoredPosition){
 private void hidePanel (){
 
 
-    GameObject panelTemplateClone = GameObject.Find("PanelTemplateValue(Clone)");
+    GameObject panelTemplateClone = GameObject.Find("PanelTemplateValueSoil(Clone)");
 
     Destroy (panelTemplateClone);
     valueShown= false;
@@ -182,7 +182,7 @@ ValuePanelRectTransform.anchoredPosition = anchoredPosition - new Vector2((float
 // ValuePanelRectTransform.localScale = new Vector2(programState.graphSize[0]*0.1f, programState.graphSize[1]*0.1f);
 ValuePanelRectTransform.sizeDelta = new Vector2(programState.graphSize[1]*.2f,programState.graphSize[1]*.2f);
 
-GameObject panelTemplateClone = GameObject.Find("PanelTemplateValue(Clone)");
+GameObject panelTemplateClone = GameObject.Find("PanelTemplateValueSoil(Clone)");
 Transform dubinaText =  panelTemplateClone.transform.Find("TextValueDubina");
 Transform naprezanjeText =  panelTemplateClone.transform.Find("TextValueI");
 
@@ -217,8 +217,8 @@ ProgramState programState = programManager.GetComponent<ProgramState>();
 // templateGridObject = GameObject.Find("GridTemplate").GetComponent<RectTransform>();
 templateGridObject.gameObject.SetActive(false);
 
-        labelTemplateX = graphContainer.Find("TextLabelTemplateX").GetComponent<RectTransform>();
-        labelTemplateY = graphContainer.Find("TextLabelTemplateY").GetComponent<RectTransform>();
+        labelTemplateX = graphContainer.Find("TextLabelTemplateXSoil").GetComponent<RectTransform>();
+        labelTemplateY = graphContainer.Find("TextLabelTemplateYSoil").GetComponent<RectTransform>();
 
         //Dobiveno curve fit metodom
 double labelsScale =0.02643327*programState.graphSize[1] - 0.04642976;
