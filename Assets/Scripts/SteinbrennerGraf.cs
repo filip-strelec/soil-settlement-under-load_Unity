@@ -373,10 +373,10 @@ for (int i = 0; i <programState.dodatnaNaprezanja.Count; i++){
 
 programState.relativneDeformacije.Add(programState.dodatnaNaprezanja[i] / programState.youngModulPoDubini[i]) ;
 
-Debug.Log(programState.dodatnaNaprezanja[i] +"naprezanje");
-Debug.Log(programState.youngModulPoDubini[i]+"young Modul");
-Debug.Log((programState.dodatnaNaprezanja[i] / programState.youngModulPoDubini[i])+ "relativ. deformacije");
-Debug.Log(programState.SteinBrennerRezultatOdabraneTocke.depthList[i]+"Dubina");
+// Debug.Log(programState.dodatnaNaprezanja[i] +"naprezanje");
+// Debug.Log(programState.youngModulPoDubini[i]+"young Modul");
+// Debug.Log((programState.dodatnaNaprezanja[i] / programState.youngModulPoDubini[i])+ "relativ. deformacije");
+// Debug.Log(programState.SteinBrennerRezultatOdabraneTocke.depthList[i]+"Dubina");
 
 
 {
@@ -384,11 +384,6 @@ Debug.Log(programState.SteinBrennerRezultatOdabraneTocke.depthList[i]+"Dubina");
 }
 
 }
-
-
-
-
-
 
 
 
@@ -410,10 +405,46 @@ programState.dodatnaNaprezanja.ForEach(i =>
 
 
 if (i>najvecaVrijednost){
-    najvecaVrijednost = (double)i;
-    programState.maxIValue = i;
-        }
+      
+     if (i<0.001){
 
+najvecaVrijednost = 0.001;
+programState.maxIValue = 0.001;
+
+    }
+
+    else   if (i<0.01){
+
+najvecaVrijednost = 0.01;
+programState.maxIValue = 0.01;
+
+    }
+    
+   else if (i<0.1){
+
+najvecaVrijednost = 0.1;
+programState.maxIValue = 0.1;
+
+    }
+
+    else if (i<0.25){
+najvecaVrijednost = 0.25;
+programState.maxIValue = 0.25;
+
+    }
+
+        else if (i<0.50){
+najvecaVrijednost = 0.50;
+programState.maxIValue = 0.50;
+
+    }
+
+
+    else{
+    najvecaVrijednost = (double)Math.Ceiling(i);
+    programState.maxIValue = Math.Ceiling(i);
+}
+        }
 
 if ( i< najmanjaVrijednost){
 
@@ -512,15 +543,15 @@ ValuePanelRectTransform.SetParent(graphContainer, false);
 ValuePanelRectTransform.gameObject.SetActive(true);
 ValuePanelRectTransform.anchoredPosition = anchoredPosition - new Vector2((float)(konacnaDubina*0.1),0);
 // ValuePanelRectTransform.localScale = new Vector2(programState.graphSize[0]*0.1f, programState.graphSize[1]*0.1f);
-ValuePanelRectTransform.sizeDelta = new Vector2(programState.graphSize[1]*.25f,programState.graphSize[1]*.25f);
+ValuePanelRectTransform.sizeDelta = new Vector2(programState.graphSize[1]*.40f,programState.graphSize[1]*.25f);
 
 GameObject panelTemplateClone = GameObject.Find("PanelTemplateValue(Clone)");
 Transform dubinaText =  panelTemplateClone.transform.Find("TextValueDubina");
 Transform naprezanjeText =  panelTemplateClone.transform.Find("TextValueI");
 
 
-dubinaText.GetComponent<Text>().text = "z:"+(programState.graphSize[1]- anchoredPosition[1]).ToString("0.0");
-naprezanjeText.GetComponent<Text>().text = "σᵈᵒᵈ:"+((anchoredPosition[0]/programState.graphSize[0])*najvecaVrijednost).ToString("0.00");
+dubinaText.GetComponent<Text>().text = "z(m):"+(programState.graphSize[1]- anchoredPosition[1]).ToString("0.0");
+naprezanjeText.GetComponent<Text>().text = "σᵈ(kPa):"+((anchoredPosition[0]/programState.graphSize[0])*najvecaVrijednost).ToString("0.000");
 
 double labelsScale =0.02643327*programState.graphSize[1] - 0.04642976;
   if (labelsScale < 0.05){
@@ -669,11 +700,6 @@ else{
 
         }
 
-
-  
-
-       
-        
         // Debug.Log(programState.graphSize[1] + "graphSize ______________YYY VAZNO");
         // Debug.Log(programState.graphSize[0] + "graphSize ______XXXXVAZNO");
 

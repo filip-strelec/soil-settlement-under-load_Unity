@@ -77,9 +77,48 @@ programState.relativneDeformacije.ForEach(i =>
 // Debug.Log(i + "skoro gotovo");
 
 
+
+
 if (i>najvecaVrijednost){
-    najvecaVrijednost = (double)i;
-    programState.maxIValue = i;
+      
+     if (i<0.001){
+
+najvecaVrijednost = 0.001;
+programState.maxIValue = 0.001;
+
+    }
+
+    else   if (i<0.01){
+
+najvecaVrijednost = 0.01;
+programState.maxIValue = 0.01;
+
+    }
+    
+   else if (i<0.1){
+
+najvecaVrijednost = 0.1;
+programState.maxIValue = 0.1;
+
+    }
+
+    else if (i<0.25){
+najvecaVrijednost = 0.25;
+programState.maxIValue = 0.25;
+
+    }
+
+        else if (i<0.50){
+najvecaVrijednost = 0.50;
+programState.maxIValue = 0.50;
+
+    }
+
+
+    else{
+    najvecaVrijednost = (double)Math.Ceiling(i);
+    programState.maxIValue = Math.Ceiling(i);
+}
         }
 
 
@@ -182,15 +221,15 @@ ValuePanelRectTransform.SetParent(graphContainer, false);
 ValuePanelRectTransform.gameObject.SetActive(true);
 ValuePanelRectTransform.anchoredPosition = anchoredPosition - new Vector2((float)(konacnaDubina*0.1),0);
 // ValuePanelRectTransform.localScale = new Vector2(programState.graphSize[0]*0.1f, programState.graphSize[1]*0.1f);
-ValuePanelRectTransform.sizeDelta = new Vector2(programState.graphSize[1]*.2f,programState.graphSize[1]*.2f);
+ValuePanelRectTransform.sizeDelta = new Vector2(programState.graphSize[1]*.25f,programState.graphSize[1]*.25f);
 
 GameObject panelTemplateClone = GameObject.Find("PanelTemplateValueDeformation(Clone)");
 Transform dubinaText =  panelTemplateClone.transform.Find("TextValueDubina");
 Transform naprezanjeText =  panelTemplateClone.transform.Find("TextValueI");
 
 
-dubinaText.GetComponent<Text>().text = "z:"+(programState.graphSize[1]- anchoredPosition[1]).ToString("0.0");
-naprezanjeText.GetComponent<Text>().text = "i:"+((anchoredPosition[0]/programState.graphSize[0])*najvecaVrijednost).ToString("0.0000");
+dubinaText.GetComponent<Text>().text = "z(m):"+(programState.graphSize[1]- anchoredPosition[1]).ToString("0.00");
+naprezanjeText.GetComponent<Text>().text = "ε:"+((anchoredPosition[0]/programState.graphSize[0])*najvecaVrijednost).ToString("0.0000");
 
 double labelsScale =0.02643327*programState.graphSize[1] - 0.04642976;
   if (labelsScale < 0.05){
