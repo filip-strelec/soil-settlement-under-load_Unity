@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\ClickPositionManager.cs" />
+     <Compile Include="Assets\Scripts\DefineStrata.cs" />
      <Compile Include="Assets\Scripts\ExportToCsv.cs" />
      <Compile Include="Assets\Scripts\InitalizeProgram.cs" />
      <Compile Include="Assets\Scripts\ProgramState.cs" />

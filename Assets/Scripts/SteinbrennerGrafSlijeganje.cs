@@ -282,7 +282,7 @@ RectTransform labelY = Instantiate(labelTemplateY);
       double labelYText;
   float labelYYposition ;
   
-Debug.Log(dubinaDjeljivaSPet);
+// Debug.Log(dubinaDjeljivaSPet);
 if (i!=10){ 
     
 if (i*(dubinaDjeljivaSPet/10)<dubina){

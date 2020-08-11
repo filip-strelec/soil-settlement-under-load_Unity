@@ -329,6 +329,7 @@ programState.SteinBrennerRezultatOdabraneTocke.depthList = SteinBrennerRezultat.
 programState.SteinBrennerRezultatOdabraneTocke.valueList = SteinBrennerRezultat.valueList;
 
 programState.dodatnaNaprezanja = new List<double>();
+programState.youngModulPoDubini = new List<double>();
 
 for (int i = 0; i <SteinBrennerRezultat.valueList.Count; i++){
 
@@ -336,6 +337,42 @@ for (int i = 0; i <SteinBrennerRezultat.valueList.Count; i++){
 programState.dodatnaNaprezanja.Add(SteinBrennerRezultat.valueList[i] * programState.povrsinskoNaprezanje) ;
 
 }
+
+
+
+
+
+
+for (int i = 0; i < SteinBrennerRezultat.depthList.Count; i++){
+
+   double currentYoung=0;
+   bool confirmedYoung = false;
+for (int j = 0; j < programState.slojeviArray.Length; j++){
+ 
+
+
+if ((SteinBrennerRezultat.depthList[i]<=programState.slojeviArray[j]) && !confirmedYoung) {
+
+currentYoung = programState.youngModulArray[j];
+confirmedYoung= true;
+}
+
+
+}
+
+programState.youngModulPoDubini.Add(currentYoung);
+
+
+// Debug.Log(SteinBrennerRezultat.depthList[i]);
+
+}
+
+for (int i = 0; i < programState.youngModulPoDubini.Count; i++){
+
+Debug.Log(programState.youngModulPoDubini[i] +"to jee too");
+
+}
+Debug.Log(SteinBrennerRezultat.depthList.Count);
 
 
 SteinBrennerRezultat.depthList.ForEach(i => 
@@ -346,6 +383,8 @@ if (i>konacnaDubina){
         }
     }
 );
+
+
 
 programState.dodatnaNaprezanja.ForEach(i => 
     {
@@ -577,7 +616,7 @@ RectTransform labelY = Instantiate(labelTemplateY);
   float labelYYposition ;
 
   
-Debug.Log(dubinaDjeljivaSPet);
+// Debug.Log(dubinaDjeljivaSPet);
 if (i!=10){ 
     
 if (i*(dubinaDjeljivaSPet/10)<dubina){

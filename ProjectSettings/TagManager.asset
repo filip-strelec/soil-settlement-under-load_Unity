@@ -7,6 +7,33 @@ TagManager:
   - Text
   - tlocrtTocka
   - deleteGraphStuff
+  - textStrata1
+  - textStrata2
+  - textStrata3
+  - textStrata4
+  - textStrata5
+  - textStrata6
+  - textStrata7
+  - textStrata8
+  - textStrata9
+  - textStrataInput1
+  - textStrataInput2
+  - textStrataInput3
+  - textStrataInput4
+  - textStrataInput5
+  - textStrataInput6
+  - textStrataInput7
+  - textStrataInput8
+  - textStrataInput9
+  - textStrataYoungInput1
+  - textStrataYoungInput2
+  - textStrataYoungInput3
+  - textStrataYoungInput4
+  - textStrataYoungInput5
+  - textStrataYoungInput6
+  - textStrataYoungInput7
+  - textStrataYoungInput8
+  - textStrataYoungInput9
   layers:
   - Default
   - TransparentFX

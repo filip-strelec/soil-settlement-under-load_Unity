@@ -43,7 +43,7 @@ private RectTransform graphContainerSoil;
 
     private RectTransform labelTemplateYTlocrt;
 
-    private RectTransform koordinatePanel;
+ 
 
     public Text duzinaLText;
     public Text sirinaBText;
@@ -64,13 +64,6 @@ public Text  PovrNaprezanjeTextTextMjerenje;
 
 
 
-    void Start()
-    {
-        //Panel za input koordinata točke
-
-        koordinatePanel = GameObject.Find("OdredjenaTockaPanel").GetComponent<RectTransform>();
-        koordinatePanel.gameObject.SetActive(false);
-    }
 
     private void ShowAxisNumbersNGrid()
     {
@@ -197,12 +190,8 @@ public Text  PovrNaprezanjeTextTextMjerenje;
 
 
 
+public void InitializeValues(){
 
-
-
-
-    public void InitializeProgram()
-    {
 
         double sirinaTemelja = 0;
         double duzinaTemelja = 0;
@@ -210,11 +199,14 @@ public Text  PovrNaprezanjeTextTextMjerenje;
 
         double brojMjerenja = 0.1f;
         double povrNapr = 100f;
-        //referenca na program manager u kojem su sačuvani parametri
-        GameObject programManager = GameObject.Find("ProgramManager");
+        int brojSlojeva = 1;
+
+
+     GameObject programManager = GameObject.Find("ProgramManager");
         ProgramState programState = programManager.GetComponent<ProgramState>();
 
-        // transform.Find("Text").GetComponent<Text>().text = text;
+
+
 
 
         //dobijanje inputa iz input filedova
@@ -224,7 +216,7 @@ public Text  PovrNaprezanjeTextTextMjerenje;
         InputField dubinaInputParametar = GameObject.Find("InputFieldDubinaZ").GetComponent<InputField>();
         InputField brojMjerenjaInputField = GameObject.Find("InputFieldBrojMjerenja").GetComponent<InputField>();
         InputField povrsinskoNaprezanje = GameObject.Find("InputFieldPovrsinskoNaprezanje").GetComponent<InputField>();
-
+        InputField brojSlojevaInput = GameObject.Find("InputFieldBrojSlojeva").GetComponent<InputField>();
 
 
 
@@ -234,6 +226,9 @@ public Text  PovrNaprezanjeTextTextMjerenje;
 programState.inkrementMjerenjaZ = 0.1f;
 programState.dubinaZ = 20f;
 programState.povrsinskoNaprezanje = povrNapr;
+
+programState.brojSlojeva = brojSlojeva;
+
 
 
         bool canConvertSirina = double.TryParse(sirinaInputB.text, out sirinaTemelja);
@@ -259,18 +254,37 @@ programState.povrsinskoNaprezanje = povrNapr;
         programState.povrsinskoNaprezanje =  povrNapr;
         }
 
+         
+        bool canConvertBrojSlojeva = Int32.TryParse(brojSlojevaInput.text, out brojSlojeva);
+        if (canConvertBrojSlojeva){
+        programState.brojSlojeva =  brojSlojeva;
+        }
+
+Debug.Log(programState.brojSlojeva+"Broj SlOkjeva");
 
 
 
 
         programState.sirinaKoordSustavaB =  Math.Ceiling(programState.sirinaB * 3)+(6-(programState.sirinaB%5));
         programState.duzinaKoordSustavaL = Math.Ceiling(programState.duzinaL * 3)+(6-(programState.duzinaL%5));
+}
 
-Debug.Log(programState.sirinaKoordSustavaB + "KOORDINATNI SUSTAV b");
 
-        if (programState.sirinaB != 0 && programState.duzinaL != 0 && programState.dubinaZ != 0 && programState.inkrementMjerenjaZ != 0 )
-        {
 
+    public void InitializeProgram()
+    {
+
+        //referenca na program manager u kojem su sačuvani parametri
+        GameObject programManager = GameObject.Find("ProgramManager");
+        ProgramState programState = programManager.GetComponent<ProgramState>();
+
+        // transform.Find("Text").GetComponent<Text>().text = text;
+
+
+
+       
+
+Debug.Log(programState.brojSlojeva+"gegergEE");
 programState.parametersDefined = true;
             //inicijalizacija definiranja temelja
 
@@ -392,7 +406,6 @@ PovrNaprezanjeTextTextMjerenje.text="Povr. napr.(kPa):"+programState.povrsinskoN
 
 
 
-        };
 
         Debug.Log("___________");
 

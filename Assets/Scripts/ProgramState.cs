@@ -11,12 +11,14 @@ public class ProgramState : MonoBehaviour
    public double duzinaL;
    public double dubinaZ;
 
+public int brojSlojeva;
 public double povrsinskoNaprezanje;
    public double sirinaKoordSustavaB;
 
    public double duzinaKoordSustavaL;
 
    public double maxIValue;
+
 
    public double inkrementMjerenjaZ;
    public Vector2 graphSize ;
@@ -36,7 +38,25 @@ public (List<double>depthList, List<double> valueList) SteinBrennerRezultatOdabr
 
    public  List<double> dodatnaNaprezanja;
 
+      public  List<double> youngModulPoDubini;
+
+
     public double[] koordinateIzracuna =  new double[2];
+      public double[] slojeviArray;
+      public double[] youngModulArray;
+
+
+  private RectTransform koordinatePanel;
+    void Start()
+    {
+        //Panel za input koordinata točke
+
+        koordinatePanel = GameObject.Find("OdredjenaTockaPanel").GetComponent<RectTransform>();
+        koordinatePanel.gameObject.SetActive(false);
+    }
+
+
+
 
       public void deleteCircles (){
 
