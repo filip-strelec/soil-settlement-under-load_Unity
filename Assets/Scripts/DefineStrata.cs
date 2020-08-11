@@ -113,7 +113,8 @@ GameObject.FindGameObjectWithTag("textStrata"+(clickedStrata+1)).GetComponent<Te
 
     public void ConfirmStrata()
     {
-        
+        bool everythingFine = true;
+        programState.youngDefined = everythingFine;
 
      brojSlojeva  = programState.brojSlojeva;
 
@@ -122,29 +123,41 @@ programState.slojeviArray = new double[programState.brojSlojeva];
 programState.youngModulArray = new double [programState.brojSlojeva];
 for (int i = 0; i<brojSlojeva; i++){
 
-programState.slojeviArray[i] = double.Parse( GameObject.FindGameObjectWithTag("textStrataInput"+(i+1)).GetComponent<InputField>().text);
+bool canCnoverSlojevi = double.TryParse(GameObject.FindGameObjectWithTag("textStrataInput"+(i+1)).GetComponent<InputField>().text, out double slojevi);
+
+programState.slojeviArray[i] =slojevi;
 
 
-programState.youngModulArray[i]= double.Parse( GameObject.FindGameObjectWithTag("textStrataYoungInput"+(i+1)).GetComponent<InputField>().text);
+
+ bool canCnoverYoung = double.TryParse( GameObject.FindGameObjectWithTag("textStrataYoungInput"+(i+1)).GetComponent<InputField>().text, out double young);
+
+if (everythingFine){
+
+    everythingFine = canCnoverSlojevi;
+    programState.youngDefined = everythingFine;
+}
+
+if (everythingFine){
+
+    everythingFine = canCnoverYoung;
+    programState.youngDefined = everythingFine;
+}
+
+ programState.youngModulArray[i]=young;
 }
 
 
 Debug.Log(programState.slojeviArray.Length);
 Debug.Log(programState.youngModulArray.Length);
 
-for (int i = 0; i < programState.slojeviArray.Length; i++)
-{
-    
 
-// Debug.Log(
-    
-//     programState.youngModulArray[i] + "sloj" +programState.slojeviArray[i]
+if (everythingFine){
 
-
-// );
+CanvasSlojevi.gameObject.SetActive(false);
+GameObject canvasParametri = GameObject.Find("CanvasParametri");
+            canvasParametri.SetActive(false);
 
 }
-CanvasSlojevi.gameObject.SetActive(false);
 
 
 

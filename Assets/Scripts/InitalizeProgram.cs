@@ -16,19 +16,22 @@ public class InitalizeProgram : MonoBehaviour
 
     
 
-    //komponente za graf naprezanja
+    //komponente za grafove 
 
     private RectTransform canvasGraphContainer;
+    private RectTransform canvasGraphContainerSoil;
+    private RectTransform canvasGraphContainerDeformation;
 
     private RectTransform windowGraph;
+    private RectTransform windowGraphSoil;
+    private RectTransform windowGraphDeformation;
+
     private RectTransform graphContainer;
+    private RectTransform graphContainerSoil;
+    private RectTransform graphContainerDeformation;
 
 
-    //komponente za graf slijeganja
 
-    private RectTransform canvasGraphContainerSoil;
-private RectTransform windowGraphSoil;
-private RectTransform graphContainerSoil;
 
     // Komponente za koordinatni sustav tlocrta
 
@@ -274,13 +277,14 @@ Debug.Log(programState.brojSlojeva+"Broj SlOkjeva");
     public void InitializeProgram()
     {
 
+
+
         //referenca na program manager u kojem su sačuvani parametri
         GameObject programManager = GameObject.Find("ProgramManager");
         ProgramState programState = programManager.GetComponent<ProgramState>();
 
         // transform.Find("Text").GetComponent<Text>().text = text;
-
-
+if (programState.youngDefined){
 
        
 
@@ -327,8 +331,7 @@ PovrNaprezanjeTextTextMjerenje.text="Povr. napr.(kPa):"+programState.povrsinskoN
 
             gumbZaRotacijuKamere.GetComponent<Image>().enabled = true;
 
-            GameObject canvasParametri = GameObject.Find("CanvasParametri");
-            canvasParametri.SetActive(false);
+            
 
 
 
@@ -352,17 +355,23 @@ PovrNaprezanjeTextTextMjerenje.text="Povr. napr.(kPa):"+programState.povrsinskoN
             axisContainerTlocrt.anchorMax = new Vector2(0.5f, 0.5f);
 
 
-            //definiranje dimenzija komponenata canvasa za Steinbrenner-a  i slijeganje (needs refactoring)
+            //definiranje dimenzija komponenata za grafove (needs refactoring)
 
 
             canvasGraphContainer = GameObject.Find("CanvasGraph").GetComponent<RectTransform>();
             canvasGraphContainerSoil = GameObject.Find("CanvasGraphSoil").GetComponent<RectTransform>();
+            canvasGraphContainerDeformation = GameObject.Find("CanvasGraphDeformation").GetComponent<RectTransform>();
+
 
             windowGraph = GameObject.Find("WindowGraph").GetComponent<RectTransform>();
             windowGraphSoil = GameObject.Find("WindowGraphSoil").GetComponent<RectTransform>();
+            windowGraphDeformation = GameObject.Find("WindowGraphDeformation").GetComponent<RectTransform>();
+
 
             graphContainer = GameObject.Find("GraphContainer").GetComponent<RectTransform>();
             graphContainerSoil = GameObject.Find("GraphContainerSoil").GetComponent<RectTransform>();
+            graphContainerDeformation = GameObject.Find("GraphContainerDeformation").GetComponent<RectTransform>();
+
 
 
 
@@ -378,6 +387,11 @@ PovrNaprezanjeTextTextMjerenje.text="Povr. napr.(kPa):"+programState.povrsinskoN
             graphContainerSoil.sizeDelta = programState.graphSize;
 
 
+            canvasGraphContainerDeformation.sizeDelta = programState.CanvasSize + new Vector2(1, 0); ;
+            windowGraphDeformation.sizeDelta = programState.CanvasSize + new Vector2(1, 0);
+            graphContainerDeformation.sizeDelta = programState.graphSize;
+
+
             //    graphContainer.anchoredPosition()
             graphContainer.anchorMin = new Vector2(0.5f, 0.5f);
             graphContainer.anchorMax = new Vector2(0.5f, 0.5f);
@@ -385,13 +399,18 @@ PovrNaprezanjeTextTextMjerenje.text="Povr. napr.(kPa):"+programState.povrsinskoN
             graphContainerSoil.anchorMin = new Vector2(0.5f, 0.5f);
             graphContainerSoil.anchorMax = new Vector2(0.5f, 0.5f);
 
+             graphContainerDeformation.anchorMin = new Vector2(0.5f, 0.5f);
+            graphContainerDeformation.anchorMax = new Vector2(0.5f, 0.5f);
+
 
             float xOffset = (float)((programState.CanvasSize[0] / 2 + programState.sirinaB / 2) + programState.dubinaZ * 0.35);
             float yOffset = (float)(-programState.graphSize[1] / 2);
             float zOffset = (float)(-programState.duzinaL / 2);
 
             canvasGraphContainer.position = new Vector3(xOffset, yOffset, zOffset);
-            canvasGraphContainerSoil.position = new Vector3(xOffset+programState.CanvasSize[0], yOffset, zOffset);
+            canvasGraphContainerSoil.position = new Vector3(xOffset+(2*programState.CanvasSize[0]), yOffset, zOffset);
+            canvasGraphContainerDeformation.position = new Vector3(xOffset+(programState.CanvasSize[0]), yOffset, zOffset);
+
 
 
 
@@ -425,4 +444,7 @@ PovrNaprezanjeTextTextMjerenje.text="Povr. napr.(kPa):"+programState.povrsinskoN
 
 
     }
+
+}
+
 }

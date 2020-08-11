@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\ScenePicker.cs" />
      <Compile Include="Assets\Scripts\SteinbrennerFormula.cs" />
      <Compile Include="Assets\Scripts\SteinbrennerGraf.cs" />
+     <Compile Include="Assets\Scripts\SteinbrennerGrafDeformacije.cs" />
      <Compile Include="Assets\Scripts\SteinbrennerGrafSlijeganje.cs" />
      <Compile Include="Assets\Scripts\TlocrtCamera.cs" />
  <Reference Include="Unity.Timeline.Editor">

@@ -6,7 +6,7 @@ using System;
 using System.Linq;
 
 
-public class SteinbrennerGrafSlijeganje : MonoBehaviour
+public class SteinbrennerGrafDeformacije : MonoBehaviour
 {
      public Sprite krugSprite;
     public RectTransform graphContainer;
@@ -47,8 +47,8 @@ public class SteinbrennerGrafSlijeganje : MonoBehaviour
     konacnaDubina = 0;
 
 
-    najvecaVrijednost = 0;
-    najmanjaVrijednost = 500000000;
+    najvecaVrijednost = -5000000000000;
+    najmanjaVrijednost = 5000000000000;
 
 
 GameObject programManager = GameObject.Find("ProgramManager");
@@ -71,7 +71,7 @@ if (i>konacnaDubina){
     }
 );
 
-programState.SteinBrennerRezultatOdabraneTocke.valueList.ForEach(i => 
+programState.relativneDeformacije.ForEach(i => 
     {
 
 // Debug.Log(i + "skoro gotovo");
@@ -96,7 +96,7 @@ Vector2 lastCircleGameObjectLocation= new Vector2(-10,-10);
 for(var i = 0; i < programState.SteinBrennerRezultatOdabraneTocke.depthList.Count; i ++){
     
  
-float xCoordinate = (float) (programState.SteinBrennerRezultatOdabraneTocke.valueList[i]/najvecaVrijednost)*programState.graphSize[0];
+float xCoordinate = (float) (programState.relativneDeformacije[i]/najvecaVrijednost)*programState.graphSize[0];
 float yCoordinate = (float) (programState.graphSize[1] - (programState.SteinBrennerRezultatOdabraneTocke.depthList[i]/konacnaDubina)*programState.graphSize[1]);
 
 // Debug.Log("xKOORDINATA:"+xCoordinate);
@@ -157,20 +157,19 @@ private void ShowValueListener (Vector2 anchoredPosition){
         return gameObject;
         
     }
-
 //redundant use (needs refactoring)
 private void hidePanel (){
 
 
-    GameObject panelTemplateClone = GameObject.Find("PanelTemplateValueSoil(Clone)");
+    GameObject panelTemplateClone = GameObject.Find("PanelTemplateValueDeformation(Clone)");
 
     Destroy (panelTemplateClone);
     valueShown= false;
 
 
 }
-//redundant use (needs refactoring)
 
+//redundant use (needs refactoring)
 private void showValue(Vector2 anchoredPosition){
 
 // PanelTemplateValue = GameObject.Find("PanelTemplateValue").GetComponent<RectTransform>();
@@ -185,7 +184,7 @@ ValuePanelRectTransform.anchoredPosition = anchoredPosition - new Vector2((float
 // ValuePanelRectTransform.localScale = new Vector2(programState.graphSize[0]*0.1f, programState.graphSize[1]*0.1f);
 ValuePanelRectTransform.sizeDelta = new Vector2(programState.graphSize[1]*.2f,programState.graphSize[1]*.2f);
 
-GameObject panelTemplateClone = GameObject.Find("PanelTemplateValueSoil(Clone)");
+GameObject panelTemplateClone = GameObject.Find("PanelTemplateValueDeformation(Clone)");
 Transform dubinaText =  panelTemplateClone.transform.Find("TextValueDubina");
 Transform naprezanjeText =  panelTemplateClone.transform.Find("TextValueI");
 
@@ -220,8 +219,8 @@ ProgramState programState = programManager.GetComponent<ProgramState>();
 // templateGridObject = GameObject.Find("GridTemplate").GetComponent<RectTransform>();
 templateGridObject.gameObject.SetActive(false);
 
-        labelTemplateX = graphContainer.Find("TextLabelTemplateXSoil").GetComponent<RectTransform>();
-        labelTemplateY = graphContainer.Find("TextLabelTemplateYSoil").GetComponent<RectTransform>();
+        labelTemplateX = graphContainer.Find("TextLabelTemplateXDeformation").GetComponent<RectTransform>();
+        labelTemplateY = graphContainer.Find("TextLabelTemplateYDeformation").GetComponent<RectTransform>();
 
         //Dobiveno curve fit metodom
 double labelsScale =0.02643327*programState.graphSize[1] - 0.04642976;
@@ -293,9 +292,10 @@ if (i*(dubinaDjeljivaSPet/10)<dubina){
 
     labelYText = i*(dubinaDjeljivaSPet/10);
         labelYYposition = dubina - (float) (i/10f*(dubinaDjeljivaSPet));
-         if (labelYYposition>najbliziZadnjem && labelYYposition<3){
+             if (labelYYposition>najbliziZadnjem && labelYYposition<3){
 najbliziZadnjem = labelYYposition;
       }
+      
 }
 
 
@@ -307,7 +307,7 @@ else{
 }
         }
 
-         else{
+            else{
       labelYText =  dubina;
 
       if ( najbliziZadnjem<2.5){
@@ -321,7 +321,6 @@ else{
  
 
         }
-
 
   
 

@@ -11,7 +11,10 @@ public class TlocrtCamera : MonoBehaviour
     public float kameraYOffset;
     public Camera glavnaKamera;
     public RectTransform canvasGraphContainer;
-        public RectTransform canvasGraphContainerSoil;
+    public RectTransform canvasGraphContainerSoil;
+
+    public RectTransform canvasGraphContainerDeformation;
+
 
 
     public RectTransform canvasAxisContainerTlocrt;
@@ -23,8 +26,16 @@ public class TlocrtCamera : MonoBehaviour
 
     public void ChangeCamera()
     {
- GameObject programManager = GameObject.Find("ProgramManager");
+
+         GameObject programManager = GameObject.Find("ProgramManager");
         ProgramState programState = programManager.GetComponent<ProgramState>();
+if (programState.youngDefined){
+
+
+
+
+
+
  if ( programState.parametersDefined == true){
        
 
@@ -55,6 +66,8 @@ public class TlocrtCamera : MonoBehaviour
             programState.kameraOnTlocrt = true;
             canvasGraphContainer.gameObject.SetActive(false);
             canvasGraphContainerSoil.gameObject.SetActive(false);
+            canvasGraphContainerDeformation.gameObject.SetActive(false);
+
             canvasAxisContainerTlocrt.gameObject.SetActive(true);
 
             koordinatePanel.gameObject.SetActive(true);
@@ -75,6 +88,8 @@ public class TlocrtCamera : MonoBehaviour
             programState.kameraOnTlocrt = false;
             canvasGraphContainer.gameObject.SetActive(true);
             canvasGraphContainerSoil.gameObject.SetActive(true);
+            canvasGraphContainerDeformation.gameObject.SetActive(true);
+
             canvasAxisContainerTlocrt.gameObject.SetActive(false);
             koordinatePanel.gameObject.SetActive(false);
          koordinatePanelMjerenje.gameObject.SetActive(true);
@@ -85,5 +100,12 @@ public class TlocrtCamera : MonoBehaviour
 
         }
 }
+ 
+ 
+ 
+ 
+
+}
+
     }
 }

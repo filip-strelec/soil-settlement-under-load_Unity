@@ -33,12 +33,14 @@ public double povrsinskoNaprezanje;
       public Sprite krugSprite;
     public RectTransform axisContainer;
 
+   public bool youngDefined;
 
 public (List<double>depthList, List<double> valueList) SteinBrennerRezultatOdabraneTocke;
 
    public  List<double> dodatnaNaprezanja;
+   public  List<double> youngModulPoDubini;
 
-      public  List<double> youngModulPoDubini;
+   public List <double> relativneDeformacije;
 
 
     public double[] koordinateIzracuna =  new double[2];
