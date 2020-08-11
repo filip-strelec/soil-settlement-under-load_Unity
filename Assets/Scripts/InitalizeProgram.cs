@@ -408,8 +408,8 @@ PovrNaprezanjeTextTextMjerenje.text="Povr. napr.(kPa):"+programState.povrsinskoN
             float zOffset = (float)(-programState.duzinaL / 2);
 
             canvasGraphContainer.position = new Vector3(xOffset, yOffset, zOffset);
-            canvasGraphContainerSoil.position = new Vector3(xOffset+(2*programState.CanvasSize[0]), yOffset, zOffset);
-            canvasGraphContainerDeformation.position = new Vector3(xOffset+(programState.CanvasSize[0]), yOffset, zOffset);
+            canvasGraphContainerSoil.position = new Vector3(xOffset+(2*(programState.CanvasSize[0]+1)), yOffset, zOffset);
+            canvasGraphContainerDeformation.position = new Vector3(xOffset+(programState.CanvasSize[0]+1), yOffset, zOffset);
 
 
 

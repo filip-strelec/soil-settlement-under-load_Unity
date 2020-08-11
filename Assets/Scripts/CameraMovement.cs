@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class CameraMovement : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float panSpeed = 420f;
+    public float panSpeed;
     
         ProgramState programState ;
 
@@ -16,7 +16,7 @@ public class CameraMovement : MonoBehaviour
            GameObject programManager = GameObject.Find("ProgramManager");
 
            programState = programManager.GetComponent<ProgramState>();
-
+panSpeed = (float)(programState.dubinaZ*100);
 
 
     }
