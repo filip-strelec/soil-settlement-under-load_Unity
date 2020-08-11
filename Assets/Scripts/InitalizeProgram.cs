@@ -329,7 +329,7 @@ PovrNaprezanjeTextTextMjerenje.text="Povr. napr.(kPa):"+programState.povrsinskoN
             tlo.GetComponent<MeshRenderer>().material = dryGroundMaterial;
             tlo.GetComponent<BoxCollider>().enabled = false;
 
-            gumbZaRotacijuKamere.GetComponent<Image>().enabled = true;
+            gumbZaRotacijuKamere.gameObject.SetActive(true);
 
             
 

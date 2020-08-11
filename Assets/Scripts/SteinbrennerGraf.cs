@@ -331,6 +331,8 @@ programState.SteinBrennerRezultatOdabraneTocke.valueList = SteinBrennerRezultat.
 programState.dodatnaNaprezanja = new List<double>();
 programState.youngModulPoDubini = new List<double>();
 programState.relativneDeformacije = new List<double>();
+programState.ukupnoSlijeganje = new List<double>();
+
 for (int i = 0; i <SteinBrennerRezultat.valueList.Count; i++){
 
 
@@ -368,6 +370,9 @@ programState.youngModulPoDubini.Add(currentYoung);
 }
 
 
+
+
+
 for (int i = 0; i <programState.dodatnaNaprezanja.Count; i++){
 
 
@@ -379,16 +384,52 @@ programState.relativneDeformacije.Add(programState.dodatnaNaprezanja[i] / progra
 // Debug.Log(programState.SteinBrennerRezultatOdabraneTocke.depthList[i]+"Dubina");
 
 
-{
-    
-}
 
 }
 
 
+
+
+double currentSoilSettlement = 0;
+// Debug.Log(currentSoilSettlement);
+
+
+for (int i = programState.youngModulPoDubini.Count-1; i >= 0; i--){
+
+Debug.Log(programState.inkrementMjerenjaZ);
+
+double deltaSettlement = programState.relativneDeformacije[i]*programState.inkrementMjerenjaZ;
+currentSoilSettlement +=deltaSettlement ;
+programState.ukupnoSlijeganje.Add(currentSoilSettlement*100);
+
+
+
+}
+
+
+for (int i = 0; i <programState.ukupnoSlijeganje.Count; i++){
+
+
+double currentSlijeganje = programState.ukupnoSlijeganje[(programState.ukupnoSlijeganje.Count-1)-i];
+
+programState.ukupnoSlijeganje.RemoveAt((programState.ukupnoSlijeganje.Count-1)-i);
+programState.ukupnoSlijeganje.Add(currentSlijeganje);
+
+
+
+}
+
+
+
+Debug.Log(programState.ukupnoSlijeganje.Count);
+Debug.Log(programState.youngModulPoDubini.Count);
+Debug.Log(programState.dodatnaNaprezanja.Count);
+Debug.Log(programState.relativneDeformacije.Count);
 
 SteinBrennerRezultat.depthList.ForEach(i => 
     {
+      
+   
 if (i>konacnaDubina){
     konacnaDubina = (double)i;
 // Debug.Log(konacnaDubina+"konacna dubina");
@@ -427,22 +468,22 @@ programState.maxIValue = 0.1;
 
     }
 
-    else if (i<0.25){
-najvecaVrijednost = 0.25;
-programState.maxIValue = 0.25;
+    else if (i<1){
+najvecaVrijednost = 1;
+programState.maxIValue = 1;
 
     }
 
-        else if (i<0.50){
-najvecaVrijednost = 0.50;
-programState.maxIValue = 0.50;
+        else if (i<3){
+najvecaVrijednost = 3;
+programState.maxIValue = 3;
 
     }
 
 
     else{
-    najvecaVrijednost = (double)Math.Ceiling(i);
-    programState.maxIValue = Math.Ceiling(i);
+    najvecaVrijednost = (double)Math.Ceiling(i)+(5-Math.Ceiling(i)%5);
+    programState.maxIValue = (double)Math.Ceiling(i)+(5-(Math.Ceiling(i)%5));
 }
         }
 

@@ -26,7 +26,9 @@ public class TlocrtCamera : MonoBehaviour
 
     public void ChangeCamera()
     {
+ GameObject panelTemplateClone = GameObject.Find("PanelTemplateValueDeformation(Clone)");
 
+    Destroy (panelTemplateClone);
          GameObject programManager = GameObject.Find("ProgramManager");
         ProgramState programState = programManager.GetComponent<ProgramState>();
 if (programState.youngDefined){

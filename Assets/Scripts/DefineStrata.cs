@@ -37,7 +37,7 @@ double maxCurrentLayerDepth;
         RectTransform inputYoungModule = CanvasSlojevi.Find("InputFieldYoungModul").GetComponent<RectTransform>();
 
 int textSlojAnchorOffset = -270;
-int textYoungModuleAnchorOffset = 17;
+// int textYoungModuleAnchorOffset = 17;
 int inputSlojAnchorOffset = -70;
 int inputFieldYoungModuleAnchorOffset = 213;
 
@@ -63,9 +63,25 @@ for (int i = 0; i<brojSlojeva; i++){
    if  (programState.sirinaB != 0 && programState.duzinaL != 0 && programState.brojSlojeva <= 9)
         {
 
-     InitStrataInput(textSloj, textSlojAnchorOffset, i, "|"+(i+1)+ ". sloj(m)| Od:0 Do:", "textStrata"+(i+1));
-InitStrataInput(textYoungModule, textYoungModuleAnchorOffset, i, "Youngov modul E:", "textStrata"+(i+1));
-InitStrataInput( inputSloj, inputSlojAnchorOffset, i, "", "textStrataInput"+(i+1));
+
+
+   
+// InitStrataInput(textYoungModule, textYoungModuleAnchorOffset, i, "Youngov modul E:", "textStrata"+(i+1));
+
+
+
+if (i!=brojSlojeva-1){InitStrataInput( inputSloj, inputSlojAnchorOffset, i, "", "textStrataInput"+(i+1));
+
+  InitStrataInput(textSloj, textSlojAnchorOffset, i, "|"+(i+1)+ ". (m)| 0 -", "textStrata"+(i+1));
+
+
+}
+else{
+
+  InitStrataInput(textSloj, textSlojAnchorOffset, i, "|"+(i+1)+ ". (m)| 0 -"+programState.dubinaZ, "textStrata"+(i+1));
+
+
+}
 InitStrataInput( inputYoungModule, inputFieldYoungModuleAnchorOffset, i, "", "textStrataYoungInput"+(i+1));
 
       
@@ -105,14 +121,24 @@ CurrentInput.GetComponent<InputField>().text =programState.dubinaZ.ToString();
 }
 maxCurrentLayerDepth = inputNumber;
 
-if(clickedStrata != programState.brojSlojeva){
+if(clickedStrata < programState.brojSlojeva-1){
     
-GameObject.FindGameObjectWithTag("textStrata"+(clickedStrata+1)).GetComponent<Text>().text="|"+(clickedStrata+1)+". sloj(m)| Od:"+inputNumber.ToString("0.00")+" Do:";
+GameObject.FindGameObjectWithTag("textStrata"+(clickedStrata+1)).GetComponent<Text>().text="|"+(clickedStrata+1)+". (m)| "+inputNumber.ToString("0.00")+" -";
+}
+
+
+ else {
+
+GameObject.FindGameObjectWithTag("textStrata"+(clickedStrata+1)).GetComponent<Text>().text="|"+(clickedStrata+1)+". (m)| "+inputNumber.ToString("0.00")+" -"+" "+ programState.dubinaZ;
+
+
 }
 }
 
+
     public void ConfirmStrata()
-    {
+    {  programManager = GameObject.Find("ProgramManager");
+        programState = programManager.GetComponent<ProgramState>();
         bool everythingFine = true;
         programState.youngDefined = everythingFine;
 
@@ -123,12 +149,22 @@ programState.slojeviArray = new double[programState.brojSlojeva];
 programState.youngModulArray = new double [programState.brojSlojeva];
 for (int i = 0; i<brojSlojeva; i++){
 
-bool canCnoverSlojevi = double.TryParse(GameObject.FindGameObjectWithTag("textStrataInput"+(i+1)).GetComponent<InputField>().text, out double slojevi);
+ bool canCnoverSlojevi;
+
+
+if (i!=brojSlojeva-1){
+     canCnoverSlojevi = double.TryParse(GameObject.FindGameObjectWithTag("textStrataInput"+(i+1)).GetComponent<InputField>().text, out double slojevi);
 
 programState.slojeviArray[i] =slojevi;
 
+}
+
+else{
+ canCnoverSlojevi = true;
+programState.slojeviArray[i] =programState.dubinaZ;
 
 
+}
  bool canCnoverYoung = double.TryParse( GameObject.FindGameObjectWithTag("textStrataYoungInput"+(i+1)).GetComponent<InputField>().text, out double young);
 
 if (everythingFine){
@@ -144,6 +180,9 @@ if (everythingFine){
 }
 
  programState.youngModulArray[i]=young;
+
+
+ Debug.Log("mislim da sam gotov"+ programState.slojeviArray[i]);
 }
 
 

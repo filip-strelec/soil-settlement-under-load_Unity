@@ -71,7 +71,7 @@ if (i>konacnaDubina){
     }
 );
 
-programState.SteinBrennerRezultatOdabraneTocke.valueList.ForEach(i => 
+programState.ukupnoSlijeganje.ForEach(i => 
     {
 
 // Debug.Log(i + "skoro gotovo");
@@ -79,13 +79,41 @@ programState.SteinBrennerRezultatOdabraneTocke.valueList.ForEach(i =>
 
 
 if (i>najvecaVrijednost){
-      
-     if (i<0.001){
+
+
+ 
+    if (i<0.001){
 
 najvecaVrijednost = 0.001;
 programState.maxIValue = 0.001;
 
     }
+
+
+  else   if (i<0.003){
+
+najvecaVrijednost = 0.003;
+programState.maxIValue = 0.003;
+
+    }
+
+    
+  else   if (i<0.005){
+
+najvecaVrijednost = 0.005;
+programState.maxIValue = 0.005;
+
+    }
+
+
+
+  else   if (i<0.008){
+
+najvecaVrijednost = 0.008;
+programState.maxIValue = 0.008;
+
+    }
+
 
     else   if (i<0.01){
 
@@ -93,6 +121,33 @@ najvecaVrijednost = 0.01;
 programState.maxIValue = 0.01;
 
     }
+
+
+   
+  else   if (i<0.03){
+
+najvecaVrijednost = 0.03;
+programState.maxIValue = 0.03;
+
+    }
+
+    
+  else   if (i<0.05){
+
+najvecaVrijednost = 0.05;
+programState.maxIValue = 0.05;
+
+    }
+
+
+
+  else   if (i<0.08){
+
+najvecaVrijednost = 0.08;
+programState.maxIValue = 0.08;
+
+    }
+
     
    else if (i<0.1){
 
@@ -101,7 +156,7 @@ programState.maxIValue = 0.1;
 
     }
 
-    else if (i<0.25){
+    else if (i<0.3){
 najvecaVrijednost = 0.25;
 programState.maxIValue = 0.25;
 
@@ -113,10 +168,23 @@ programState.maxIValue = 0.50;
 
     }
 
+   else if (i<1){
+najvecaVrijednost = 1;
+programState.maxIValue = 1;
+
+    }
+
+        else if (i<3){
+najvecaVrijednost = 3;
+programState.maxIValue = 3;
+
+    }
+
+
 
     else{
-    najvecaVrijednost = (double)Math.Ceiling(i);
-    programState.maxIValue = Math.Ceiling(i);
+    najvecaVrijednost = (double)Math.Ceiling(i)+(5-Math.Ceiling(i)%5);
+    programState.maxIValue = (double)Math.Ceiling(i)+(5-(Math.Ceiling(i)%5));
 }
         }
 
@@ -134,7 +202,7 @@ Vector2 lastCircleGameObjectLocation= new Vector2(-10,-10);
 for(var i = 0; i < programState.SteinBrennerRezultatOdabraneTocke.depthList.Count; i ++){
     
  
-float xCoordinate = (float) (programState.SteinBrennerRezultatOdabraneTocke.valueList[i]/najvecaVrijednost)*programState.graphSize[0];
+float xCoordinate = (float) (programState.ukupnoSlijeganje[i]/najvecaVrijednost)*programState.graphSize[0];
 float yCoordinate = (float) (programState.graphSize[1] - (programState.SteinBrennerRezultatOdabraneTocke.depthList[i]/konacnaDubina)*programState.graphSize[1]);
 
 // Debug.Log("xKOORDINATA:"+xCoordinate);
@@ -221,7 +289,7 @@ ValuePanelRectTransform.SetParent(graphContainer, false);
 ValuePanelRectTransform.gameObject.SetActive(true);
 ValuePanelRectTransform.anchoredPosition = anchoredPosition - new Vector2((float)(konacnaDubina*0.1),0);
 // ValuePanelRectTransform.localScale = new Vector2(programState.graphSize[0]*0.1f, programState.graphSize[1]*0.1f);
-ValuePanelRectTransform.sizeDelta = new Vector2(programState.graphSize[1]*.2f,programState.graphSize[1]*.2f);
+ValuePanelRectTransform.sizeDelta = new Vector2(programState.graphSize[1]*.4f,programState.graphSize[1]*.4f);
 
 GameObject panelTemplateClone = GameObject.Find("PanelTemplateValueSoil(Clone)");
 Transform dubinaText =  panelTemplateClone.transform.Find("TextValueDubina");
@@ -229,7 +297,7 @@ Transform naprezanjeText =  panelTemplateClone.transform.Find("TextValueI");
 
 
 dubinaText.GetComponent<Text>().text = "z(m):"+(programState.graphSize[1]- anchoredPosition[1]).ToString("0.00");
-naprezanjeText.GetComponent<Text>().text = "i:"+((anchoredPosition[0]/programState.graphSize[0])*najvecaVrijednost).ToString("0.0000");
+naprezanjeText.GetComponent<Text>().text = "s(cm):"+((anchoredPosition[0]/programState.graphSize[0])*najvecaVrijednost).ToString("0.000");
 
 double labelsScale =0.02643327*programState.graphSize[1] - 0.04642976;
   if (labelsScale < 0.05){
@@ -286,7 +354,22 @@ for (int i = 0; i<=5; i++){
 
         }
 
-        else{        labelX.GetComponent<Text>().text=labelXText.ToString("0.00");
+            else{     
+            if ( labelXText>1){
+
+labelX.GetComponent<Text>().text=labelXText.ToString("0.0");
+            }
+               else if (labelXText> 0.1){
+labelX.GetComponent<Text>().text=labelXText.ToString("0.00");
+
+
+               }
+
+               else{
+labelX.GetComponent<Text>().text=labelXText.ToString("0.00");
+
+
+               }
         
 }
         float labelXXposition = (i/5f*programState.graphSize[0]);

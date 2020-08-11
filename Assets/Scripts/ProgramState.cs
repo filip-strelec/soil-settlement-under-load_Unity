@@ -28,7 +28,7 @@ public double povrsinskoNaprezanje;
     public GameObject temeljCollider;
 
     public bool parametersDefined = false;
-
+private bool valueShown = false;
     
       public Sprite krugSprite;
     public RectTransform axisContainer;
@@ -41,6 +41,8 @@ public (List<double>depthList, List<double> valueList) SteinBrennerRezultatOdabr
    public  List<double> youngModulPoDubini;
 
    public List <double> relativneDeformacije;
+
+   public List <double> ukupnoSlijeganje;
 
 
     public double[] koordinateIzracuna =  new double[2];
