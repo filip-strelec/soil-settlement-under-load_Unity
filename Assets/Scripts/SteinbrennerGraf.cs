@@ -729,7 +729,7 @@ else{
         else{
       labelYText =  dubina;
 
-      if ( najbliziZadnjem<2.5){
+      if ( najbliziZadnjem<2){
 
   labelYYposition =dubina*44 ;
 
