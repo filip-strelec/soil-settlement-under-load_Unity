@@ -55,8 +55,8 @@ public (List<double>depthList, List<double> valueList) SteinBrennerRezultatOdabr
     {
         //Panel za input koordinata točke
 
-        koordinatePanel = GameObject.Find("OdredjenaTockaPanel").GetComponent<RectTransform>();
-        koordinatePanel.gameObject.SetActive(false);
+      //   koordinatePanel = GameObject.Find("OdredjenaTockaPanel").GetComponent<RectTransform>();
+      //   koordinatePanel.gameObject.SetActive(false);
     }
 
 

@@ -62,9 +62,13 @@ public Text dubinaZTextTextMjerenje;
 public Text  InkrementMjerenjaTextTextMjerenje;
 
 public Text  PovrNaprezanjeTextTextMjerenje;
+public GameObject CanvasButtons;
 
+public void showButtonPanels (){
 
+CanvasButtons.gameObject.SetActive(true);
 
+}
 
 
 

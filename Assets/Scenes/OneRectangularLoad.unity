@@ -2082,6 +2082,7 @@ MonoBehaviour:
   dubinaZTextTextMjerenje: {fileID: 1206819918}
   InkrementMjerenjaTextTextMjerenje: {fileID: 141144538}
   PovrNaprezanjeTextTextMjerenje: {fileID: 113521590}
+  CanvasButtons: {fileID: 0}
 --- !u!114 &400357023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5670,6 +5671,7 @@ MonoBehaviour:
   dubinaZTextTextMjerenje: {fileID: 1206819918}
   InkrementMjerenjaTextTextMjerenje: {fileID: 141144538}
   PovrNaprezanjeTextTextMjerenje: {fileID: 113521590}
+  CanvasButtons: {fileID: 1487279871}
 --- !u!114 &1149048451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5724,8 +5726,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1977583887}
-        m_MethodName: ChangeCamera
+      - m_Target: {fileID: 1149048450}
+        m_MethodName: showButtonPanels
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5734,7 +5736,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
       - m_Target: {fileID: 1700306354}
         m_MethodName: DefineStrataInit
         m_Mode: 1
@@ -7350,7 +7352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1487279872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7899,6 +7901,7 @@ MonoBehaviour:
   dubinaZTextTextMjerenje: {fileID: 1206819918}
   InkrementMjerenjaTextTextMjerenje: {fileID: 141144538}
   PovrNaprezanjeTextTextMjerenje: {fileID: 113521590}
+  CanvasButtons: {fileID: 0}
 --- !u!114 &1605637242
 MonoBehaviour:
   m_ObjectHideFlags: 0
