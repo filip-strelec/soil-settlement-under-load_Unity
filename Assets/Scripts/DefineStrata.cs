@@ -203,7 +203,7 @@ if (everythingFine){
  programState.youngModulArray[i]=young;
 
 
- Debug.Log("mislim da sam gotov"+ programState.slojeviArray[i]);
+
 }
 
 

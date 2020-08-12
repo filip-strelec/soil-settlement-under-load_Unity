@@ -66,7 +66,18 @@ public GameObject CanvasButtons;
 
 public void showButtonPanels (){
 
-CanvasButtons.gameObject.SetActive(true);
+    GameObject programManager = GameObject.Find("ProgramManager");
+        ProgramState programState = programManager.GetComponent<ProgramState>();
+
+ if  (programState.sirinaB != 0 && programState.duzinaL != 0 && programState.brojSlojeva <= 9)
+        {
+
+      CanvasButtons.gameObject.SetActive(true);
+      
+          }
+
+
+
 
 }
 
