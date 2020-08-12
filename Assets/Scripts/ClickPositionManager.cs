@@ -56,7 +56,7 @@ definedDotByClick=false;
 
 public void changeXCoordinate(){
 
-if(definedDotByClick==false){
+
 
  bool canConvertKoordinataX = double.TryParse(koordinataXInputField.text, out double koordinataXIzracuna);
   bool canConvertKoordinataY = double.TryParse(koordinataYInputField.text, out double koordinataYIzracuna);
@@ -65,13 +65,13 @@ if(definedDotByClick==false){
         programState.koordinateIzracuna[1]  = koordinataYIzracuna;
         programState.deleteCircles();
         programState.createCircles();
-}
+
 
 }
 
 public void changeYCoordinate(){
 
-if(definedDotByClick==false){
+
 
  bool canConvertKoordinataX = double.TryParse(koordinataXInputField.text, out double koordinataXIzracuna);
   bool canConvertKoordinataY = double.TryParse(koordinataYInputField.text, out double koordinataYIzracuna);
@@ -81,7 +81,7 @@ if(definedDotByClick==false){
 
         programState.deleteCircles();
         programState.createCircles();
-}
+
 
 }
 
