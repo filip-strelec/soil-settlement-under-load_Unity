@@ -24,7 +24,7 @@ public double povrsinskoNaprezanje;
    public Vector2 graphSize ;
    public Vector2 CanvasSize;
     public bool kameraOnTlocrt = false;
-
+public bool initialStart;
     public GameObject temeljCollider;
 
     public bool parametersDefined = false;

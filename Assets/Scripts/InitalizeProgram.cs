@@ -282,7 +282,7 @@ Debug.Log(programState.brojSlojeva+"Broj SlOkjeva");
         //referenca na program manager u kojem su sačuvani parametri
         GameObject programManager = GameObject.Find("ProgramManager");
         ProgramState programState = programManager.GetComponent<ProgramState>();
-
+programState.initialStart = true;
         // transform.Find("Text").GetComponent<Text>().text = text;
 if (programState.youngDefined){
 
@@ -438,7 +438,8 @@ PovrNaprezanjeTextTextMjerenje.text="Povr. napr.(kPa):"+programState.povrsinskoN
 
 
 
-
+GameObject canvasParametri = GameObject.Find("CanvasParametri");
+            canvasParametri.SetActive(false);
 
 
 

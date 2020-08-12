@@ -12,12 +12,33 @@ public class DefineStrata : MonoBehaviour
     public RectTransform CanvasSlojevi;
 
     GameObject programManager;
+    public GameObject newButton;
     
 double maxCurrentLayerDepth;
+
 
     ProgramState programState;
      int brojSlojeva ;
 
+public GameObject initialButton;
+
+
+public void ShowStrata(){
+
+
+      programManager = GameObject.Find("ProgramManager");
+        programState = programManager.GetComponent<ProgramState>();
+if (initialButton.gameObject.activeSelf){
+    initialButton.gameObject.SetActive(false);
+}
+        CanvasSlojevi.gameObject.SetActive(true);
+
+        newButton.gameObject.SetActive(true);
+        Debug.Log("test");
+programState.initialStart=true;
+
+
+}
     public void DefineStrataInit()
     { 
         maxCurrentLayerDepth=0;
@@ -190,11 +211,10 @@ Debug.Log(programState.slojeviArray.Length);
 Debug.Log(programState.youngModulArray.Length);
 
 
-if (everythingFine){
+if (everythingFine ){
 
 CanvasSlojevi.gameObject.SetActive(false);
-GameObject canvasParametri = GameObject.Find("CanvasParametri");
-            canvasParametri.SetActive(false);
+
 
 }
 
