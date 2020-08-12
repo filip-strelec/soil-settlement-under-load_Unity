@@ -157,14 +157,14 @@ programState.maxIValue = 0.1;
     }
 
     else if (i<0.3){
-najvecaVrijednost = 0.25;
-programState.maxIValue = 0.25;
+najvecaVrijednost = 0.3;
+programState.maxIValue = 0.3;
 
     }
 
-        else if (i<0.50){
-najvecaVrijednost = 0.50;
-programState.maxIValue = 0.50;
+        else if (i<0.70){
+najvecaVrijednost = 0.70;
+programState.maxIValue = 0.70;
 
     }
 
