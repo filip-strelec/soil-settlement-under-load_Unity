@@ -331,6 +331,9 @@ PovrNaprezanjeTextTextMjerenje.text="Povr. napr.(kPa):"+programState.povrsinskoN
             temelj.GetComponent<MeshRenderer>().material = foundationMaterial;
             temelj.GetComponent<BoxCollider>().enabled = false;
 
+
+          
+
             programState.temeljCollider = GameObject.CreatePrimitive(PrimitiveType.Cube);
             programState.temeljCollider.transform.localPosition = new Vector3(0, 0, 0);
             programState.temeljCollider.transform.localScale = new Vector3((float)programState.sirinaKoordSustavaB, 0.15f, (float)programState.duzinaKoordSustavaL);
@@ -343,10 +346,33 @@ PovrNaprezanjeTextTextMjerenje.text="Povr. napr.(kPa):"+programState.povrsinskoN
             tlo.transform.localScale = new Vector3((float)programState.sirinaB, (float)programState.dubinaZ, (float)programState.duzinaL);
             tlo.GetComponent<MeshRenderer>().material = dryGroundMaterial;
             tlo.GetComponent<BoxCollider>().enabled = false;
+Debug.Log(programState.slojeviArray[0]+"u nadi je spas");
+
+         GameObject canvasDubina = GameObject.Find("CanvasDubina");
+            canvasDubina.transform.localPosition = new Vector3(0, -(float)programState.dubinaZ / 2,  (float)(-0.5*programState.duzinaL));
+            canvasDubina.transform.localScale = new Vector2((float)programState.sirinaB, (float)programState.dubinaZ);
+
+
+  RectTransform slojGrid = GameObject.Find("SlojGrid").GetComponent<RectTransform>();
+  RectTransform panelSlojGrid = GameObject.Find("PanelSlojGrid").GetComponent<RectTransform>();
+
+  for (int i = 0; i < programState.slojeviArray.Length; i++)
+  {
+      RectTransform sloj = Instantiate(slojGrid.GetComponent<RectTransform>());
+
+      sloj.SetParent(panelSlojGrid,false);
+        sloj.gameObject.SetActive(true);
+  sloj.transform.position = new Vector2(0,-(float)(programState.slojeviArray[i]-(0.02*programState.dubinaZ)));
+  sloj.transform.localScale = new Vector2((float)1, (float)0.02);
+
+
+
+  }
 
             gumbZaRotacijuKamere.gameObject.SetActive(true);
 
-            
+                        
+
 
 
 
