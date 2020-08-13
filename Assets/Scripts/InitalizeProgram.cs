@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using System;
-
+using System.Linq;
 public class InitalizeProgram : MonoBehaviour
 {
     public Material dryGroundMaterial;
@@ -353,21 +352,6 @@ Debug.Log(programState.slojeviArray[0]+"u nadi je spas");
             canvasDubina.transform.localScale = new Vector2((float)programState.sirinaB, (float)programState.dubinaZ);
 
 
-  RectTransform slojGrid = GameObject.Find("SlojGrid").GetComponent<RectTransform>();
-  RectTransform panelSlojGrid = GameObject.Find("PanelSlojGrid").GetComponent<RectTransform>();
-
-  for (int i = 0; i < programState.slojeviArray.Length; i++)
-  {
-      RectTransform sloj = Instantiate(slojGrid.GetComponent<RectTransform>());
-
-      sloj.SetParent(panelSlojGrid,false);
-        sloj.gameObject.SetActive(true);
-  sloj.transform.position = new Vector2(0,-(float)(programState.slojeviArray[i]-(0.02*programState.dubinaZ)));
-  sloj.transform.localScale = new Vector2((float)1, (float)0.02);
-
-
-
-  }
 
             gumbZaRotacijuKamere.gameObject.SetActive(true);
 

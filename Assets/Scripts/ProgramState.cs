@@ -28,7 +28,7 @@ public bool initialStart;
     public GameObject temeljCollider;
 
     public bool parametersDefined = false;
-private bool valueShown = false;
+
     
       public Sprite krugSprite;
     public RectTransform axisContainer;

@@ -344,6 +344,41 @@ programState.dodatnaNaprezanja.Add(SteinBrennerRezultat.valueList[i] * programSt
 
 
 
+  RectTransform slojGrid = GameObject.Find("SlojGrid").GetComponent<RectTransform>();
+  RectTransform panelSlojGrid = GameObject.Find("PanelSlojGrid").GetComponent<RectTransform>();
+double depthBefore =0;
+
+  for (int i = 0; i < programState.slojeviArray.Length; i++)
+  {
+      RectTransform sloj = Instantiate(slojGrid.GetComponent<RectTransform>());
+
+      sloj.SetParent(panelSlojGrid,false);
+        sloj.gameObject.SetActive(true);
+  sloj.transform.position = new Vector2(0,-(float)(depthBefore));
+  sloj.transform.localScale = new Vector2((float)1,(float) ((programState.slojeviArray[i]-depthBefore)/programState.dubinaZ));
+sloj.GetComponent<Image>().color=new Color32((byte)(78+20*i),(byte)(100-8*i),48,230);
+sloj.tag="deleteGraphStuff";
+depthBefore=programState.slojeviArray[i];
+
+
+ RectTransform linijaSloja = Instantiate(slojGrid.GetComponent<RectTransform>());
+
+      linijaSloja.SetParent(panelSlojGrid,false);
+        linijaSloja.gameObject.SetActive(true);
+  linijaSloja.transform.position = new Vector2(0,-(float)(programState.slojeviArray[i]-(0.005*programState.dubinaZ)));
+  linijaSloja.transform.localScale = new Vector2((float)1, (float)0.005);
+linijaSloja.tag="deleteGraphStuff";
+
+Debug.Log(programState.slojeviArray[i]);
+
+
+  }
+
+
+
+
+
+
 
 for (int i = 0; i < SteinBrennerRezultat.depthList.Count; i++){
 
