@@ -277,13 +277,12 @@ programState.brojSlojeva = brojSlojeva;
         programState.brojSlojeva =  brojSlojeva;
         }
 
-Debug.Log(programState.brojSlojeva+"Broj SlOkjeva");
 
 
 
 
-        programState.sirinaKoordSustavaB =  Math.Ceiling(programState.sirinaB * 3)+(6-(programState.sirinaB%5));
-        programState.duzinaKoordSustavaL = Math.Ceiling(programState.duzinaL * 3)+(6-(programState.duzinaL%5));
+        programState.sirinaKoordSustavaB =  Math.Ceiling(programState.sirinaB * 3)+(5-(Math.Ceiling(programState.sirinaB * 3)%5));
+        programState.duzinaKoordSustavaL = Math.Ceiling(programState.duzinaL * 3)+(5-(Math.Ceiling(programState.sirinaB * 3)%5));
 }
 
 
