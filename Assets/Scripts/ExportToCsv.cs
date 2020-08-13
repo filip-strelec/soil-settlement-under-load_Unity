@@ -46,16 +46,23 @@ ProgramState programState = programManager.GetComponent<ProgramState>();
 
 
            sw.WriteLine("Vrijednosti Odabrane tocke zadanog temelja");
-                       sw.WriteLine("Z,i,Duzina temelja, Sirina temelja, Dubina mjerenja, Koordinata tocke, Vrijeme");
+                       sw.WriteLine("Z(m),i,E(kPa),σᵈ(kPa),ε(%), slijeganje(cm),Duzina temelja, Sirina temelja, Dubina mjerenja, Koordinata tocke, Vrijeme");
                        sw.WriteLine( " , ,  "+programState.duzinaL+","+programState.sirinaB+","+programState.dubinaZ+","+ "x: "+programState.koordinateIzracuna[0].ToString("0.00")+"  y: "+programState.koordinateIzracuna[1].ToString("0.00")+ " ," + GetTimeStamp());
                         sw.WriteLine("__________________");
           for(var i = 0; i < SteinBrennerRezultat.depthList.Count; i ++){
                 
-               sw.WriteLine(programState.SteinBrennerRezultatOdabraneTocke.depthList[i]+","+programState.SteinBrennerRezultatOdabraneTocke.valueList[i]);
+               sw.WriteLine(programState.SteinBrennerRezultatOdabraneTocke.depthList[i]+","+programState.SteinBrennerRezultatOdabraneTocke.valueList[i],programState.youngModulPoDubini[i],programState.dodatnaNaprezanja[i], programState.relativneDeformacije[i], programState.ukupnoSlijeganje[i]);
                
               
              
             };
+        sw.WriteLine("______________________________________________________");
+                sw.WriteLine("______________________________________________________");
+                        sw.WriteLine("______________________________________________________");
+
+
+                                    sw.WriteLine("");
+                                    sw.WriteLine("");
 
             // finalString += reportSeparator + GetTimeStamp();
             // sw.WriteLine(finalString);

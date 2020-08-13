@@ -345,7 +345,7 @@ Transform naprezanjeText =  panelTemplateClone.transform.Find("TextValueI");
 
 
 dubinaText.GetComponent<Text>().text = "z(m):"+(programState.graphSize[1]- anchoredPosition[1]).ToString("0.0");
-naprezanjeText.GetComponent<Text>().text = "ε:"+((anchoredPosition[0]/programState.graphSize[0])*najvecaVrijednost).ToString("0.00000");
+naprezanjeText.GetComponent<Text>().text = "ε(%):"+((anchoredPosition[0]/programState.graphSize[0])*najvecaVrijednost).ToString("0.00000");
 
 double labelsScale =0.02643327*programState.graphSize[1] - 0.04642976;
   if (labelsScale < 0.05){
