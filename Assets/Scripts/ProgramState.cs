@@ -59,7 +59,11 @@ public (List<double>depthList, List<double> valueList) SteinBrennerRezultatOdabr
       //   koordinatePanel.gameObject.SetActive(false);
     }
 
+public void ShutdownApp(){
 
+
+    Application.Quit();
+}
 
 
       public void deleteCircles (){

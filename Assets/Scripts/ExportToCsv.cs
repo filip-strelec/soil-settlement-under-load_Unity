@@ -46,7 +46,7 @@ ProgramState programState = programManager.GetComponent<ProgramState>();
 
 
            sw.WriteLine("Vrijednosti Odabrane tocke zadanog temelja");
-                       sw.WriteLine("Z(m),i,E(kPa),Dod.Napr(kPa),Deform.(%), Slijeganje(cm),Duzina temelja(m), Sirina temelja(m), Dubina mjerenja(m), Koordinata tocke(m), Debljina lamele(m), Vrijeme");
+                       sw.WriteLine("Z(m),i,E(kPa),Dod.Napr(kPa),Deform.(%), Slijeganje(cm),Duzina temelja(m),Sirina temelja(m), Dubina mjerenja(m), Koordinata tocke(m), Debljina lamele(m), Vrijeme");
                        sw.WriteLine( " , , , , , , "+programState.duzinaL+","+programState.sirinaB+","+programState.dubinaZ+","+ "x: "+programState.koordinateIzracuna[0].ToString("0.00")+"  y: "+programState.koordinateIzracuna[1].ToString("0.00")+ " ,"+programState.inkrementMjerenjaZ.ToString("0.00")+" ," + GetTimeStamp());
                         sw.WriteLine("__________________");
           for(var i = 0; i < SteinBrennerRezultat.depthList.Count; i ++){

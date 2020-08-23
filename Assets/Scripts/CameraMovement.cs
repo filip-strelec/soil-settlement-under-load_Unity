@@ -16,13 +16,14 @@ public class CameraMovement : MonoBehaviour
            GameObject programManager = GameObject.Find("ProgramManager");
 
            programState = programManager.GetComponent<ProgramState>();
-panSpeed = (float)(programState.dubinaZ*100);
+// panSpeed = (float)(programState.dubinaZ*100);
 
 
     }
     void Update()
     {
-        
+        Debug.Log(panSpeed);
+panSpeed = (float)(programState.dubinaZ*2);
 
 Vector3 cameraPosition = transform.position;
 
