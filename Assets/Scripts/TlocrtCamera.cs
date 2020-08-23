@@ -23,7 +23,7 @@ public class TlocrtCamera : MonoBehaviour
 
     public RectTransform koordinatePanelMjerenje;
     
-
+    // public GameObject canvasDubina;
     public void ChangeCamera()
     {
  GameObject panelTemplateClone = GameObject.Find("PanelTemplateValueDeformation(Clone)");
@@ -75,6 +75,8 @@ if (programState.youngDefined){
             koordinatePanel.gameObject.SetActive(true);
             koordinatePanelMjerenje.gameObject.SetActive(false);
 
+GameObject.FindGameObjectWithTag("temeljTag").GetComponent<Renderer>().enabled=true;
+GameObject.Find("CanvasDubina").GetComponent<Canvas>().enabled=false;
 
 
         }
@@ -84,7 +86,7 @@ if (programState.youngDefined){
         {
 
 
-            glavnaKamera.transform.position = canvasGraphContainer.transform.position + new Vector3((float)(-programState.dubinaZ * 0.2), 0, (float)-(1.4 * programState.dubinaZ));
+            glavnaKamera.transform.position = canvasGraphContainerDeformation.transform.position + new Vector3(0, 0, (float)-(1.4 * programState.dubinaZ));
 
             glavnaKamera.transform.rotation = Quaternion.Euler(0, 0, 0);
             programState.kameraOnTlocrt = false;
@@ -95,6 +97,9 @@ if (programState.youngDefined){
             canvasAxisContainerTlocrt.gameObject.SetActive(false);
             koordinatePanel.gameObject.SetActive(false);
          koordinatePanelMjerenje.gameObject.SetActive(true);
+
+GameObject.FindGameObjectWithTag("temeljTag").GetComponent<Renderer>().enabled=false;
+GameObject.Find("CanvasDubina").GetComponent<Canvas>().enabled=true;
 
 
 

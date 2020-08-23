@@ -328,6 +328,7 @@ PovrNaprezanjeTextTextMjerenje.text="Povr. napr.(kPa):"+programState.povrsinskoN
             temelj.transform.localScale = new Vector3((float)programState.sirinaB, 0.1f, (float)programState.duzinaL);
             temelj.GetComponent<MeshRenderer>().material = foundationMaterial;
             temelj.GetComponent<BoxCollider>().enabled = false;
+            temelj.tag ="temeljTag";
 
 
           
@@ -339,16 +340,16 @@ PovrNaprezanjeTextTextMjerenje.text="Povr. napr.(kPa):"+programState.povrsinskoN
             meshRendererTemeljCollider.enabled = false;
 
 
-            GameObject tlo = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            tlo.transform.localPosition = new Vector3(0, -(float)programState.dubinaZ / 2, 0);
-            tlo.transform.localScale = new Vector3((float)programState.sirinaB, (float)programState.dubinaZ, (float)programState.duzinaL);
-            tlo.GetComponent<MeshRenderer>().material = dryGroundMaterial;
-            tlo.GetComponent<BoxCollider>().enabled = false;
-Debug.Log(programState.slojeviArray[0]+"u nadi je spas");
+            // GameObject tlo = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            // tlo.transform.localPosition = new Vector3(0, -(float)programState.dubinaZ / 2, 0);
+            // tlo.transform.localScale = new Vector3((float)programState.sirinaB, (float)programState.dubinaZ, (float)programState.duzinaL);
+            // tlo.GetComponent<MeshRenderer>().material = dryGroundMaterial;
+            // tlo.GetComponent<BoxCollider>().enabled = false;
+
 
          GameObject canvasDubina = GameObject.Find("CanvasDubina");
-            canvasDubina.transform.localPosition = new Vector3(0, -(float)programState.dubinaZ / 2,  (float)(-0.5*programState.duzinaL));
-            canvasDubina.transform.localScale = new Vector2((float)programState.sirinaB, (float)programState.dubinaZ);
+            canvasDubina.transform.localPosition = new Vector3((float)((programState.sirinaB/2)+0.5), -(float)programState.dubinaZ / 2,  (float)(-0.5*programState.duzinaL));
+            canvasDubina.transform.localScale = new Vector2((float)1, (float)programState.dubinaZ);
 
 
 
@@ -427,7 +428,7 @@ Debug.Log(programState.slojeviArray[0]+"u nadi je spas");
             graphContainerDeformation.anchorMax = new Vector2(0.5f, 0.5f);
 
 
-            float xOffset = (float)((programState.CanvasSize[0] / 2 + programState.sirinaB / 2) + programState.dubinaZ * 0.35);
+            float xOffset = (float)((programState.CanvasSize[0] / 2 + programState.sirinaB / 2)+0.5 );
             float yOffset = (float)(-programState.graphSize[1] / 2);
             float zOffset = (float)(-programState.duzinaL / 2);
 
@@ -438,7 +439,7 @@ Debug.Log(programState.slojeviArray[0]+"u nadi je spas");
 
 
 
-            glavnaKamera.transform.position = canvasGraphContainer.transform.position + new Vector3((float)(-programState.dubinaZ * 0.2), 0, (float)-(1.4 * programState.dubinaZ));
+            glavnaKamera.transform.position = canvasGraphContainerDeformation.transform.position + new Vector3(0, 0, (float)-(1.4 * programState.dubinaZ));
 
             GameObject mainCamera = GameObject.Find("Main Camera");
             CameraMovement mainCameraState = mainCamera.GetComponent<CameraMovement>();

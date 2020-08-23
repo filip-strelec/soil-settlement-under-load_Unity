@@ -22,7 +22,6 @@ public class CameraMovement : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(panSpeed);
 panSpeed = (float)(programState.dubinaZ*2);
 
 Vector3 cameraPosition = transform.position;

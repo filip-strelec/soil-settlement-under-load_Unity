@@ -354,7 +354,7 @@ double depthBefore =0;
 
       sloj.SetParent(panelSlojGrid,false);
         sloj.gameObject.SetActive(true);
-  sloj.transform.position = new Vector2(0,-(float)(depthBefore));
+  sloj.transform.position = new Vector2((float)((programState.sirinaB/2)+0.5),-(float)(depthBefore));
   sloj.transform.localScale = new Vector2((float)1,(float) ((programState.slojeviArray[i]-depthBefore)/programState.dubinaZ));
 sloj.GetComponent<Image>().color=new Color32((byte)(78+20*i),(byte)(100-8*i),48,230);
 sloj.tag="deleteGraphStuff";
@@ -365,7 +365,7 @@ depthBefore=programState.slojeviArray[i];
 
       linijaSloja.SetParent(panelSlojGrid,false);
         linijaSloja.gameObject.SetActive(true);
-  linijaSloja.transform.position = new Vector2(0,-(float)(programState.slojeviArray[i]-(0.005*programState.dubinaZ)));
+  linijaSloja.transform.position = new Vector2((float)((programState.sirinaB/2)+0.5),-(float)(programState.slojeviArray[i]-(0.005*programState.dubinaZ)));
   linijaSloja.transform.localScale = new Vector2((float)1, (float)0.005);
 linijaSloja.tag="deleteGraphStuff";
 
