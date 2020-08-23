@@ -109,8 +109,8 @@ public void changeYCoordinate(){
                 // Debug.Log(clickPosition);
                 if (clickPosition != -Vector3.one)
                 {
-                    koordinataXInputField.text = clickPosition[0].ToString("0.000");
-                    koordinataYInputField.text = clickPosition[2].ToString("0.000");
+                    koordinataXInputField.text = clickPosition[0].ToString("0.00");
+                    koordinataYInputField.text = clickPosition[2].ToString("0.00");
 
                     programState.koordinateIzracuna[0]= clickPosition[0];
                     programState.koordinateIzracuna[1]=clickPosition[2];
