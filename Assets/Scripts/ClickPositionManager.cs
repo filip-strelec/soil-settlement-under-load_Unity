@@ -86,6 +86,34 @@ public void changeYCoordinate(){
 }
 
 
+public void characteristicDot(){
+
+
+
+
+
+        programState.koordinateIzracuna[0]  = programState.sirinaB*0.37;
+        programState.koordinateIzracuna[1]  = programState.duzinaL*0.37;
+
+        Debug.Log(programState.koordinateIzracuna[0] +" "+programState.koordinateIzracuna[1] );
+
+        koordinataXInputField.text = (programState.sirinaB*0.37).ToString("0.00");
+        koordinataYInputField.text = (programState.duzinaL*0.37).ToString("0.00");
+
+
+
+                    programState.koordinateIzracuna[0]= programState.sirinaB*0.37;
+                    programState.koordinateIzracuna[1]=programState.duzinaL*0.37;
+
+
+        programState.deleteCircles();
+        programState.createCircles();
+
+
+}
+
+
+
     void Update()
     {
         if (programState.kameraOnTlocrt == true)
