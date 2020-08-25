@@ -752,7 +752,7 @@ labelX.GetComponent<Text>().text=labelXText.ToString("0.00");
  labelX.anchoredPosition= new Vector2(labelXXposition,(float)(programState.graphSize[1]+(2.3*labelsScale)));
 labelX.localScale=new Vector2 ((float)labelsScale,(float) labelsScale);
 gridX.anchoredPosition = new Vector2(labelXXposition,(programState.graphSize[1]/2));
-gridX.localScale =new Vector2((float)(labelsScale/8), programState.graphSize[1]);
+gridX.localScale =new Vector2((float)(labelsScale/4), programState.graphSize[1]);
 gridX.SetAsFirstSibling();
 }
 
@@ -844,7 +844,7 @@ labelY.localScale=new Vector2 ((float)labelsScale,(float) labelsScale);
 
 
 gridY.anchoredPosition = new Vector2((programState.graphSize[0]/2),labelYYposition);
-gridY.localScale =new Vector2(programState.graphSize[0],(float)labelsScale/8);
+gridY.localScale =new Vector2(programState.graphSize[0],(float)labelsScale/4);
 gridY.SetAsFirstSibling();
 
 }
