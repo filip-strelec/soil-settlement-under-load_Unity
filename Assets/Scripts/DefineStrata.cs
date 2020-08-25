@@ -200,7 +200,7 @@ if (everythingFine){
     programState.youngDefined = everythingFine;
 }
 
- programState.youngModulArray[i]=young;
+ programState.youngModulArray[i]=young*1000;
 
 
 

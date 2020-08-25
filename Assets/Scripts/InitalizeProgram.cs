@@ -348,8 +348,8 @@ PovrNaprezanjeTextTextMjerenje.text="Povr. napr.(kPa):"+programState.povrsinskoN
 
 
          GameObject canvasDubina = GameObject.Find("CanvasDubina");
-            canvasDubina.transform.localPosition = new Vector3((float)((programState.sirinaB/2)+0.5), -(float)programState.dubinaZ / 2,  (float)(-0.5*programState.duzinaL));
-            canvasDubina.transform.localScale = new Vector2((float)1, (float)programState.dubinaZ);
+            canvasDubina.transform.localPosition = new Vector3((float)((programState.sirinaB/2)+(programState.dubinaZ*0.05)), -(float)programState.dubinaZ / 2,  (float)(-0.5*programState.duzinaL));
+            canvasDubina.transform.localScale = new Vector2((float)(programState.dubinaZ*0.1), (float)programState.dubinaZ);
 
 
 

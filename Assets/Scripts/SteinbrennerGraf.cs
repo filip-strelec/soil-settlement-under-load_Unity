@@ -34,6 +34,12 @@ public class SteinbrennerGraf : MonoBehaviour
 
     private RectTransform labelTemplateY;
 
+
+private RectTransform xAxisLabel;
+private RectTransform yAxisLabel;
+
+
+private RectTransform graphTitle;
     public RectTransform templateGridObject;
 
     public RectTransform PanelTemplateValue;
@@ -354,7 +360,7 @@ double depthBefore =0;
 
       sloj.SetParent(panelSlojGrid,false);
         sloj.gameObject.SetActive(true);
-  sloj.transform.position = new Vector2((float)((programState.sirinaB/2)+0.5),-(float)(depthBefore));
+  sloj.transform.position = new Vector2((float)((programState.sirinaB/2)+((programState.dubinaZ*0.05))),-(float)(depthBefore));
   sloj.transform.localScale = new Vector2((float)1,(float) ((programState.slojeviArray[i]-depthBefore)/programState.dubinaZ));
 sloj.GetComponent<Image>().color=new Color32((byte)(78+20*i),(byte)(100-8*i),48,230);
 sloj.tag="deleteGraphStuff";
@@ -365,7 +371,7 @@ depthBefore=programState.slojeviArray[i];
 
       linijaSloja.SetParent(panelSlojGrid,false);
         linijaSloja.gameObject.SetActive(true);
-  linijaSloja.transform.position = new Vector2((float)((programState.sirinaB/2)+0.5),-(float)(programState.slojeviArray[i]-(0.005*programState.dubinaZ)));
+  linijaSloja.transform.position = new Vector2((float)((programState.sirinaB/2)+(programState.dubinaZ*0.05)),-(float)(programState.slojeviArray[i]-(0.005*programState.dubinaZ)));
   linijaSloja.transform.localScale = new Vector2((float)1, (float)0.005);
 linijaSloja.tag="deleteGraphStuff";
 
@@ -659,11 +665,47 @@ templateGridObject.gameObject.SetActive(false);
         labelTemplateX = graphContainer.Find("TextLabelTemplateX").GetComponent<RectTransform>();
         labelTemplateY = graphContainer.Find("TextLabelTemplateY").GetComponent<RectTransform>();
 
+
+
         //Dobiveno curve fit metodom
 double labelsScale =0.02643327*programState.graphSize[1] - 0.04642976;
   if (labelsScale < 0.05){
     labelsScale =0.05;
 }
+
+
+
+
+graphTitle = Instantiate( graphContainer.Find("GraphTitle").GetComponent<RectTransform>());
+graphTitle.SetParent(graphContainer, false);
+   graphTitle.gameObject.SetActive(true);
+graphTitle.localScale=new Vector2 ((float)labelsScale,(float) labelsScale);
+graphTitle.anchoredPosition = new Vector2 (0, (float) (5.5*labelsScale));
+   
+
+
+
+xAxisLabel = Instantiate( graphContainer.Find("XAxisLabel").GetComponent<RectTransform>());
+xAxisLabel.SetParent(graphContainer, false);
+   xAxisLabel.gameObject.SetActive(true);
+xAxisLabel.localScale=new Vector2 ((float)labelsScale,(float) labelsScale);
+
+
+
+yAxisLabel = Instantiate( graphContainer.Find("YAxisLabel").GetComponent<RectTransform>());
+yAxisLabel.SetParent(graphContainer, false);
+   yAxisLabel.gameObject.SetActive(true);
+yAxisLabel.localScale=new Vector2 ((float)labelsScale,(float) labelsScale);
+
+
+
+
+// yAxisLabel = graphContainer.Find("YAxisLabel").GetComponent<RectTransform>();
+
+
+
+
+
    
 for (int i = 0; i<=5; i++){
 
@@ -709,11 +751,12 @@ labelX.GetComponent<Text>().text=labelXText.ToString("0.00");
 
  labelX.anchoredPosition= new Vector2(labelXXposition,(float)(programState.graphSize[1]+(2.3*labelsScale)));
 labelX.localScale=new Vector2 ((float)labelsScale,(float) labelsScale);
-
 gridX.anchoredPosition = new Vector2(labelXXposition,(programState.graphSize[1]/2));
 gridX.localScale =new Vector2((float)(labelsScale/8), programState.graphSize[1]);
 gridX.SetAsFirstSibling();
 }
+
+
 
 float najbliziZadnjem = 0;
 

@@ -22,7 +22,6 @@ public class CameraMovement : MonoBehaviour
     }
     void Update()
     {
-panSpeed = (float)(programState.dubinaZ*2);
 
 Vector3 cameraPosition = transform.position;
 
@@ -40,6 +39,7 @@ cameraPosition.x += panSpeed * Time.deltaTime;
 }
 
 if (programState.kameraOnTlocrt){
+panSpeed = (float)(programState.dubinaZ*1);
 
 if(Input.GetKey("w")){
 
@@ -72,6 +72,7 @@ cameraPosition.y -= panSpeed * Time.deltaTime;
 
 else{
 
+panSpeed = (float)(programState.dubinaZ*2);
 
 
 if(Input.GetKey("w")){

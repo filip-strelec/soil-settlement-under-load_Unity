@@ -24,6 +24,9 @@ public class SteinbrennerGrafDeformacije : MonoBehaviour
     public RectTransform backgroundGraph;
 
 
+private RectTransform xAxisLabel;
+private RectTransform yAxisLabel;
+private RectTransform graphTitle;
 
 
  private bool valueShown = false;
@@ -382,6 +385,28 @@ double labelsScale =0.02643327*programState.graphSize[1] - 0.04642976;
   if (labelsScale < 0.05){
     labelsScale =0.05;
 }
+
+
+xAxisLabel = Instantiate( graphContainer.Find("XAxisLabelDeformation").GetComponent<RectTransform>());
+xAxisLabel.SetParent(graphContainer, false);
+   xAxisLabel.gameObject.SetActive(true);
+
+xAxisLabel.localScale=new Vector2 ((float)labelsScale,(float) labelsScale);
+
+
+
+yAxisLabel = Instantiate( graphContainer.Find("YAxisLabelDeformation").GetComponent<RectTransform>());
+yAxisLabel.SetParent(graphContainer, false);
+   yAxisLabel.gameObject.SetActive(true);
+yAxisLabel.localScale=new Vector2 ((float)labelsScale,(float) labelsScale);
+
+
+graphTitle = Instantiate( graphContainer.Find("GraphTitle").GetComponent<RectTransform>());
+graphTitle.SetParent(graphContainer, false);
+   graphTitle.gameObject.SetActive(true);
+graphTitle.localScale=new Vector2 ((float)labelsScale,(float) labelsScale);
+graphTitle.anchoredPosition = new Vector2 (0, (float) (5.5*labelsScale));
+
    
 for (int i = 0; i<=5; i++){
 
