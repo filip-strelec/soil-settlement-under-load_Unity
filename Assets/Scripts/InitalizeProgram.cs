@@ -439,7 +439,7 @@ PovrNaprezanjeTextTextMjerenje.text="Povr. napr.(kPa):"+programState.povrsinskoN
 
 
 
-            glavnaKamera.transform.position = canvasGraphContainerDeformation.transform.position + new Vector3(0, 0, (float)-(1.4 * programState.dubinaZ));
+            glavnaKamera.transform.position = canvasGraphContainerDeformation.transform.position + new Vector3(0, 0, (float)-(2.1 * programState.dubinaZ));
 
             GameObject mainCamera = GameObject.Find("Main Camera");
             CameraMovement mainCameraState = mainCamera.GetComponent<CameraMovement>();
