@@ -50,12 +50,12 @@ if (programState.youngDefined){
             if (programState.sirinaB > programState.duzinaL)
             {
 
-                kameraYOffset = (float)programState.sirinaB + 10;
+                kameraYOffset = (float)(3*programState.sirinaB);
             }
 
             else
             {
-                kameraYOffset = (float)(2.8 * programState.duzinaL);
+                kameraYOffset = (float)(3 * programState.duzinaL);
             }
 
 
