@@ -10960,7 +10960,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u03C3\u1D48(kPa)"
+  m_Text: "\u0394\u03C3(kPa)"
 --- !u!222 &1911371064
 CanvasRenderer:
   m_ObjectHideFlags: 0
