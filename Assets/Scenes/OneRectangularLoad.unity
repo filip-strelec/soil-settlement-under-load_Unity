@@ -11919,7 +11919,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Ukupno naprezanje po dubini
+  m_Text: Dodatno naprezanje
 --- !u!222 &2027237174
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12112,7 +12112,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Slijeganje po dubini
+  m_Text: Slijeganje
 --- !u!222 &2110852075
 CanvasRenderer:
   m_ObjectHideFlags: 0
